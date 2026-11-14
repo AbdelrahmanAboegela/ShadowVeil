@@ -143,7 +143,7 @@ $T{-}\delta$ at the price of one host-to-device copy.
 continuing a populated cache with several tokens ignores the previous $K{-}1$ inputs. We implement the burst
 as a chunk that prepends the cached convolution window and initializes the scan from the cached SSM state.
 On real TAB prefixes ($s_0\neq0$) a burst through the prefill branch deviates from the recurrence by
-\nKOneNaiveLoB{}--\nKOneNaiveHiA\% of the state magnitude, as large as the contamination being removed (\nKOneSignalB\% minimum), whereas the
+\nKOneNaiveLoB{}--\nKOneNaiveHiA\% of the state magnitude, comparable to the contamination being removed (\nKOneSignalB\% minimum), whereas the
 chunk deviates from the token-by-token recurrence by $\le\nKOneChunkRecB\%$ (Sec.~\ref{sec:mech}).
 
 \textbf{Exactness is path-relative.} Chunking moves where the fp32 scan state is rounded to fp16, and
@@ -185,7 +185,7 @@ shadow, so conservation is counted, not derived. From non-zero snapshots ($s_0\n
 bitwise equal to its reference in $\nKOneExactA/\nKOneNA$ (130M), $\nKOneExactB/\nKOneNB$ (370M) and $\nKOneExactC/\nKOneNC$ (1.4B)
 cases. It differs from a monolithic prefill of the sanitized stream by at most $\nKOneMonoB\%$ of the state magnitude and from the
 token-by-token recurrence by at most $\nKOneChunkRecB\%$, while live and sanitized states differ by at least $\nKOneSignalB\%$; a
-burst through the prefill branch deviates by $\nKOneNaiveLoB$--$\nKOneNaiveHiA\%$, as large as the signal being removed. Batched
+burst through the prefill branch deviates by $\nKOneNaiveLoB$--$\nKOneNaiveHiA\%$, comparable to the signal being removed. Batched
 rows are deterministic and independent of the companion row and of row position,
 so a reference built in the same geometry reproduces the shadow row bitwise at every offset and scale. The same equality holds on
 Mamba-2's SSD recurrence at every offset (Sec.~\ref{sec:audit}).
