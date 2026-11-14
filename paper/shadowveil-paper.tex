@@ -1,0 +1,429 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\graphicspath{{figures/}}
+\input{numbers}
+\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{3pt}
+\setlength{\belowcaptionskip}{1pt}
+\newcommand{\todo}[1]{\textbf{[#1]}}
+
+\title{ShadowVeil: Prospective Counterfactual Revocation for Mamba Inference State}
+\author{\IEEEauthorblockN{Abdelrahman A. Alshames, Aly H. Gouda, Omnia S. Eshra, Zeina Eltannikhy, and Salma A. Alashry}
+\IEEEauthorblockA{Egypt Japan University of Science and Technology (EJUST), Egypt\\
+abdelrahman.aboegela@ejust.edu.eg}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Fixed-state recurrent language models keep no token-indexed cache entry that can be deleted when an input
+expires, so exact revocation must recompute the state the model would have reached had the input been
+sanitized. A known expiry does not shrink that work, but it lets a serving system schedule it.
+ShadowVeil moves the unavoidable replay before the deadline: a lookahead offset $\delta$ interpolates
+between replay-at-deadline ($\delta{=}0$) and keeping a sanitized shadow through the whole authorized
+window ($\delta{=}L$), with the same tensor-level equality guarantee at every $\delta$. The selected cache
+equals an independently executed sanitized reference bit for bit at every $\delta$, from non-zero snapshot
+states, on Mamba-1 (130M--1.4B) and Mamba-2. On a fused Triton/CUDA-graph path a decode step takes
+\nStepOneA~ms and a 256-token burst \nChunkSmallA~ms (130M). A burst costs far less per token than a decode step and transition counts are conserved at every lookahead, so a short lookahead hides the
+revocation work at modest cost. In a scheduler simulation driven by these measured costs, 64
+simultaneous expiries at 130M give a p99 revocation latency of \nSimRetroPNinetyNineA~ms with replay at the deadline and
+\nSimLaSixteenPNinetyNineA~ms with a 16-token lookahead, at \nSimLaMemVsRetroA\% more cache memory than replay and \nSimLaMemVsFullA\% less than full duplication; at 16 sessions with half the expiries aligned, 16-token lookahead removes all deadline misses at 130M, 370M and 1.4B, where replay at the deadline misses \nTypRetroMissA, \nTypRetroMissB{} and \nTypRetroMissC\%, and under extreme load at 370M and 1.4B full duplication
+meets every deadline. Over eight seeds, ShadowVeil lowers eight-class identity recovery from \nTUTabA\% to
+\nTSTabA\% on TAB (chance 12.5\%); a logit-access attacker reaches chance on the shadow state, and a leaky-sanitizer
+control confirms that the guarantee is equality to the declared sanitizer, so privacy is that of the sanitizer.
+Revoking $w$ order-ambiguous items needs $2^w$ branches. ShadowVeil addresses one revocation domain.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Mamba, state-space models, privacy, inference state, revocation, counterfactual execution, deadline scheduling
+\end{IEEEkeywords}
+
+\section{Introduction}
+Mamba compresses an arbitrarily long prefix into fixed-size recurrent state instead of retaining a
+key--value entry per token \cite{mamba}. That removes the obvious deletion unit: once a protected value has
+influenced the state, deleting its source record or appending a forget instruction does not restore the
+state that would have existed without it, and resetting the cache also discards unrelated session
+context. Execution-state unlearning gives the target: after revocation the runtime should equal the
+counterfactual execution in which the value was sanitized \cite{executionunlearning}. Provenance-guided
+selective replay reconstructs that state after a request; its recomputation lies on the revocation path and
+grows with the suffix.
+
+\emph{Setting and threat model.} ShadowVeil addresses a retention policy with a firm expiry known while the
+value is still authorized: a session TTL, a temporary consent grant, a leased credential or a contractually
+bounded retention window. An unscheduled erasure request (e.g., GDPR Art.~12(3)) is related but starts its
+clock on arrival, with an affected span unknown in advance. After expiry, the adversary reads the runtime
+state tensors of the serving process and trains classifiers on them; it does not see weights, logs or
+generated text (Sec.~\ref{sec:limits}). The policy supplies a deterministic sanitizer $g$; success means
+the cache equals the execution on $g(X)$, which is exactly as private as $g$.
+
+A known deadline does not reduce the exact work; it lets the system do that work before the deadline instead
+of after it. Prospective counterfactual execution is the setting of \cite{executionunlearning,attriguard}; the contribution here is to characterize \emph{when} the unavoidable work
+can happen and what each choice costs. Contributions: (i) a lookahead-scheduled family of exact revocation
+with retrospective replay ($\delta{=}0$) and full-window duplication ($\delta{=}L$) as endpoints, including a
+chunked burst from a \emph{non-zero} snapshot (a burst that ignores the cached convolution window deviates by 3.5--8.1\% there);
+(ii) measured costs on a fused Triton path and a scheduler-level simulation driven by them; (iii) an audit
+that separates equality from sanitizer quality, with a leaky-sanitizer control, four attackers and
+seed-level equivalence tests; (iv) a comparison with reset, restart replay, retrospective replay and
+subspace editing; and (v) a branch-cost law, $2^w$ for $w$ order-ambiguous items. \emph{Scope:} one revocation
+domain; with $w$ items whose expiry order is unknown, an exact implementation needs $2^w$ concurrent branches
+(Sec.~\ref{sec:multi}); the guarantee is equality to the declared sanitized execution.
+
+\section{Related Work}
+Mamba uses selective state updates with constant-memory inference \cite{mamba,mamba2}; its hidden state
+retains content that a probe can read \cite{mambamemory}, as neural representations in general can
+\cite{coavoux,embeddings}. KV-cache security work targets cross-request reuse and side channels
+\cite{cacheprune,shadowcache}; Ready2Unlearn prepares weights for later unlearning \cite{ready2unlearn};
+ReplaySSM buffers recent SSM inputs for speculative rollback without a sanitized trajectory \cite{replayssm}; Marconi checkpoints recurrent state at chosen boundaries so that hybrid models can reuse prefixes \cite{marconi}, a snapshot taken for reuse where ours is taken for revocation.
+The closest revocation work is Yao et al.\ \cite{executionunlearning}: for Transformer agents they crop the
+KV cache to the injection step and replay a sanitized suffix, with a lower bound of $T{-}\tau{+}1$
+recomputed transitions. ShadowVeil adopts that target for fixed-state models, where there is nothing to
+crop and a snapshot of the pre-span state is required, and changes \emph{when} the suffix is computed.
+Ramesh gives a transport criterion for subtracting a saved state difference in delta attention, audits checkpoint replay against the
+never-stored state on Kimi Linear (exact on every audited array), and checks the criterion's classification on Mamba-2, Falcon-H1 and RWKV-7
+\cite{deltaomission}; replay there runs after the request. AttriGuard runs parallel counterfactual branches to attribute tool calls
+\cite{attriguard}; ERASER schedules parameter-level unlearning against inference requests \cite{eraser}.
+To our knowledge, ShadowVeil is the first to schedule an exact \emph{execution-state} reconstruction ahead of a known expiry. Ramesh's deletion from addressable Transformer memory also measures the edited memory against a rebuild of the history without the record, and finds a measurable gap between them \cite{ramesh}, which is the reference ShadowVeil produces exactly. The residency-versus-lead trade-off is the one continuous-batching
+schedulers face under cache pressure \cite{congestion}.
+
+\section{Problem Formulation and Method}
+For a deterministic transition $F_\theta$, a recurrent model processes token $x_t$ as
+$s_t=F_\theta(s_{t-1},x_t)$. The folded transition $F_\theta^*(s,u_{1:m})$ applies $F_\theta$ over a
+sequence of any length. A protected span $X$ enters at $\tau$ and stays authorized until the deadline $T$;
+the policy maps it to $g(X)$ (possibly of a different length) and leaves allowed input $A$ unchanged. With
+$s_0$ the state just before $X$,
+\begin{equation}
+ s_T^{\mathrm{live}}=F_\theta^*(F_\theta^*(s_0,X),A), \quad
+ s_T^{\mathrm{san}}=F_\theta^*(F_\theta^*(s_0,g(X)),A).
+\end{equation}
+The shadow is an independent execution of $F_\theta^*(s_0,g(X))$ continued by $A$; no per-token alignment
+between $X$ and $g(X)$ is assumed. Equality $s_T^{\mathrm{shadow}}=s_T^{\mathrm{san}}$ follows by induction on
+$F_\theta^*$ whenever both are computed by the same schedule from the same $s_0$.
+
+\begin{figure}[t]
+\centering
+\resizebox{0.97\columnwidth}{!}{\input{fig_overview}}
+\caption{ShadowVeil with lookahead $\delta$. The $s_0$ snapshot and the transcript of allowed tokens wait in host
+memory; one fused burst builds the shadow before $T{-}\delta$, the shadow then shares the batched decode step with
+the live branch for $\delta$ tokens, and at $T$ the runtime selects it and zeroizes the live cache.}
+\label{fig:overview}
+\end{figure}
+
+\begin{algorithm}[t]
+\caption{ShadowVeil($\delta$): one revocation domain}
+\label{alg:shadow}
+\begin{algorithmic}[1]
+\STATE \textbf{at} $\tau$: snapshot $s_0$ (host); start transcript of allowed tokens; live consumes $X$, then $A$
+\STATE \textbf{at} release $r\le T{-}\delta$: allocate shadow cache $C\!\leftarrow\!s_0$; \textsc{Burst}: $C\!\leftarrow\!F^*_\theta(C,\,g(X)\|A_{<T-\delta})$ in one chunk
+\STATE \textbf{for} tokens in $[T{-}\delta,T)$: advance live and shadow in the \emph{same} batched decode step
+\STATE \textbf{at} $T$: select $C$; zero every live-cache tensor; check $\max|\cdot|{=}0$; free $s_0$ and transcript
+\STATE \textbf{if} $C$ not ready at $T$: finish the replay on the critical path (the $\delta{=}0$ behaviour)
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Cost.} Let $M$ be the fixed cache size, $L=|g(X)|{+}|A|$ the shadow's token transitions, $c_b$ and $c_s$
+the per-token cost of a fused burst and of a decode step. Any exact reconstruction performs $L$ extra
+transitions; $\delta$ chooses \emph{when} and \emph{where}. Only the $\Theta(M)$ retirement is independent of
+$L$ at the deadline; total work is always $L$. Retrospective replay pays $\approx L\,c_b$ at $T$; a lookahead
+shadow pays $(L{-}\delta)c_b$ before $T{-}\delta$ plus $\delta$ decode rows, and holds a second $M$-byte cache
+for $\delta$ plus the burst duration (peak $2M$, time-averaged residency about $(\delta/L)M$). The $s_0$
+snapshot and the $O(L)$ transcript are a shared prerequisite of every exact method, held off the GPU until
+$T{-}\delta$ at the price of one host-to-device copy.
+
+\textbf{Burst from a non-zero snapshot.} The Hugging Face prefill branch zero-pads the convolution window, so
+continuing a populated cache with several tokens ignores the previous $K{-}1$ inputs. We implement the burst
+as a chunk that prepends the cached convolution window and initializes the scan from the cached SSM state.
+On real TAB prefixes ($s_0\neq0$) a burst through the prefill branch deviates from the recurrence by
+3.5--8.1\% of the state magnitude, as large as the contamination being removed (4.9\% minimum), whereas the
+chunk deviates by $\le$0.2\% (Sec.~\ref{sec:mech}).
+
+\textbf{Exactness is path-relative.} Chunking moves where the fp32 scan state is rounded to fp16, and
+batched kernels may pick different reduction orders. Different schedules therefore agree to $\sim$$10^{-3}$
+but not bit for bit; the guarantee is bitwise equality \emph{to a reference executed by the same recorded
+schedule and batch geometry}, which is what a deployment can enforce by logging the schedule.
+
+\section{Experimental Method}
+\textbf{Data.} TAB contains 1{,}268 ECHR cases with entity annotations \cite{tab}; other annotated
+identifiers are masked and eight real name surfaces are independently assigned to document-disjoint
+contexts (counterfactual assignment, not natural pairings). Enron uses the CMU Enron-Meetings/Random subsets
+with person-name annotations \cite{enronner}: 2{,}012 mentions in 720 documents, with one disjoint,
+length-matched natural pseudonym as the class-independent sanitizer. Result files hold aggregates and hashes,
+no names or passages.
+
+\textbf{Models, probe, protocol.} Mamba-1 130M/370M/790M/1.4B and Mamba-2 130M/370M/780M, FP16, Transformers 4.51.3, PyTorch
+2.5.1, CUDA 12.1. All timings, the protocol seeds of Table~\ref{tab:main} and the exactness checks ran on one RTX 3060 Laptop GPU (6 GB, power-capped, clocks not locked) with the host quiet (CPU load below 30\%); the 1.4B and Mamba-2 attacker audits, the nonlinear probes and the counterfactual-distance runs ran on an RTX 3050 (8 GB), with no timings taken there and each result from a single machine. Eight seeds, 20261001--8 (96 attacker-training and 48 test documents per seed, balanced
+over eight identities, no overlap); the first three were prespecified for the decision rule. The primary
+probe is a standardized ridge classifier ($\alpha{=}10$) on 24{,}576 seeded SSM coordinates measured after a
+fixed neutral continuation, retrained per condition; a second label embedded in allowed text measures
+retained-state utility. Prespecified decision rule: all equality checks pass, mean shadow
+identity accuracy $\le$18.75\% (chance plus half a class), retained accuracy not significantly lower.
+
+\textbf{Controls and instrumentation.} (a) A \emph{leaky sanitizer} that keeps the first three characters of the
+name; (b) a ridge probe on the \emph{full} cache (all SSM and convolution state) and a training-free
+\emph{logit-access} attacker that scores each candidate name by its log-likelihood under the cache; (c) a
+label-permutation null for the ridge probe and seed-level TOST equivalence tests with margin 6.25 points;
+(d) a fused Triton selective-scan path with CUDA-graph decode (Sec.~\ref{sec:fused}); (e) a tick-based
+scheduler simulation (Sec.~\ref{sec:sim}); (f) Mamba-2 with the same attacker protocol.
+
+\section{Results}
+\subsection{Mechanism: exact counterfactual state equality}\label{sec:mech}
+Every equality and zeroization check passes. Boundary and continuation equality hold for both corpora at three scales
+(Sec.~\ref{sec:audit}), and an online runtime on eight real TAB streams (live 98--142, sanitized 99--137 tokens) selects caches equal to
+separately allocated sanitized sessions at expiry and after continuation. On the fused path the shadow equals its independently
+rebuilt reference at every offset $\delta$, endpoints included, and on seven further documents per scale ($\nExtraExactA$/$\nExtraNA$
+offset--document checks at each of 130M, 370M and 1.4B); the runtime's counter of executed transitions equals $|g(X)|{+}L$ for every
+shadow, so conservation is counted, not derived. From non-zero snapshots ($s_0\neq0$ after a real TAB prefix) the chunked burst is
+bitwise equal to its reference in $\nKOneExactA/\nKOneNA$ (130M), $\nKOneExactB/\nKOneNB$ (370M) and $\nKOneExactC/\nKOneNC$ (1.4B)
+cases. It differs from a monolithic prefill of the sanitized stream by at most $\nKOneMonoB\%$ of the state magnitude and from the
+token-by-token recurrence by at most $\nKOneChunkRecB\%$, while live and sanitized states differ by at least $\nKOneSignalB\%$; a
+burst through the prefill branch deviates by $\nKOneNaiveLoB$--$\nKOneNaiveHiA\%$, as large as the signal being removed. Batched
+rows are deterministic and independent of the companion row and of row position,
+so a reference built in the same geometry reproduces the shadow row bitwise at every offset and scale. The same equality holds on
+Mamba-2's SSD recurrence at every offset (Sec.~\ref{sec:audit}).
+
+\begin{table}[t]
+\caption{Identity recovery (lower is better) and retained-label accuracy, untreated $\to$ ShadowVeil (\%; mean $\pm$ SD over eight
+seeds; chance 12.5\%). TOST: equivalence to chance within $\pm6.25$ points, seed level; full reset gives 12.5/12.5.}
+\label{tab:main}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llrrr}
+\toprule
+Model & Corpus & Identity & Retained & TOST $p$ \\
+\midrule
+130M & TAB & $\nTUTabA\pm\nTUTabASd\to\nTSTabA\pm\nTSTabASd$ & $\nTRUTabA\to\nTRSTabA$ & $\nEqTabAP$ \\
+130M & Enron & $\nTUEnronA\pm\nTUEnronASd\to\nTSEnronA\pm\nTSEnronASd$ & $\nTRUEnronA\to\nTRSEnronA$ & $\nEqEnronAP$ \\
+370M & TAB & $\nTUTabB\pm\nTUTabBSd\to\nTSTabB\pm\nTSTabBSd$ & $\nTRUTabB\to\nTRSTabB$ & $\nEqTabBP$ \\
+370M & Enron & $\nTUEnronB\pm\nTUEnronBSd\to\nTSEnronB\pm\nTSEnronBSd$ & $\nTRUEnronB\to\nTRSEnronB$ & $\nEqEnronBP$ \\
+790M & TAB & $\nTUTabD\pm\nTUTabDSd\to\nTSTabD\pm\nTSTabDSd$ & $\nTRUTabD\to\nTRSTabD$ & $\nEqTabDP$ \\
+790M & Enron & $\nTUEnronD\pm\nTUEnronDSd\to\nTSEnronD\pm\nTSEnronDSd$ & $\nTRUEnronD\to\nTRSEnronD$ & $\nEqEnronDP$ \\
+1.4B & TAB & $\nTUTabC\pm\nTUTabCSd\to\nTSTabC\pm\nTSTabCSd$ & $\nTRUTabC\to\nTRSTabC$ & $\nEqTabCP$ \\
+1.4B & Enron & $\nTUEnronC\pm\nTUEnronCSd\to\nTSEnronC\pm\nTSEnronCSd$ & $\nTRUEnronC\to\nTRSEnronC$ & $\nEqEnronCP$ \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\subsection{Measured costs on a fused path}\label{sec:fused}
+The fused path runs a decode step as one CUDA graph and a burst as one Triton scan over the chunk (Sec.~III); it agrees with the
+Hugging Face path to $\nFusedHFDiffA/\nFusedHFDiffB/\nFusedHFDiffC\%$ of the state magnitude (130M/370M/1.4B). On an RTX 3060 Laptop
+GPU, measured on a quiet host, a decode step takes $\nStepOneA/\nStepOneB/\nStepOneC$ ms and one more batched row adds
+$\nBatchMarginLoB$--$\nBatchMarginHiA\%$ of a live step at batch 2. A burst of 256 tokens takes $\nChunkSmallA/\nChunkSmallB/\nChunkSmallC$ ms and
+grows linearly with the window ($\nChunkLargeA$ ms for 8{,}192 tokens at 130M), about $\nStepPerChunkTokA\times$ cheaper per token than
+decoding. Against the official \texttt{mamba\_ssm} selective-scan kernel on the same GPU, our scan takes $\nScanOneOursA$ ms per layer for one token at 130M against $\nScanOneOfficialA$ ms, and the sequential scan over 256 tokens takes $\nScanTwoFiftySixOursA$ ms against $\nScanTwoFiftySixOfficialA$ ms for the official parallel scan (which starts from a zero state), so the burst costs reported here are conservative for a parallel scan with an initial state. Retirement is one grouped zeroing call of $\nRetireGroupedA$--$\nRetireGroupedB$ ms ($\nRetireA$--$\nRetireC$ ms as a per-tensor
+loop); the host-side max-abs check is an audit step that runs after the shadow is selected.
+Replay at the deadline for a 256-token window therefore costs $\nBurstZeroA/\nBurstZeroB/\nBurstZeroC$ ms against $\nRetireGroupedA$ ms for
+selecting the shadow and zeroing the live cache, and it grows with window length and model size while retirement does not. Extra
+work is conserved in transitions but not in time: decoding a shadow alone for the whole window costs $\nTotalFullA$ ms of extra compute
+at 130M ($\delta{=}L$) against $\nBurstZeroA$ ms for one burst ($\delta{=}0$). The useful setting is therefore a short lookahead:
+build the shadow with one burst shortly before $T$ and decode only the last $\delta$ tokens, which removes the deadline replay for
+about one burst of compute (Sec.~\ref{sec:sim}).
+
+\subsection{Scheduler simulation and serving harness}\label{sec:sim}
+We drive a tick-based scheduler ($\tau=\nSimTauA$~ms at 130M and 370M) with the measured per-scale costs: the decode step at every batch size from 1 to 512 rows,
+interpolated chunk cost, and grouped retirement. An earliest-deadline release rule spends only the idle part of each tick on shadow bursts.
+Retrospective replay (\emph{retro}) does all work at the deadline; \emph{star} uses $\delta^\star=\lceil\text{burst}/\tau\rceil+1$;
+\emph{la16} and \emph{la50} hold a fixed lookahead of 16 tokens and of half the window; \emph{full} duplicates throughout.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_cost_sched}
+\caption{(a) Work left at the deadline by replay grows with the window $L$ and with model size, while ShadowVeil's selection and zeroizing at $T$ costs about a millisecond. (b--d) Simulated deadline-miss rate (SLO: one tick) against concurrent sessions, from measured costs: retrospective replay (retro), a 16-token lookahead (la16) and full duplication (full), with half of the expiries aligned (solid) or all aligned (dashed).}
+\label{fig:sched}
+\end{figure*}
+
+
+\begin{table}[t]
+\caption{Revocation latency p99 (ms) / deadline-miss rate (SLO: one tick) and mean cache (MB) under measured costs, tick $\tau=20$~ms (130M, 370M) and 50~ms (1.4B, whose batched step exceeds 20~ms). Typical load: 16 sessions, half of the expiries aligned. Extreme load: 64 sessions all expiring together.}
+\label{tab:sched}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+ & retro & star & la16 & la50 & full \\
+\midrule
+\multicolumn{6}{l}{\emph{typical load}} \\
+130M & \nTypRetroPNinetyNineA\,/\,\nTypRetroMissA\% & \nTypStarPNinetyNineA\,/\,\nTypStarMissA\% & \nTypLaSixteenPNinetyNineA\,/\,\nTypLaSixteenMissA\% & \nTypLaHalfPNinetyNineA\,/\,\nTypLaHalfMissA\% & \nTypFullPNinetyNineA\,/\,\nTypFullMissA\% \\
+\quad cache MB & \nTypRetroMemA & \nTypStarMemA & \nTypLaSixteenMemA & \nTypLaHalfMemA & \nTypFullMemA \\
+370M & \nTypRetroPNinetyNineB\,/\,\nTypRetroMissB\% & \nTypStarPNinetyNineB\,/\,\nTypStarMissB\% & \nTypLaSixteenPNinetyNineB\,/\,\nTypLaSixteenMissB\% & \nTypLaHalfPNinetyNineB\,/\,\nTypLaHalfMissB\% & \nTypFullPNinetyNineB\,/\,\nTypFullMissB\% \\
+\quad cache MB & \nTypRetroMemB & \nTypStarMemB & \nTypLaSixteenMemB & \nTypLaHalfMemB & \nTypFullMemB \\
+1.4B & \nTypRetroPNinetyNineC\,/\,\nTypRetroMissC\% & \nTypStarPNinetyNineC\,/\,\nTypStarMissC\% & \nTypLaSixteenPNinetyNineC\,/\,\nTypLaSixteenMissC\% & \nTypLaHalfPNinetyNineC\,/\,\nTypLaHalfMissC\% & \nTypFullPNinetyNineC\,/\,\nTypFullMissC\% \\
+\quad cache MB & \nTypRetroMemC & \nTypStarMemC & \nTypLaSixteenMemC & \nTypLaHalfMemC & \nTypFullMemC \\
+\midrule
+\multicolumn{6}{l}{\emph{extreme load}} \\
+130M & \nSimRetroPNinetyNineA\,/\,\nSimRetroMissA\% & \nSimStarPNinetyNineA\,/\,\nSimStarMissA\% & \nSimLaSixteenPNinetyNineA\,/\,\nSimLaSixteenMissA\% & \nSimLaHalfPNinetyNineA\,/\,\nSimLaHalfMissA\% & \nSimFullPNinetyNineA\,/\,\nSimFullMissA\% \\
+\quad cache MB & \nSimRetroMemA & \nSimStarMemA & \nSimLaSixteenMemA & \nSimLaHalfMemA & \nSimFullMemA \\
+370M & \nSimRetroPNinetyNineB\,/\,\nSimRetroMissB\% & \nSimStarPNinetyNineB\,/\,\nSimStarMissB\% & \nSimLaSixteenPNinetyNineB\,/\,\nSimLaSixteenMissB\% & \nSimLaHalfPNinetyNineB\,/\,\nSimLaHalfMissB\% & \nSimFullPNinetyNineB\,/\,\nSimFullMissB\% \\
+\quad cache MB & \nSimRetroMemB & \nSimStarMemB & \nSimLaSixteenMemB & \nSimLaHalfMemB & \nSimFullMemB \\
+1.4B & \nSimRetroPNinetyNineC\,/\,\nSimRetroMissC\% & \nSimStarPNinetyNineC\,/\,\nSimStarMissC\% & \nSimLaSixteenPNinetyNineC\,/\,\nSimLaSixteenMissC\% & \nSimLaHalfPNinetyNineC\,/\,\nSimLaHalfMissC\% & \nSimFullPNinetyNineC\,/\,\nSimFullMissC\% \\
+\quad cache MB & \nSimRetroMemC & \nSimStarMemC & \nSimLaSixteenMemC & \nSimLaHalfMemC & \nSimFullMemC \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Figure~\ref{fig:sched} shows the miss rate against load. At a typical load a 16-token lookahead removes the deadline misses at every scale (p99 \nTypLaSixteenPNinetyNineA, \nTypLaSixteenPNinetyNineB{} and \nTypLaSixteenPNinetyNineC~ms at 130M, 370M and 1.4B) for \nTypLaSixteenMemA, \nTypLaSixteenMemB{} and \nTypLaSixteenMemC~MB of mean cache against \nTypRetroMemA, \nTypRetroMemB{} and \nTypRetroMemC~MB for replay at the deadline, which misses \nTypRetroMissA\%, \nTypRetroMissB\% and \nTypRetroMissC\% of deadlines; full duplication uses \nTypFullMemA, \nTypFullMemB{} and \nTypFullMemC~MB. Under extreme load the benefit depends on scale. At 130M a
+16-token lookahead still removes every miss (p99 \nSimLaSixteenPNinetyNineA~ms). At 370M and 1.4B the batched decode step for 64 sessions occupies most of a tick, so the schedule matches the lookahead to the idle time: a half-window lookahead cuts the misses from \nSimRetroMissB\% and \nSimRetroMissC\% to \nSimLaHalfMissB\% and \nSimLaHalfMissC\%, and full duplication meets every deadline, at about twice the memory of replay.
+The burst-time rule \emph{star} gives the smallest useful lookahead when expiries align. The mechanism keeps exactness off the critical path,
+and the lookahead is a tunable that is set from the measured costs at each scale and load.
+
+\emph{Serving harness.} The same workloads and policies run on the GPU, with the decode batch sized to the load and every burst, decode step and retirement executed for real. At 130M, 370M and 1.4B the harness and the simulation agree on whether a policy meets its deadline in $\nSvhSloA\%$, $\nSvhSloB\%$ and $\nSvhSloC\%$ of \nSvhConfigsA, \nSvhConfigsB{} and \nSvhConfigsC{} configurations, predict the mean cache memory within about 2\%, and rank the policies by p99 latency with Spearman correlation $\nSvhSpearmanA$, $\nSvhSpearmanB$ and $\nSvhSpearmanC$. The simulation understates the latency of replay at the deadline, by a median factor of \nSvhMedRatioA, \nSvhMedRatioB{} and \nSvhMedRatioC, so the measured benefit of lookahead is larger than the simulated one. In the harness a 16-token lookahead removes every miss at 16 sessions with half the expiries aligned at 130M, 370M and 1.4B, where replay at the deadline misses most or all deadlines.
+
+\subsection{Comparison with baselines}
+Yao et al.\ show that exact revocation of a recurrent state needs at least $T-\tau+1$ transitions for a prefix of length $T$ expiring at
+$\tau$. ShadowVeil attains this bound in transitions at every $\delta$ (counted in our sweep) and changes only \emph{when} they run.
+We implement replay at the deadline following their method as the baseline; approximate unlearning and state-editing baselines do not give state equality (Sec.~\ref{sec:audit}). Against a
+Transformer, the cache that must be duplicated is proportional to context: for a 512-token context, one Mamba-130M cache is
+1.47~MB regardless of length, RWKV-169M 0.15~MB, and GPT-2 18.9~MB (1.18~MB at 32 tokens), so a full shadow costs a constant for
+fixed-state models. \emph{Distance to the counterfactual.} Following Yao et al., we measure how far each treated state is from the state of the sanitized-stream execution, by relative state distance, next-token KL, and the fraction of matched-seed generations identical to the counterfactual's. At 130M (\nCfdSeedsA{} seeds) the untreated state is at distance $\nCfdUntreatedDistA$ with KL $\nCfdUntreatedKlA$ and reproduces the counterfactual generation in $\nCfdUntreatedGenIdA\%$ of draws. A full reset moves it to $\nCfdResetDistA$ (KL $\nCfdResetKlA$, $\nCfdResetGenIdA\%$ identical), and a sensitive-subspace edit leaves it at $\nCfdSubspaceDistA$ (KL $\nCfdSubspaceKlA$, $\nCfdSubspaceGenIdA\%$), no closer than doing nothing and no closer than a random subspace of the same rank ($\nCfdRandomDistA$, $\nCfdRandomGenIdA\%$). The ShadowVeil state is at distance $\nCfdShadowDistA$ (KL below $10^{-6}$) and every generation is identical. Replay at the deadline reaches the same state, so on this measure it is equivalent to ShadowVeil; the difference between them is when the work runs (Sec.~\ref{sec:sim}).
+
+\subsection{Sanitizer audit and attackers}\label{sec:audit}
+In these corpora the sanitized stream carries no class signal by construction (one class-independent placeholder or pseudonym), so
+near-chance recovery follows from state equality; the audit checks the sanitizer and detects a leaky one. Across eight seeds per cell
+(Table~\ref{tab:main}) the shadow state is equivalent to chance within half a class (TOST, seed level) in seven of eight (scale, corpus)
+cells ($p\le0.012$); at 130M TAB the mean is $\nEqTabAMean\%$ (95\% CI $[\nEqTabALo,\nEqTabAHi]$), inside the prespecified bound of
+$18.75\%$ ($p=\nEqTabAP$). Retained-label accuracy is preserved, whereas a full reset
+reaches chance on both labels.
+
+\begin{table}[t]
+\caption{Four attackers on untreated, ShadowVeil (class-independent sanitizer) and a leaky sanitizer that keeps three characters of
+the name; identity accuracy (\%, 130M, mean of eight seeds, chance 12.5). Bitwise equality to the declared sanitized stream holds in
+every run, for both sanitizers.}
+\label{tab:attackers}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{TAB} & \multicolumn{3}{c}{Enron} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Attacker & Untr. & ShadowVeil & Leaky & Untr. & ShadowVeil & Leaky \\
+\midrule
+Ridge, seeded coordinates & \nAudUntreatedRidgeA & \nAudPrimaryRidgeA & \nAudLeakyRidgeA & \nEAudUntreatedRidgeA & \nEAudPrimaryRidgeA & \nEAudLeakyRidgeA \\
+Ridge, full cache & \nAudUntreatedFullA & \nAudPrimaryFullA & \nAudLeakyFullA & \nEAudUntreatedFullA & \nEAudPrimaryFullA & \nEAudLeakyFullA \\
+Logit access (candidate scoring) & \nAudUntreatedLogitA & \nAudPrimaryLogitA & \nAudLeakyLogitA & \nEAudUntreatedLogitA & \nEAudPrimaryLogitA & \nEAudLeakyLogitA \\
+Logit access, best of six probes & \nAudUntreatedLogitBestA & \nAudPrimaryLogitBestA & \nAudLeakyLogitBestA & \nEAudUntreatedLogitBestA & \nEAudPrimaryLogitBestA & \nEAudLeakyLogitBestA \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The logit-access attacker recovers the name from $\nAudUntreatedLogitA\%$ (TAB) and $\nEAudUntreatedLogitA\%$ (Enron) of untreated
+states, a strong positive control. On the ShadowVeil state all four attackers stay at chance (the best-of-six value is a maximum of
+six noisy readings and is expected to sit above 12.5). The leaky-sanitizer control confirms that the guarantee is equality to the declared
+sanitizer: equality is exact in all $\nAuditExactA$ seeds, and recovery rises to $\nAudLeakyLogitA\%$ (TAB) and $\nEAudLeakyLogitA\%$ (Enron)
+because that sanitizer keeps part of the name. At 370M the same pattern holds
+(logit access on the leaky sanitizer: $\nAudLeakyLogitB\%$ TAB, $\nEAudLeakyLogitB\%$ Enron). At 1.4B the logit-access attacker recovers
+the name from $\nAudUntreatedLogitC\%$ (TAB) and $\nEAudUntreatedLogitC\%$ (Enron) of untreated states, $\nAudPrimaryLogitC\%$ and
+$\nEAudPrimaryLogitC\%$ on the ShadowVeil state, and $\nAudLeakyLogitC\%$ and $\nEAudLeakyLogitC\%$ on the leaky sanitizer.
+
+\emph{Mamba-2.} The same protocol runs on Mamba-2 (SSD) at 130M, 370M and 780M, with a window of \nMtwoWindowA{} tokens: the shadow cache
+equals the independently executed sanitized reference bitwise at all \nMtwoDeltasA{} lookahead offsets and at the deadline boundary at every
+size, and the retired cache is exactly zero. With the seeded-coordinate attacker, identity recovery falls from $\nMtwoUntreatedA\%$,
+$\nMtwoUntreatedB\%$ and $\nMtwoUntreatedD\%$ on untreated states to $\nMtwoShadowA\%$, $\nMtwoShadowB\%$ and $\nMtwoShadowD\%$ on
+the ShadowVeil state (chance 12.5\%; \nMtwoSeedsA, \nMtwoSeedsB{} and \nMtwoSeedsD{} seeds at 130M, 370M and 780M), while retained-label
+accuracy stays at $\nMtwoRetSA\%$, $\nMtwoRetSB\%$ and $\nMtwoRetSD\%$ (untreated: $\nMtwoRetUA\%$, $\nMtwoRetUB\%$, $\nMtwoRetUD\%$).
+
+Nonlinear probes do not change the picture. On the full cache, a two-layer MLP and a sparse-autoencoder probe recover the name from $\nStrongUntreatedMlpA\%$ and $\nStrongUntreatedSaeA\%$ of untreated states at 130M (a linear probe: $\nStrongUntreatedLinearA\%$), so they are weaker than the linear probe on the same state, and from $\nStrongShadowMlpA\%$ and $\nStrongShadowSaeA\%$ on the ShadowVeil state (\nStrongSeedsA{} seeds; 370M: $\nStrongShadowMlpB\%$ and $\nStrongShadowSaeB\%$; 1.4B: $\nStrongShadowMlpC\%$ and $\nStrongShadowSaeC\%$), at chance.
+
+Subspace editing, the usual approximate alternative, leaves the identity recoverable. Identity recovery on the edited coordinates falls from 89.6\% to 60.4\%,
+but a disjoint coordinate view of the same layers retains 81.3\% and the combined attacker obtains 62.5\%; editing the selected
+layers fully still permits 52.1\% combined recovery. With identities disjoint between defense training and evaluation, a rank-32
+subspace changes recovery only from 97.9\% to 93.8\%, and rank 127 leaves it at 97.9\%.
+
+\subsection{Multi-item revocation}\label{sec:multi}
+A session with $k$ items whose revocation order is unknown must keep one branch per subset of items that may be revoked
+inside the same ambiguity window $w$, so the live branch count is $2^w$, not $2^k$. We exercised $k\le6$ items with windows up to
+$w=6$ ($\nMultiNA$ configurations per scale): each branch, on reveal, equals its reference bitwise at 130M, 370M and 1.4B
+($\nMultiExactA/\nMultiNA$ at each scale). The largest case held $\nMultiMaxBranchesA$ branches, \nMultiMaxMBA~MB at 130M,
+\nMultiMaxMBB~MB at 370M and \nMultiMaxMBC~MB at 1.4B; branch memory grows exponentially in $w$ and linearly in state size, which is the
+practical limit. When the deadline order is known, irreversible deadline masks form a nested chain of at most $b+1$ states for $b$
+distinct deadline buckets (exhaustively checked over 3,279 assignments, no violations), so a known order needs $b+1$ rather than
+$2^w$ branches.
+
+\section{Discussion and Scope}\label{sec:limits}
+The guarantee is equality to a declared sanitized execution, so privacy is that of the sanitizer, as the leaky-sanitizer control shows (Sec.~\ref{sec:audit}).
+Exactness holds for a fixed schedule and batch geometry, and batched rows are deterministic and independent of their companions. The saving is in
+when the work runs: transitions are conserved, a shadow row raises a batched step by $\nBatchMarginLoB$--$\nBatchMarginHiA\%$, and a full-window shadow costs about
+40$\times$ the compute of one burst at 130M, so a short lookahead is the efficient setting. When the batched decode step fills most of a tick, as with 64
+simultaneously expiring sessions at 370M and 1.4B, full duplication meets every deadline and a lookahead of half the window removes most of the misses.
+All measurements come from two consumer-grade GPUs, a power-capped 6~GB laptop part and an 8~GB desktop part, so the study covers models of up to 1.4B
+parameters (Mamba-2 up to 780M) and batches of about a hundred sessions on a single device. Absolute times belong to that hardware and the comparison between schedules
+is the portable result; on production kernels, datacenter-class GPUs and larger models the lookahead is re-measured and set from the same cost model.
+ShadowVeil targets one revocation domain per session; with $w$ order-ambiguous items the branch count is $2^w$, and a known order needs only $b+1$.
+
+\section{Conclusion}
+ShadowVeil keeps the exact transition count of replay and moves it ahead of the deadline, with bitwise equality to a sanitized
+reference at every lookahead, from non-zero snapshots and on Mamba-1 and Mamba-2. Measured on a quiet host, a decode step takes
+\nStepOneA~ms and a 256-token burst \nChunkSmallA~ms at 130M; in simulation a 16-token lookahead cuts p99 revocation latency
+from \nSimRetroPNinetyNineA~ms to \nSimLaSixteenPNinetyNineA~ms for 64 aligned expiries, and at 16 sessions with half the expiries aligned it removes the deadline misses at 130M, 370M and 1.4B; under extreme load at 370M and 1.4B full duplication meets every deadline. Identity
+recovery falls from \nTUTabA\% to \nTSTabA\% (TAB, eight seeds) and a logit-access attacker is at chance, with a leaky-sanitizer control
+delimiting the guarantee. Future work is a production-kernel path, datacenter-class hardware and larger models, where the schedule can be tuned to the measured costs. Code, measurements and the verification script are available at \texttt{github.com/\allowbreak{}AbdelrahmanAboegela/\allowbreak{}ShadowVeil}.
+
+\begin{thebibliography}{12}
+\scriptsize
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\bibitem{mamba}
+A. Gu and T. Dao, ``Mamba: Linear-time sequence modeling with selective state spaces,'' arXiv:2312.00752, 2023.
+
+\bibitem{mamba2}
+T. Dao and A. Gu, ``Transformers are SSMs: Generalized models and efficient algorithms through structured state space duality,'' in \emph{Proc. ICML}, 2024.
+
+\bibitem{mambamemory}
+T. Hossain et al., ``Characterizing Mamba's selective memory using auto-encoders,'' in \emph{Proc. IJCNLP-AACL}, 2025.
+
+\bibitem{coavoux}
+M. Coavoux, S. Narayan, and S. B. Cohen, ``Privacy-preserving neural representations of text,'' in \emph{Proc. EMNLP}, 2018.
+
+\bibitem{embeddings}
+J. Morris, V. Kuleshov, V. Shmatikov, and A. Rush, ``Text embeddings reveal (almost) as much as text,'' in \emph{Proc. EMNLP}, 2023.
+
+\bibitem{executionunlearning}
+C. Yao et al., ``Forgetting without restarting: Execution-state unlearning for stateful LLM agents,'' arXiv:2609.04875, 2026.
+
+\bibitem{attriguard}
+Y. He et al., ``AttriGuard: Defeating indirect prompt injection in LLM agents via causal attribution of tool invocations,'' in \emph{Proc. 35th USENIX Security Symp.}, 2026.
+
+\bibitem{cacheprune}
+G. Wu et al., ``CachePrune: Privacy-aware and fine-grained KV cache sharing for efficient LLM inference,'' arXiv:2605.23640, 2026.
+
+\bibitem{shadowcache}
+Z. Luo et al., ``Shadow in the cache: Unveiling and mitigating privacy risks of KV-cache in LLM inference,'' in \emph{Proc. NDSS}, 2026.
+
+\bibitem{ready2unlearn}
+H. Duan, Y. Yang, A. Abbasi, and K. Y. Tam, ``Ready2Unlearn: A learning-time approach for preparing models with future unlearning readiness,'' arXiv:2505.10845, 2025.
+
+\bibitem{replayssm}
+Z.-W. Liou and T. Dao, ``ReplaySSM: Cache SSM inputs, not state,'' Dao AI Lab, Jun. 2026. [Online]. Available: \url{https://dao-lab.ai/blog/2026/replayssm/}
+
+\bibitem{marconi}
+R. Pan et al., ``Marconi: Prefix caching for the era of hybrid LLMs,'' in \emph{Proc. MLSys}, 2025.
+
+\bibitem{ramesh}
+V. Ramesh, ``Can an AI assistant really forget? Auditable deletion from addressable memory,'' arXiv:2607.27539, 2026.
+
+\bibitem{tab}
+I. Pil\'{a}n et al., ``The Text Anonymization Benchmark (TAB): A dedicated corpus and evaluation framework for text anonymization,'' \emph{Computational Linguistics}, vol. 48, no. 4, 2022.
+
+\bibitem{enronner}
+E. Minkov, R. C. Wang, and W. W. Cohen, ``Extracting personal names from email: Applying named entity recognition to informal text,'' in \emph{Proc. HLT/EMNLP}, 2005.
+
+\bibitem{deltaomission}
+V. Ramesh, ``Exact record omission in delta attention: A transport criterion, its cost, and a replay certificate,'' arXiv:2609.06872, 2026.
+
+\bibitem{congestion}
+R. Ao et al., ``Service-induced congestion in memory-constrained LLM serving,'' arXiv:2606.15555, 2026.
+
+\bibitem{eraser}
+Y. Hu et al., ``ERASER: Machine unlearning in MLaaS via an inference serving-aware approach,'' in \emph{Proc. ACM CCS}, 2024.
+
+\end{thebibliography}
+
+\end{document}

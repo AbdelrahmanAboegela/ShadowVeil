@@ -1,0 +1,95 @@
+{
+  "status": "stage_9_generic_unseen_identity_live_defense",
+  "dataset": "Text Anonymization Benchmark v1.0 (MIT)",
+  "configuration": {
+    "model": "state-spaces/mamba-130m-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "output": "work/stateveil/results/stage9_unseen_identity_scrubber.json",
+    "defender_names": 16,
+    "evaluation_names": 8,
+    "defense_per_name": 8,
+    "attacker_per_name": 12,
+    "test_per_name": 6,
+    "context_characters": 180,
+    "batch_size": 8,
+    "layers": "12,15,17,20,23",
+    "subspace_rank": 32,
+    "methods": "none,sensitive_subspace,random_subspace,gaussian,full_reset",
+    "seed": 20260928,
+    "device": "cuda"
+  },
+  "chance_accuracy": 0.125,
+  "effective_state_coordinates_per_layer": 24576,
+  "defender_evaluation_identity_overlap": 0,
+  "defender_surface_sha256": "787b54d9a644d2463eb76e3578068ea05a0b149ced3bf5face53777ac1350775",
+  "evaluation_surface_sha256": "b81ad427c353cd62e9fde5774c31b5a9002e464f48a768db11ca917980380dfd",
+  "document_overlap_defense_attacker": 0,
+  "document_overlap_defense_test": 0,
+  "document_overlap_attacker_test": 0,
+  "sensitive_subspace_rank": 32,
+  "largest_singular_values": [
+    421.4134216308594,
+    358.519775390625,
+    344.0539245605469,
+    318.5232849121094,
+    302.11956787109375,
+    286.6820373535156,
+    285.66064453125,
+    263.9049072265625,
+    261.51824951171875,
+    244.53208923339844
+  ],
+  "results": [
+    {
+      "method": "none",
+      "adaptive_identity_accuracy": 0.9791666666666666,
+      "adaptive_identity_balanced_accuracy": 0.9791666666666667,
+      "retained_fact_accuracy": 1.0,
+      "retained_fact_balanced_accuracy": 1.0,
+      "suffix_nll": 5.422191670735677,
+      "mean_boundary_event_ms": 6.226999995609125,
+      "runtime_seconds": 33.41779840004165
+    },
+    {
+      "method": "sensitive_subspace",
+      "adaptive_identity_accuracy": 0.9375,
+      "adaptive_identity_balanced_accuracy": 0.9375,
+      "retained_fact_accuracy": 1.0,
+      "retained_fact_balanced_accuracy": 1.0,
+      "suffix_nll": 5.420930684407552,
+      "mean_boundary_event_ms": 6.660395835448677,
+      "runtime_seconds": 33.90289549995214
+    },
+    {
+      "method": "random_subspace",
+      "adaptive_identity_accuracy": 1.0,
+      "adaptive_identity_balanced_accuracy": 1.0,
+      "retained_fact_accuracy": 0.9791666666666666,
+      "retained_fact_balanced_accuracy": 0.9791666666666667,
+      "suffix_nll": 5.423440653483073,
+      "mean_boundary_event_ms": 6.405216651425386,
+      "runtime_seconds": 33.858662299928255
+    },
+    {
+      "method": "gaussian",
+      "adaptive_identity_accuracy": 0.7708333333333334,
+      "adaptive_identity_balanced_accuracy": 0.7708333333333333,
+      "retained_fact_accuracy": 0.875,
+      "retained_fact_balanced_accuracy": 0.875,
+      "suffix_nll": 5.418437398274739,
+      "mean_boundary_event_ms": 6.258766666481582,
+      "runtime_seconds": 33.985504499985836
+    },
+    {
+      "method": "full_reset",
+      "adaptive_identity_accuracy": 0.125,
+      "adaptive_identity_balanced_accuracy": 0.125,
+      "retained_fact_accuracy": 0.125,
+      "retained_fact_balanced_accuracy": 0.125,
+      "suffix_nll": 5.1961602783203125,
+      "mean_boundary_event_ms": 5.995908334928876,
+      "runtime_seconds": 33.10931630001869
+    }
+  ],
+  "peak_gpu_memory_mb": 975.05
+}

@@ -1,0 +1,1828 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "exists:confirm_tab_20261001.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261001:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261001:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "130M:tab:20261001:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261001:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_tab_20261002.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261002:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261002:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "130M:tab:20261002:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261002:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_tab_20261003.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261003:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261003:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "130M:tab:20261003:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:20261003:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:tab:prespecified_threshold",
+      "passed": true,
+      "detail": {
+        "mean": 0.17361111111111113,
+        "threshold": 0.1875
+      }
+    },
+    {
+      "name": "exists:confirm_enron_20261001.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261001:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261001:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "130M:enron:20261001:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261001:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_enron_20261002.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261002:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261002:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "130M:enron:20261002:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261002:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_enron_20261003.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261003:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261003:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "130M:enron:20261003:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:20261003:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:enron:prespecified_threshold",
+      "passed": true,
+      "detail": {
+        "mean": 0.13888888888888892,
+        "threshold": 0.1875
+      }
+    },
+    {
+      "name": "exists:confirm_tab_370m_20261001.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261001:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261001:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "370M:tab:20261001:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261001:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_tab_370m_20261002.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261002:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261002:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "370M:tab:20261002:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261002:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_tab_370m_20261003.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261003:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261003:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "370M:tab:20261003:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:20261003:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:tab:prespecified_threshold",
+      "passed": true,
+      "detail": {
+        "mean": 0.11111111111111112,
+        "threshold": 0.1875
+      }
+    },
+    {
+      "name": "exists:confirm_enron_370m_20261001.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261001:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261001:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "370M:enron:20261001:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261001:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_enron_370m_20261002.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261002:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261002:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "370M:enron:20261002:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261002:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_enron_370m_20261003.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261003:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261003:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "370M:enron:20261003:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:20261003:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:enron:prespecified_threshold",
+      "passed": true,
+      "detail": {
+        "mean": 0.11805555555555557,
+        "threshold": 0.1875
+      }
+    },
+    {
+      "name": "exists:confirm_tab_1p4b_20261001.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261001:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261001:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "1.4B:tab:20261001:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261001:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_tab_1p4b_20261002.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261002:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261002:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "1.4B:tab:20261002:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261002:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_tab_1p4b_20261003.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261003:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261003:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "1.4B:tab:20261003:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:20261003:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:tab:prespecified_threshold",
+      "passed": true,
+      "detail": {
+        "mean": 0.125,
+        "threshold": 0.1875
+      }
+    },
+    {
+      "name": "exists:confirm_enron_1p4b_20261001.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261001:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261001:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "1.4B:enron:20261001:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261001:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_enron_1p4b_20261002.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261002:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261002:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "1.4B:enron:20261002:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261002:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:confirm_enron_1p4b_20261003.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261003:document_disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261003:boundary_exact",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "1.4B:enron:20261003:continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:20261003:retired_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:enron:prespecified_threshold",
+      "passed": true,
+      "detail": {
+        "mean": 0.11805555555555557,
+        "threshold": 0.1875
+      }
+    },
+    {
+      "name": "protocol_enron_1p4b_20261004.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_1p4b_20261005.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_1p4b_20261006.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_1p4b_20261007.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_1p4b_20261008.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_20261004.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_20261005.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_20261006.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_20261007.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_20261008.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_370m_20261004.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_370m_20261005.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_370m_20261006.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_370m_20261007.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_370m_20261008.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_790m_20261001.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_790m_20261002.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_790m_20261003.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_790m_20261004.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_790m_20261005.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_790m_20261006.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_790m_20261007.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_enron_790m_20261008.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_1p4b_20261004.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_1p4b_20261005.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_1p4b_20261006.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_1p4b_20261007.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_1p4b_20261008.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_20261004.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_20261005.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_20261006.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_20261007.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_20261008.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_370m_20261004.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_370m_20261005.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_370m_20261006.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_370m_20261007.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_370m_20261008.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_790m_20261001.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_790m_20261002.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_790m_20261003.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_790m_20261004.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_790m_20261005.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_790m_20261006.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_790m_20261007.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_tab_790m_20261008.json:boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "protocol_seed_files_present",
+      "passed": true,
+      "detail": 46
+    },
+    {
+      "name": "exists:fused_sweep_130m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:fused_all_offsets_exact",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "130M:fused_additional_documents_exact",
+      "passed": true,
+      "detail": 42
+    },
+    {
+      "name": "130M:token_transitions_conserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:fused_vs_hf_close",
+      "passed": true,
+      "detail": 0.0013338414634146342
+    },
+    {
+      "name": "130M:fused_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:batched_tail_130m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:batched_shadow_row_exact",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "130M:batched_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:snapshot_batch_130m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:nonzero_snapshot_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:batch_geometry_deterministic",
+      "passed": true,
+      "detail": {
+        "rerun_identical_inputs_bitwise_equal": true,
+        "row0_independent_of_companion_content": true,
+        "stream_equal_when_moved_to_other_row": true
+      }
+    },
+    {
+      "name": "exists:multi_item_scaling_130m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:multi_item_exact",
+      "passed": true,
+      "detail": 21
+    },
+    {
+      "name": "130M:branches_equal_2_to_w",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:branches_halve_on_reveal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:fused_sweep_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:fused_all_offsets_exact",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "370M:fused_additional_documents_exact",
+      "passed": true,
+      "detail": 42
+    },
+    {
+      "name": "370M:token_transitions_conserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:fused_vs_hf_close",
+      "passed": true,
+      "detail": 0.0033003300330033004
+    },
+    {
+      "name": "370M:fused_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:batched_tail_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:batched_shadow_row_exact",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "370M:batched_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:snapshot_batch_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:nonzero_snapshot_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:batch_geometry_deterministic",
+      "passed": true,
+      "detail": {
+        "rerun_identical_inputs_bitwise_equal": true,
+        "row0_independent_of_companion_content": true,
+        "stream_equal_when_moved_to_other_row": true
+      }
+    },
+    {
+      "name": "exists:multi_item_scaling_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:multi_item_exact",
+      "passed": true,
+      "detail": 21
+    },
+    {
+      "name": "370M:branches_equal_2_to_w",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:branches_halve_on_reveal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:fused_sweep_1p4b.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:fused_all_offsets_exact",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "1.4B:fused_additional_documents_exact",
+      "passed": true,
+      "detail": 42
+    },
+    {
+      "name": "1.4B:token_transitions_conserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:fused_vs_hf_close",
+      "passed": true,
+      "detail": 0.0008797653958944282
+    },
+    {
+      "name": "1.4B:fused_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:batched_tail_1p4b.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:batched_shadow_row_exact",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "1.4B:batched_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:snapshot_batch_1p4b.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:nonzero_snapshot_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:batch_geometry_deterministic",
+      "passed": true,
+      "detail": {
+        "rerun_identical_inputs_bitwise_equal": true,
+        "row0_independent_of_companion_content": true,
+        "stream_equal_when_moved_to_other_row": true
+      }
+    },
+    {
+      "name": "exists:multi_item_scaling_1p4b.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:multi_item_exact",
+      "passed": true,
+      "detail": 21
+    },
+    {
+      "name": "1.4B:branches_equal_2_to_w",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:branches_halve_on_reveal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:fused_sweep_790m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "790M:fused_all_offsets_exact",
+      "passed": true,
+      "detail": 6
+    },
+    {
+      "name": "790M:fused_additional_documents_exact",
+      "passed": true,
+      "detail": 42
+    },
+    {
+      "name": "790M:token_transitions_conserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "790M:fused_vs_hf_close",
+      "passed": true,
+      "detail": 0.0050335570469798654
+    },
+    {
+      "name": "790M:fused_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:batched_tail_790m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "790M:batched_shadow_row_exact",
+      "passed": true,
+      "detail": 5
+    },
+    {
+      "name": "790M:batched_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:snapshot_batch_790m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "790M:nonzero_snapshot_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "790M:batch_geometry_deterministic",
+      "passed": true,
+      "detail": {
+        "rerun_identical_inputs_bitwise_equal": true,
+        "row0_independent_of_companion_content": true,
+        "stream_equal_when_moved_to_other_row": true
+      }
+    },
+    {
+      "name": "exists:multi_item_scaling_790m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "790M:multi_item_exact",
+      "passed": true,
+      "detail": 21
+    },
+    {
+      "name": "790M:branches_equal_2_to_w",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "790M:branches_halve_on_reveal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fused_sweep_130m_w1024.json:all_offsets_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fused_sweep_130m_w1024.json:timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fused_sweep_370m_w1024.json:all_offsets_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fused_sweep_370m_w1024.json:timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:retirement_latency.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "retirement_timing_quiet",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_control_files_present",
+      "passed": true,
+      "detail": 48
+    },
+    {
+      "name": "audit_controls_130m_20261001.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_130m_20261002.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_130m_20261003.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_130m_20261004.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_130m_20261005.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_130m_20261006.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_130m_20261007.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_130m_20261008.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_1p4b_20261001.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_1p4b_20261002.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_1p4b_20261003.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_1p4b_20261004.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_1p4b_20261005.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_1p4b_20261006.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_1p4b_20261007.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_1p4b_20261008.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_370m_20261001.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_370m_20261002.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_370m_20261003.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_370m_20261004.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_370m_20261005.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_370m_20261006.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_370m_20261007.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_370m_20261008.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_130m_20261001.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_130m_20261002.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_130m_20261003.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_130m_20261004.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_130m_20261005.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_130m_20261006.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_130m_20261007.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_130m_20261008.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_1p4b_20261001.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_1p4b_20261002.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_1p4b_20261003.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_1p4b_20261004.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_1p4b_20261005.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_1p4b_20261006.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_1p4b_20261007.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_1p4b_20261008.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_370m_20261001.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_370m_20261002.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_370m_20261003.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_370m_20261004.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_370m_20261005.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_370m_20261006.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_370m_20261007.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "audit_controls_enron_370m_20261008.json:both_sanitizers_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_attacker_files_present",
+      "passed": true,
+      "detail": 24
+    },
+    {
+      "name": "mamba2_audit_20261001.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_20261002.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_20261003.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_20261004.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_20261005.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_20261006.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_20261007.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_20261008.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_370m_20261001.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_370m_20261002.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_370m_20261003.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_370m_20261004.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_370m_20261005.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_370m_20261006.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_370m_20261007.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_370m_20261008.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_780m_20261001.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_780m_20261002.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_780m_20261003.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_780m_20261004.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_780m_20261005.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_780m_20261006.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_780m_20261007.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_audit_780m_20261008.json:exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:stage24_mamba2_portability_check.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_retirement_zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:stage25_mamba2_lookahead_sweep.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_lookahead_all_offsets_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:stage24_mamba2_portability_check_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_370m_boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_370m_continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:stage25_mamba2_lookahead_sweep_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_370m_lookahead_all_offsets_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:stage24_mamba2_portability_check_780m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_780m_boundary_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_780m_continuation_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:stage25_mamba2_lookahead_sweep_780m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mamba2_780m_lookahead_all_offsets_exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:step_rows_130m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:step_curve_covers_64_rows",
+      "passed": true,
+      "detail": 512
+    },
+    {
+      "name": "130M:step_curve_nondecreasing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:step_curve_quiet_host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:scheduler_sim_fused_130m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:sim_uses_measured_step_curve",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:scheduler_sim_padded_130m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:padded_sim_has_all_policies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:harness_calibrated_per_load",
+      "passed": true,
+      "detail": [
+        "128",
+        "16",
+        "32",
+        "64",
+        "8"
+      ]
+    },
+    {
+      "name": "130M:harness_shadow_close_to_monolithic_replay",
+      "passed": true,
+      "detail": 0.1133
+    },
+    {
+      "name": "130M:harness_quiet_host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:sim_vs_harness_130m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "130M:sim_vs_harness_reported",
+      "passed": true,
+      "detail": 0.9555555555555556
+    },
+    {
+      "name": "exists:step_rows_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:step_curve_covers_64_rows",
+      "passed": true,
+      "detail": 192
+    },
+    {
+      "name": "370M:step_curve_nondecreasing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:step_curve_quiet_host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:scheduler_sim_fused_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:sim_uses_measured_step_curve",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:scheduler_sim_padded_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:padded_sim_has_all_policies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:harness_calibrated_per_load",
+      "passed": true,
+      "detail": [
+        "16",
+        "32",
+        "64",
+        "8"
+      ]
+    },
+    {
+      "name": "370M:harness_shadow_close_to_monolithic_replay",
+      "passed": true,
+      "detail": 0.0058
+    },
+    {
+      "name": "370M:harness_quiet_host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:sim_vs_harness_370m.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "370M:sim_vs_harness_reported",
+      "passed": true,
+      "detail": 0.9444444444444444
+    },
+    {
+      "name": "exists:step_rows_1p4b.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:step_curve_covers_64_rows",
+      "passed": true,
+      "detail": 96
+    },
+    {
+      "name": "1.4B:step_curve_nondecreasing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:step_curve_quiet_host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:scheduler_sim_fused_1p4b.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:sim_uses_measured_step_curve",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:scheduler_sim_padded_1p4b.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:padded_sim_has_all_policies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:harness_calibrated_per_load",
+      "passed": true,
+      "detail": [
+        "16",
+        "32",
+        "8"
+      ]
+    },
+    {
+      "name": "1.4B:harness_shadow_close_to_monolithic_replay",
+      "passed": true,
+      "detail": 0.0037
+    },
+    {
+      "name": "1.4B:harness_quiet_host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:sim_vs_harness_1p4b.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1.4B:sim_vs_harness_reported",
+      "passed": true,
+      "detail": 0.9629629629629629
+    },
+    {
+      "name": "exists:scan_bench_ours.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "scan_bench_ours.json:quiet_host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:scan_bench_official.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "scan_bench_official.json:quiet_host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:scan_bench.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:stage15_reconvergence_audit.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "divergent_caches_never_reconverge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exists:stage16_deadline_chain_audit.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deadline_chain_exhaustive_no_violations",
+      "passed": true,
+      "detail": 3279
+    },
+    {
+      "name": "exists:stage17_fixed_state_memory_scaling.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fixed_state_shadow_memory_constant",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transformer_shadow_memory_linear",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "failed": [],
+  "sha256": {
+    "paper/shadowveil-paper.tex": "6d5cca80f47852911ae04d331302a355d257879a61320f946f4234c5bae0fe03"
+  }
+}

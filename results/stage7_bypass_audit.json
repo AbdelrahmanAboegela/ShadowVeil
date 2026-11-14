@@ -1,0 +1,170 @@
+{
+  "status": "stage_7_unedited_state_bypass_audit",
+  "configuration": {
+    "model": "state-spaces/mamba-130m-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "output": "work/stateveil/results/stage7_bypass_audit.json",
+    "classes": 8,
+    "defense_per_class": 12,
+    "attacker_per_class": 12,
+    "test_per_class": 6,
+    "context_characters": 180,
+    "batch_size": 16,
+    "coordinates_per_layer": 1024,
+    "edited_layers": "12,15,17,20,23",
+    "other_layers": "0,3,6,9,18",
+    "methods": "none,sensitive_subspace,random_subspace",
+    "seed": 20260928,
+    "device": "cuda"
+  },
+  "chance_accuracy": 0.125,
+  "sensitive_subspace_rank": 7,
+  "largest_singular_values": [
+    0.1703968588458655,
+    0.11941023533173811,
+    0.11192223951373137,
+    0.10677076844316552,
+    0.1044832931591985,
+    0.09830924153837382,
+    0.09006686612895462,
+    3.2498071055402344e-08
+  ],
+  "results": [
+    {
+      "method": "none",
+      "attacker_view": "edited",
+      "features": 5120,
+      "identity_accuracy": 0.8958333333333334,
+      "identity_balanced_accuracy": 0.8958333333333333,
+      "retained_accuracy": 0.9583333333333334,
+      "retained_balanced_accuracy": 0.9583333333333334
+    },
+    {
+      "method": "none",
+      "attacker_view": "heldout_same_layers",
+      "features": 5120,
+      "identity_accuracy": 0.8125,
+      "identity_balanced_accuracy": 0.8125,
+      "retained_accuracy": 0.9166666666666666,
+      "retained_balanced_accuracy": 0.9166666666666667
+    },
+    {
+      "method": "none",
+      "attacker_view": "other_layers",
+      "features": 5120,
+      "identity_accuracy": 0.2916666666666667,
+      "identity_balanced_accuracy": 0.29166666666666663,
+      "retained_accuracy": 0.5416666666666666,
+      "retained_balanced_accuracy": 0.5416666666666667
+    },
+    {
+      "method": "none",
+      "attacker_view": "conv_state",
+      "features": 5120,
+      "identity_accuracy": 0.3125,
+      "identity_balanced_accuracy": 0.3125,
+      "retained_accuracy": 0.5833333333333334,
+      "retained_balanced_accuracy": 0.5833333333333333
+    },
+    {
+      "method": "none",
+      "attacker_view": "combined",
+      "features": 20480,
+      "identity_accuracy": 0.75,
+      "identity_balanced_accuracy": 0.75,
+      "retained_accuracy": 0.7291666666666666,
+      "retained_balanced_accuracy": 0.7291666666666667
+    },
+    {
+      "method": "sensitive_subspace",
+      "attacker_view": "edited",
+      "features": 5120,
+      "identity_accuracy": 0.6041666666666666,
+      "identity_balanced_accuracy": 0.6041666666666667,
+      "retained_accuracy": 0.9375,
+      "retained_balanced_accuracy": 0.9375
+    },
+    {
+      "method": "sensitive_subspace",
+      "attacker_view": "heldout_same_layers",
+      "features": 5120,
+      "identity_accuracy": 0.8125,
+      "identity_balanced_accuracy": 0.8125,
+      "retained_accuracy": 0.8958333333333334,
+      "retained_balanced_accuracy": 0.8958333333333334
+    },
+    {
+      "method": "sensitive_subspace",
+      "attacker_view": "other_layers",
+      "features": 5120,
+      "identity_accuracy": 0.2708333333333333,
+      "identity_balanced_accuracy": 0.27083333333333337,
+      "retained_accuracy": 0.5416666666666666,
+      "retained_balanced_accuracy": 0.5416666666666667
+    },
+    {
+      "method": "sensitive_subspace",
+      "attacker_view": "conv_state",
+      "features": 5120,
+      "identity_accuracy": 0.22916666666666666,
+      "identity_balanced_accuracy": 0.22916666666666669,
+      "retained_accuracy": 0.5833333333333334,
+      "retained_balanced_accuracy": 0.5833333333333333
+    },
+    {
+      "method": "sensitive_subspace",
+      "attacker_view": "combined",
+      "features": 20480,
+      "identity_accuracy": 0.625,
+      "identity_balanced_accuracy": 0.625,
+      "retained_accuracy": 0.7083333333333334,
+      "retained_balanced_accuracy": 0.7083333333333334
+    },
+    {
+      "method": "random_subspace",
+      "attacker_view": "edited",
+      "features": 5120,
+      "identity_accuracy": 0.8958333333333334,
+      "identity_balanced_accuracy": 0.8958333333333333,
+      "retained_accuracy": 0.9583333333333334,
+      "retained_balanced_accuracy": 0.9583333333333334
+    },
+    {
+      "method": "random_subspace",
+      "attacker_view": "heldout_same_layers",
+      "features": 5120,
+      "identity_accuracy": 0.8125,
+      "identity_balanced_accuracy": 0.8125,
+      "retained_accuracy": 0.9375,
+      "retained_balanced_accuracy": 0.9375
+    },
+    {
+      "method": "random_subspace",
+      "attacker_view": "other_layers",
+      "features": 5120,
+      "identity_accuracy": 0.2916666666666667,
+      "identity_balanced_accuracy": 0.29166666666666663,
+      "retained_accuracy": 0.5625,
+      "retained_balanced_accuracy": 0.5625
+    },
+    {
+      "method": "random_subspace",
+      "attacker_view": "conv_state",
+      "features": 5120,
+      "identity_accuracy": 0.3125,
+      "identity_balanced_accuracy": 0.3125,
+      "retained_accuracy": 0.5833333333333334,
+      "retained_balanced_accuracy": 0.5833333333333333
+    },
+    {
+      "method": "random_subspace",
+      "attacker_view": "combined",
+      "features": 20480,
+      "identity_accuracy": 0.75,
+      "identity_balanced_accuracy": 0.75,
+      "retained_accuracy": 0.7291666666666666,
+      "retained_balanced_accuracy": 0.7291666666666667
+    }
+  ],
+  "peak_gpu_memory_mb": 1027.99
+}

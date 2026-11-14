@@ -1,0 +1,113 @@
+{
+  "status": "scan_kernel_comparison",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "official": "official mamba_ssm selective_scan_fn (zero initial state)",
+  "ours": "shadowveil Triton selective scan (sequential over tokens)",
+  "rows": [
+    {
+      "scale": "130m",
+      "tokens": 1,
+      "ours_ms": 0.08294399827718735,
+      "official_ms": 0.12032000347971916,
+      "ratio_ours_over_official": 0.6893616678723599
+    },
+    {
+      "scale": "130m",
+      "tokens": 16,
+      "ours_ms": 0.08089599758386612,
+      "official_ms": 0.11929600313305855,
+      "ratio_ours_over_official": 0.6781115499203907
+    },
+    {
+      "scale": "130m",
+      "tokens": 64,
+      "ours_ms": 0.12697599828243256,
+      "official_ms": 0.11980800330638885,
+      "ratio_ours_over_official": 1.0598290162445387
+    },
+    {
+      "scale": "130m",
+      "tokens": 256,
+      "ours_ms": 0.5022720098495483,
+      "official_ms": 0.11776000261306763,
+      "ratio_ours_over_official": 4.265217380301009
+    },
+    {
+      "scale": "130m",
+      "tokens": 1024,
+      "ours_ms": 1.8810880184173584,
+      "official_ms": 0.2590720057487488,
+      "ratio_ours_over_official": 7.260869475190078
+    },
+    {
+      "scale": "370m",
+      "tokens": 1,
+      "ours_ms": 0.08601599931716919,
+      "official_ms": 0.13926400244235992,
+      "ratio_ours_over_official": 0.6176470430883272
+    },
+    {
+      "scale": "370m",
+      "tokens": 16,
+      "ours_ms": 0.08294399827718735,
+      "official_ms": 0.1382399946451187,
+      "ratio_ours_over_official": 0.6000000107791968
+    },
+    {
+      "scale": "370m",
+      "tokens": 64,
+      "ours_ms": 0.12697599828243256,
+      "official_ms": 0.13926400244235992,
+      "ratio_ours_over_official": 0.911764677558989
+    },
+    {
+      "scale": "370m",
+      "tokens": 256,
+      "ours_ms": 0.5171200037002563,
+      "official_ms": 0.13312000036239624,
+      "ratio_ours_over_official": 3.884615401836586
+    },
+    {
+      "scale": "370m",
+      "tokens": 1024,
+      "ours_ms": 1.6957440376281738,
+      "official_ms": 0.32256001234054565,
+      "ratio_ours_over_official": 5.257142772669157
+    },
+    {
+      "scale": "1p4b",
+      "tokens": 1,
+      "ours_ms": 0.08294399827718735,
+      "official_ms": 0.2969599962234497,
+      "ratio_ours_over_official": 0.27931034257818194
+    },
+    {
+      "scale": "1p4b",
+      "tokens": 16,
+      "ours_ms": 0.08294399827718735,
+      "official_ms": 0.2529279887676239,
+      "ratio_ours_over_official": 0.327935230423991
+    },
+    {
+      "scale": "1p4b",
+      "tokens": 64,
+      "ours_ms": 0.1157120019197464,
+      "official_ms": 0.21299199759960175,
+      "ratio_ours_over_official": 0.5432692459050525
+    },
+    {
+      "scale": "1p4b",
+      "tokens": 256,
+      "ours_ms": 0.47308799624443054,
+      "official_ms": 0.1807359978556633,
+      "ratio_ours_over_official": 2.6175637496534643
+    },
+    {
+      "scale": "1p4b",
+      "tokens": 1024,
+      "ours_ms": 1.7674239873886108,
+      "official_ms": 0.6231039762496948,
+      "ratio_ours_over_official": 2.8364832431760245
+    }
+  ]
+}

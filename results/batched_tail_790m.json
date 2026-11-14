@@ -1,0 +1,66 @@
+{
+  "status": "fused_batched_tail",
+  "model": "state-spaces/mamba-790m-hf",
+  "window": 256,
+  "rows": [
+    {
+      "delta": 16,
+      "tail_tokens": 16,
+      "tail_b1_ms": 145.69676208496094,
+      "tail_b2_ms": 171.5476531982422,
+      "marginal_shadow_row_ms": 25.85089111328125,
+      "marginal_fraction_of_live": 0.1774294139646472,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    },
+    {
+      "delta": 32,
+      "tail_tokens": 32,
+      "tail_b1_ms": 289.5790100097656,
+      "tail_b2_ms": 340.5240173339844,
+      "marginal_shadow_row_ms": 50.94500732421875,
+      "marginal_fraction_of_live": 0.17592783165637835,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    },
+    {
+      "delta": 64,
+      "tail_tokens": 64,
+      "tail_b1_ms": 579.4857177734375,
+      "tail_b2_ms": 681.7515258789062,
+      "marginal_shadow_row_ms": 102.26580810546875,
+      "marginal_fraction_of_live": 0.17647683966812067,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    },
+    {
+      "delta": 128,
+      "tail_tokens": 128,
+      "tail_b1_ms": 1154.5948486328125,
+      "tail_b2_ms": 1367.300048828125,
+      "marginal_shadow_row_ms": 212.7052001953125,
+      "marginal_fraction_of_live": 0.18422496899859078,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    },
+    {
+      "delta": 256,
+      "tail_tokens": 256,
+      "tail_b1_ms": 2320.8876953125,
+      "tail_b2_ms": 2737.5791015625,
+      "marginal_shadow_row_ms": 416.69140625,
+      "marginal_fraction_of_live": 0.17953966798634513,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    }
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 10.9,
+      "logical_cores": 12,
+      "time": "2026-11-12 01:33:28",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 12.0,
+      "logical_cores": 12,
+      "time": "2026-11-12 01:35:32",
+      "quiet_threshold": 30.0
+    }
+  }
+}

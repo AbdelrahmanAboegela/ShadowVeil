@@ -1,0 +1,70 @@
+{
+  "status": "retire_latency",
+  "rows": [
+    {
+      "model": "state-spaces/mamba-130m-hf",
+      "tensors": 48,
+      "cache_bytes": 1474560,
+      "zero_loop": {
+        "median_ms": 0.7162880003452301,
+        "sd_ms": 0.10771179585687429
+      },
+      "zero_grouped": {
+        "median_ms": 0.060416001826524734,
+        "sd_ms": 0.01077268723857116
+      },
+      "verify_max_abs": {
+        "median_ms": 6.737248182296753,
+        "sd_ms": 2.536471034632836
+      }
+    },
+    {
+      "model": "state-spaces/mamba-370m-hf",
+      "tensors": 96,
+      "cache_bytes": 3932160,
+      "zero_loop": {
+        "median_ms": 1.595903992652893,
+        "sd_ms": 0.44836029769443325
+      },
+      "zero_grouped": {
+        "median_ms": 0.08728000149130821,
+        "sd_ms": 0.014187027048759345
+      },
+      "verify_max_abs": {
+        "median_ms": 13.08678388595581,
+        "sd_ms": 6.582866684939397
+      }
+    },
+    {
+      "model": "state-spaces/mamba-1.4b-hf",
+      "tensors": 96,
+      "cache_bytes": 7864320,
+      "zero_loop": {
+        "median_ms": 1.4971839785575867,
+        "sd_ms": 0.2740956772150361
+      },
+      "zero_grouped": {
+        "median_ms": 0.05427199974656105,
+        "sd_ms": 0.0022934836427872716
+      },
+      "verify_max_abs": {
+        "median_ms": 11.727983951568604,
+        "sd_ms": 5.579449666259155
+      }
+    }
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 6.4,
+      "logical_cores": 12,
+      "time": "2026-11-11 23:22:31",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 9.9,
+      "logical_cores": 12,
+      "time": "2026-11-11 23:22:58",
+      "quiet_threshold": 30.0
+    }
+  }
+}

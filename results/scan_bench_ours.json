@@ -1,0 +1,141 @@
+{
+  "status": "scan_kernel_latency",
+  "kernel": "shadowveil Triton selective scan (sequential over tokens)",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "rows": [
+    {
+      "scale": "130m",
+      "d_inner": 1536,
+      "d_state": 16,
+      "tokens": 1,
+      "median_ms": 0.08294399827718735,
+      "sd_ms": 0.01484326475806488
+    },
+    {
+      "scale": "130m",
+      "d_inner": 1536,
+      "d_state": 16,
+      "tokens": 16,
+      "median_ms": 0.08089599758386612,
+      "sd_ms": 0.0026606081532771424
+    },
+    {
+      "scale": "130m",
+      "d_inner": 1536,
+      "d_state": 16,
+      "tokens": 64,
+      "median_ms": 0.12697599828243256,
+      "sd_ms": 0.009531652097913769
+    },
+    {
+      "scale": "130m",
+      "d_inner": 1536,
+      "d_state": 16,
+      "tokens": 256,
+      "median_ms": 0.5022720098495483,
+      "sd_ms": 0.020705519416918984
+    },
+    {
+      "scale": "130m",
+      "d_inner": 1536,
+      "d_state": 16,
+      "tokens": 1024,
+      "median_ms": 1.8810880184173584,
+      "sd_ms": 0.03089571261222032
+    },
+    {
+      "scale": "370m",
+      "d_inner": 2048,
+      "d_state": 16,
+      "tokens": 1,
+      "median_ms": 0.08601599931716919,
+      "sd_ms": 0.11760852658449251
+    },
+    {
+      "scale": "370m",
+      "d_inner": 2048,
+      "d_state": 16,
+      "tokens": 16,
+      "median_ms": 0.08294399827718735,
+      "sd_ms": 0.01311097564731429
+    },
+    {
+      "scale": "370m",
+      "d_inner": 2048,
+      "d_state": 16,
+      "tokens": 64,
+      "median_ms": 0.12697599828243256,
+      "sd_ms": 0.00814190931605798
+    },
+    {
+      "scale": "370m",
+      "d_inner": 2048,
+      "d_state": 16,
+      "tokens": 256,
+      "median_ms": 0.5171200037002563,
+      "sd_ms": 0.008928995158575738
+    },
+    {
+      "scale": "370m",
+      "d_inner": 2048,
+      "d_state": 16,
+      "tokens": 1024,
+      "median_ms": 1.6957440376281738,
+      "sd_ms": 0.09690229736686042
+    },
+    {
+      "scale": "1p4b",
+      "d_inner": 4096,
+      "d_state": 16,
+      "tokens": 1,
+      "median_ms": 0.08294399827718735,
+      "sd_ms": 0.0035338516289250433
+    },
+    {
+      "scale": "1p4b",
+      "d_inner": 4096,
+      "d_state": 16,
+      "tokens": 16,
+      "median_ms": 0.08294399827718735,
+      "sd_ms": 0.004063008932159122
+    },
+    {
+      "scale": "1p4b",
+      "d_inner": 4096,
+      "d_state": 16,
+      "tokens": 64,
+      "median_ms": 0.1157120019197464,
+      "sd_ms": 0.012161327022436658
+    },
+    {
+      "scale": "1p4b",
+      "d_inner": 4096,
+      "d_state": 16,
+      "tokens": 256,
+      "median_ms": 0.47308799624443054,
+      "sd_ms": 0.010209727844040692
+    },
+    {
+      "scale": "1p4b",
+      "d_inner": 4096,
+      "d_state": 16,
+      "tokens": 1024,
+      "median_ms": 1.7674239873886108,
+      "sd_ms": 0.026548835132292947
+    }
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 13.8,
+      "logical_cores": 12,
+      "time": "2026-11-14 05:25:51",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 11.6,
+      "logical_cores": 12,
+      "time": "2026-11-14 05:25:54",
+      "quiet_threshold": 30.0
+    }
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "status": "audit_controls",
+  "model": "state-spaces/mamba-1.4b-hf",
+  "configuration": {
+    "model": "state-spaces/mamba-1.4b-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "output": "results/audit_controls_enron_1p4b_20261008.json",
+    "seed": 20261008,
+    "corpus": "enron",
+    "classes": 8,
+    "attacker_per_class": 12,
+    "test_per_class": 6,
+    "context_characters": 220,
+    "batch_size": 4,
+    "coordinates_per_layer": 1024,
+    "permutations": 100,
+    "skip_full_cache": false,
+    "skip_logit": false,
+    "device": "cuda"
+  },
+  "chance_accuracy": 0.125,
+  "note": "additional controls beyond the primary probe",
+  "exactness": {
+    "primary_sanitizer": {
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    },
+    "leaky_sanitizer": {
+      "bitwise_equal": true,
+      "max_abs_diff": 0.0
+    }
+  },
+  "rows": [
+    {
+      "condition": "untreated",
+      "ridge_seeded_coordinates": {
+        "accuracy": 0.3125,
+        "wilson_95": [
+          0.19945683446587817,
+          0.4533307141589159
+        ]
+      },
+      "permutation_null_ridge": {
+        "observed": 0.3125,
+        "null_mean": 0.12895833333333334,
+        "null_sd": 0.04504000922019838,
+        "null_p95": 0.1875,
+        "p_value_ge_observed": 0.009900990099009901
+      },
+      "ridge_full_cache": {
+        "accuracy": 0.25,
+        "wilson_95": [
+          0.1492063367379791,
+          0.3878437280950796
+        ]
+      },
+      "full_cache_dim": 3932160,
+      "logit_candidate_attacker": {
+        "raw_accuracy": 1.0,
+        "calibrated_accuracy": 1.0,
+        "per_probe": [
+          {
+            "raw_accuracy": 1.0,
+            "calibrated_accuracy": 1.0
+          },
+          {
+            "raw_accuracy": 1.0,
+            "calibrated_accuracy": 1.0
+          },
+          {
+            "raw_accuracy": 1.0,
+            "calibrated_accuracy": 1.0
+          },
+          {
+            "raw_accuracy": 1.0,
+            "calibrated_accuracy": 1.0
+          },
+          {
+            "raw_accuracy": 1.0,
+            "calibrated_accuracy": 1.0
+          },
+          {
+            "raw_accuracy": 1.0,
+            "calibrated_accuracy": 1.0
+          }
+        ],
+        "mean_calibrated_over_probes": 1.0,
+        "best_calibrated_over_probes": 1.0
+      },
+      "generation_attacker": {
+        "true_name_rate": 0.0,
+        "per_probe_true_name_rate": [
+          0.4583333333333333,
+          0.0,
+          0.020833333333333332,
+          0.0,
+          0.2708333333333333,
+          0.041666666666666664
+        ],
+        "best_over_probes": 0.4583333333333333,
+        "any_candidate_rate_per_probe": [
+          0.4583333333333333,
+          0.0,
+          0.020833333333333332,
+          0.0,
+          0.2708333333333333,
+          0.041666666666666664
+        ]
+      },
+      "seconds": 589.1392848000032
+    },
+    {
+      "condition": "shadow_primary_sanitizer",
+      "ridge_seeded_coordinates": {
+        "accuracy": 0.125,
+        "wilson_95": [
+          0.058570514385719794,
+          0.24700458286386834
+        ]
+      },
+      "permutation_null_ridge": {
+        "observed": 0.125,
+        "null_mean": 0.12479166666666666,
+        "null_sd": 0.03835766890582493,
+        "null_p95": 0.1885416666666666,
+        "p_value_ge_observed": 0.6039603960396039
+      },
+      "ridge_full_cache": {
+        "accuracy": 0.08333333333333333,
+        "wilson_95": [
+          0.032883756818091775,
+          0.1955330179036728
+        ]
+      },
+      "full_cache_dim": 3932160,
+      "logit_candidate_attacker": {
+        "raw_accuracy": 0.125,
+        "calibrated_accuracy": 0.125,
+        "per_probe": [
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.125
+          },
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.125
+          },
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.0625
+          },
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.10416666666666667
+          },
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.08333333333333333
+          },
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.041666666666666664
+          }
+        ],
+        "mean_calibrated_over_probes": 0.09027777777777778,
+        "best_calibrated_over_probes": 0.125
+      },
+      "generation_attacker": {
+        "true_name_rate": 0.0,
+        "per_probe_true_name_rate": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "best_over_probes": 0.0,
+        "any_candidate_rate_per_probe": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "seconds": 590.5299909000023
+    },
+    {
+      "condition": "shadow_leaky_sanitizer",
+      "ridge_seeded_coordinates": {
+        "accuracy": 0.3541666666666667,
+        "wilson_95": [
+          0.23433644125604858,
+          0.4956094298965691
+        ]
+      },
+      "permutation_null_ridge": {
+        "observed": 0.3541666666666667,
+        "null_mean": 0.12979166666666664,
+        "null_sd": 0.04562975622088921,
+        "null_p95": 0.20833333333333334,
+        "p_value_ge_observed": 0.009900990099009901
+      },
+      "ridge_full_cache": {
+        "accuracy": 0.3125,
+        "wilson_95": [
+          0.19945683446587817,
+          0.4533307141589159
+        ]
+      },
+      "full_cache_dim": 3932160,
+      "logit_candidate_attacker": {
+        "raw_accuracy": 0.125,
+        "calibrated_accuracy": 0.6458333333333334,
+        "per_probe": [
+          {
+            "raw_accuracy": 0.16666666666666666,
+            "calibrated_accuracy": 0.7083333333333334
+          },
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.6458333333333334
+          },
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.625
+          },
+          {
+            "raw_accuracy": 0.14583333333333334,
+            "calibrated_accuracy": 0.6041666666666666
+          },
+          {
+            "raw_accuracy": 0.125,
+            "calibrated_accuracy": 0.5833333333333334
+          },
+          {
+            "raw_accuracy": 0.14583333333333334,
+            "calibrated_accuracy": 0.7083333333333334
+          }
+        ],
+        "mean_calibrated_over_probes": 0.6458333333333334,
+        "best_calibrated_over_probes": 0.7083333333333334
+      },
+      "generation_attacker": {
+        "true_name_rate": 0.0,
+        "per_probe_true_name_rate": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "best_over_probes": 0.0,
+        "any_candidate_rate_per_probe": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "seconds": 611.4564250999974
+    }
+  ]
+}

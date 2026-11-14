@@ -1,0 +1,66 @@
+{
+  "status": "fused_batched_tail",
+  "model": "state-spaces/mamba-370m-hf",
+  "window": 256,
+  "rows": [
+    {
+      "delta": 16,
+      "tail_tokens": 16,
+      "tail_b1_ms": 84.2577896118164,
+      "tail_b2_ms": 99.54918670654297,
+      "marginal_shadow_row_ms": 15.291397094726562,
+      "marginal_fraction_of_live": 0.18148348259757907,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    },
+    {
+      "delta": 32,
+      "tail_tokens": 32,
+      "tail_b1_ms": 168.85760498046875,
+      "tail_b2_ms": 199.14547729492188,
+      "marginal_shadow_row_ms": 30.287872314453125,
+      "marginal_fraction_of_live": 0.17936931130792974,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    },
+    {
+      "delta": 64,
+      "tail_tokens": 64,
+      "tail_b1_ms": 346.4314880371094,
+      "tail_b2_ms": 415.7081604003906,
+      "marginal_shadow_row_ms": 69.27667236328125,
+      "marginal_fraction_of_live": 0.19997221602402496,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    },
+    {
+      "delta": 128,
+      "tail_tokens": 128,
+      "tail_b1_ms": 692.6356201171875,
+      "tail_b2_ms": 812.38525390625,
+      "marginal_shadow_row_ms": 119.7496337890625,
+      "marginal_fraction_of_live": 0.1728897999337689,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    },
+    {
+      "delta": 256,
+      "tail_tokens": 256,
+      "tail_b1_ms": 1351.97998046875,
+      "tail_b2_ms": 1594.43359375,
+      "marginal_shadow_row_ms": 242.45361328125,
+      "marginal_fraction_of_live": 0.1793322510568448,
+      "shadow_row_bitwise_equal_to_reference_row": true
+    }
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 3.2,
+      "logical_cores": 12,
+      "time": "2026-11-12 00:14:08",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 3.4,
+      "logical_cores": 12,
+      "time": "2026-11-12 00:15:24",
+      "quiet_threshold": 30.0
+    }
+  }
+}

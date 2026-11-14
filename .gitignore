@@ -1,0 +1,26 @@
+# data (licence + size)
+data/
+# python
+__pycache__/
+*.pyc
+.venv*/
+# latex build files
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+# model caches / scratch
+cache/
+*.safetensors
+*.bin
+tmp/
+scratch/
+scratch/
+logs/
+*.partial
+*.tmp*
+reviews/

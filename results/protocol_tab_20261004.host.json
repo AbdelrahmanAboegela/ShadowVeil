@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Program Files\\Python311\\python.exe",
+    "experiments\\audit\\stage10_shadow_revocation_tab.py",
+    "--model",
+    "state-spaces/mamba-130m-hf",
+    "--seed",
+    "20261004",
+    "--output",
+    "results/protocol_tab_20261004.json"
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 2.4,
+      "logical_cores": 12,
+      "time": "2026-11-12 03:01:18",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 1.1,
+      "logical_cores": 12,
+      "time": "2026-11-12 03:03:17",
+      "quiet_threshold": 30.0
+    }
+  },
+  "quiet": true
+}

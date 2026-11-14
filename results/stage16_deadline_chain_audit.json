@@ -1,0 +1,319 @@
+{
+  "status": "stage_16_deadline_chain_and_scheduler_audit",
+  "claims": {
+    "supported": [
+      "irreversible deadline masks are nested and number at most b+1 for b distinct deadline buckets",
+      "EDF can move counterfactual transitions into slack when sufficient capacity exists"
+    ],
+    "not_supported": [
+      "lagging shadows reduce the number of required exact state transitions",
+      "lagging shadows are free in memory; pending inputs must remain replayable",
+      "deadline chains alone reduce b prospective trajectories to one"
+    ]
+  },
+  "exhaustive_chain_check": {
+    "assignments_checked": 3279,
+    "violations": []
+  },
+  "scenarios": [
+    {
+      "name": "staggered_three",
+      "items": [
+        {
+          "id": 0,
+          "arrival": 3,
+          "deadline": 18
+        },
+        {
+          "id": 1,
+          "arrival": 7,
+          "deadline": 30
+        },
+        {
+          "id": 2,
+          "arrival": 12,
+          "deadline": 45
+        }
+      ],
+      "all_subset_masks": 8,
+      "deadline_chain_masks_including_empty": 4,
+      "chain_masks": [
+        [],
+        [
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "logical_branch_reduction_factor_vs_boolean_lattice": 2.0,
+      "prospective_jobs": [
+        {
+          "branch": 1,
+          "mask": [
+            0
+          ],
+          "start": 3,
+          "deadline": 18,
+          "transitions": 16
+        },
+        {
+          "branch": 2,
+          "mask": [
+            0,
+            1
+          ],
+          "start": 3,
+          "deadline": 30,
+          "transitions": 28
+        },
+        {
+          "branch": 3,
+          "mask": [
+            0,
+            1,
+            2
+          ],
+          "start": 3,
+          "deadline": 45,
+          "transitions": 43
+        }
+      ],
+      "eager_total_transitions": 87,
+      "eager_peak_transitions_per_live_step": 3,
+      "minimum_integer_capacity_for_feasibility": 3,
+      "edf_schedules": [
+        {
+          "capacity_transitions_per_live_step": 1,
+          "feasible": false,
+          "missed": [
+            {
+              "branch": 2,
+              "deadline": 30,
+              "unfinished_transitions": 16
+            },
+            {
+              "branch": 3,
+              "deadline": 45,
+              "unfinished_transitions": 43
+            }
+          ],
+          "total_required_transitions": 87,
+          "total_processed_transitions": 43,
+          "peak_scheduled_transitions_per_step": 1,
+          "mean_scheduled_transitions_per_step": 0.9347826086956522,
+          "peak_transition_backlog": 44,
+          "peak_retained_input_tokens": 43
+        },
+        {
+          "capacity_transitions_per_live_step": 2,
+          "feasible": false,
+          "missed": [
+            {
+              "branch": 3,
+              "deadline": 45,
+              "unfinished_transitions": 1
+            }
+          ],
+          "total_required_transitions": 87,
+          "total_processed_transitions": 86,
+          "peak_scheduled_transitions_per_step": 2,
+          "mean_scheduled_transitions_per_step": 1.8695652173913044,
+          "peak_transition_backlog": 16,
+          "peak_retained_input_tokens": 16
+        },
+        {
+          "capacity_transitions_per_live_step": 3,
+          "feasible": true,
+          "missed": [],
+          "total_required_transitions": 87,
+          "total_processed_transitions": 87,
+          "peak_scheduled_transitions_per_step": 3,
+          "mean_scheduled_transitions_per_step": 1.891304347826087,
+          "peak_transition_backlog": 0,
+          "peak_retained_input_tokens": 0
+        },
+        {
+          "capacity_transitions_per_live_step": 4,
+          "feasible": true,
+          "missed": [],
+          "total_required_transitions": 87,
+          "total_processed_transitions": 87,
+          "peak_scheduled_transitions_per_step": 3,
+          "mean_scheduled_transitions_per_step": 1.891304347826087,
+          "peak_transition_backlog": 0,
+          "peak_retained_input_tokens": 0
+        }
+      ]
+    },
+    {
+      "name": "bucketed_six",
+      "items": [
+        {
+          "id": 0,
+          "arrival": 2,
+          "deadline": 24
+        },
+        {
+          "id": 1,
+          "arrival": 5,
+          "deadline": 24
+        },
+        {
+          "id": 2,
+          "arrival": 9,
+          "deadline": 40
+        },
+        {
+          "id": 3,
+          "arrival": 13,
+          "deadline": 40
+        },
+        {
+          "id": 4,
+          "arrival": 16,
+          "deadline": 56
+        },
+        {
+          "id": 5,
+          "arrival": 20,
+          "deadline": 56
+        }
+      ],
+      "all_subset_masks": 64,
+      "deadline_chain_masks_including_empty": 4,
+      "chain_masks": [
+        [],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "logical_branch_reduction_factor_vs_boolean_lattice": 16.0,
+      "prospective_jobs": [
+        {
+          "branch": 1,
+          "mask": [
+            0,
+            1
+          ],
+          "start": 2,
+          "deadline": 24,
+          "transitions": 23
+        },
+        {
+          "branch": 2,
+          "mask": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "start": 2,
+          "deadline": 40,
+          "transitions": 39
+        },
+        {
+          "branch": 3,
+          "mask": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "start": 2,
+          "deadline": 56,
+          "transitions": 55
+        }
+      ],
+      "eager_total_transitions": 117,
+      "eager_peak_transitions_per_live_step": 3,
+      "minimum_integer_capacity_for_feasibility": 3,
+      "edf_schedules": [
+        {
+          "capacity_transitions_per_live_step": 1,
+          "feasible": false,
+          "missed": [
+            {
+              "branch": 2,
+              "deadline": 40,
+              "unfinished_transitions": 23
+            },
+            {
+              "branch": 3,
+              "deadline": 56,
+              "unfinished_transitions": 55
+            }
+          ],
+          "total_required_transitions": 117,
+          "total_processed_transitions": 55,
+          "peak_scheduled_transitions_per_step": 1,
+          "mean_scheduled_transitions_per_step": 0.9649122807017544,
+          "peak_transition_backlog": 62,
+          "peak_retained_input_tokens": 55
+        },
+        {
+          "capacity_transitions_per_live_step": 2,
+          "feasible": false,
+          "missed": [
+            {
+              "branch": 3,
+              "deadline": 56,
+              "unfinished_transitions": 7
+            }
+          ],
+          "total_required_transitions": 117,
+          "total_processed_transitions": 110,
+          "peak_scheduled_transitions_per_step": 2,
+          "mean_scheduled_transitions_per_step": 1.9298245614035088,
+          "peak_transition_backlog": 23,
+          "peak_retained_input_tokens": 23
+        },
+        {
+          "capacity_transitions_per_live_step": 3,
+          "feasible": true,
+          "missed": [],
+          "total_required_transitions": 117,
+          "total_processed_transitions": 117,
+          "peak_scheduled_transitions_per_step": 3,
+          "mean_scheduled_transitions_per_step": 2.0526315789473686,
+          "peak_transition_backlog": 0,
+          "peak_retained_input_tokens": 0
+        },
+        {
+          "capacity_transitions_per_live_step": 4,
+          "feasible": true,
+          "missed": [],
+          "total_required_transitions": 117,
+          "total_processed_transitions": 117,
+          "peak_scheduled_transitions_per_step": 3,
+          "mean_scheduled_transitions_per_step": 2.0526315789473686,
+          "peak_transition_backlog": 0,
+          "peak_retained_input_tokens": 0
+        }
+      ]
+    }
+  ]
+}

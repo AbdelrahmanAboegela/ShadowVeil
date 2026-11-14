@@ -1,0 +1,12 @@
+\begin{tabular}{lcrrrrl}
+\toprule
+Method & Exact & Ident. & Retained & Latency at $T$ & Tokens at $T$ & Extra cache (peak / avg) \\
+\midrule
+Full reset & n/a & 12.5 & 12.5 & 0.72~ms & 0 & 0 \\
+Subspace editing & no & 60.4 & 93.8 & 13.11~ms & 0 & 0 \\
+Restart replay ($H{=}1024$) & yes & 17.4 & 95.1 & 91.48~ms & 1280 & $M$ (transient) \\
+Retrospective replay (Yao-style) & yes & 17.4 & 95.1 & 15.11~ms & 256 & $M$ (transient) \\
+ShadowVeil $\delta{=}L/4$ & yes & 17.4 & 95.1 & 0.72~ms & 0 & $2M$ / $0.25M$ \\
+ShadowVeil $\delta{=}L$ & yes & 17.4 & 95.1 & 0.72~ms & 0 & $2M$ / $M$ \\
+\bottomrule
+\end{tabular}

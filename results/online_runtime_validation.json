@@ -1,0 +1,115 @@
+{
+  "status": "stage_14_online_dual_cache_runtime_validation",
+  "configuration": {
+    "model": "state-spaces/mamba-130m-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "examples": 8,
+    "seed": 20261004,
+    "output": "results/online_runtime_validation.json",
+    "device": "cuda"
+  },
+  "data_protocol": "real TAB legal contexts; no names or excerpts emitted",
+  "examples": 8,
+  "all_boundary_bitwise_equal": true,
+  "all_continuation_bitwise_equal": true,
+  "all_retired_cache_zero": true,
+  "rows": [
+    {
+      "live_tokens": 116,
+      "shadow_tokens": 118,
+      "shared_prefix_tokens": 43,
+      "boundary_bitwise_equal": true,
+      "boundary_max_absolute_difference": 0.0,
+      "continuation_bitwise_equal": true,
+      "continuation_max_absolute_difference": 0.0,
+      "selection_ns": 1700,
+      "retirement_ms": 1.692500023636967,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "live_tokens": 111,
+      "shadow_tokens": 113,
+      "shared_prefix_tokens": 47,
+      "boundary_bitwise_equal": true,
+      "boundary_max_absolute_difference": 0.0,
+      "continuation_bitwise_equal": true,
+      "continuation_max_absolute_difference": 0.0,
+      "selection_ns": 2300,
+      "retirement_ms": 0.6453999958466738,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "live_tokens": 121,
+      "shadow_tokens": 119,
+      "shared_prefix_tokens": 49,
+      "boundary_bitwise_equal": true,
+      "boundary_max_absolute_difference": 0.0,
+      "continuation_bitwise_equal": true,
+      "continuation_max_absolute_difference": 0.0,
+      "selection_ns": 600,
+      "retirement_ms": 0.5426000279840082,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "live_tokens": 98,
+      "shadow_tokens": 99,
+      "shared_prefix_tokens": 41,
+      "boundary_bitwise_equal": true,
+      "boundary_max_absolute_difference": 0.0,
+      "continuation_bitwise_equal": true,
+      "continuation_max_absolute_difference": 0.0,
+      "selection_ns": 500,
+      "retirement_ms": 0.5912999913562089,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "live_tokens": 111,
+      "shadow_tokens": 111,
+      "shared_prefix_tokens": 45,
+      "boundary_bitwise_equal": true,
+      "boundary_max_absolute_difference": 0.0,
+      "continuation_bitwise_equal": true,
+      "continuation_max_absolute_difference": 0.0,
+      "selection_ns": 600,
+      "retirement_ms": 1.0154999908991158,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "live_tokens": 142,
+      "shadow_tokens": 137,
+      "shared_prefix_tokens": 62,
+      "boundary_bitwise_equal": true,
+      "boundary_max_absolute_difference": 0.0,
+      "continuation_bitwise_equal": true,
+      "continuation_max_absolute_difference": 0.0,
+      "selection_ns": 600,
+      "retirement_ms": 2.5947999965865165,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "live_tokens": 111,
+      "shadow_tokens": 114,
+      "shared_prefix_tokens": 40,
+      "boundary_bitwise_equal": true,
+      "boundary_max_absolute_difference": 0.0,
+      "continuation_bitwise_equal": true,
+      "continuation_max_absolute_difference": 0.0,
+      "selection_ns": 500,
+      "retirement_ms": 0.6249000143725425,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "live_tokens": 111,
+      "shadow_tokens": 110,
+      "shared_prefix_tokens": 46,
+      "boundary_bitwise_equal": true,
+      "boundary_max_absolute_difference": 0.0,
+      "continuation_bitwise_equal": true,
+      "continuation_max_absolute_difference": 0.0,
+      "selection_ns": 400,
+      "retirement_ms": 0.5814000032842159,
+      "retired_cache_max_absolute_value": 0.0
+    }
+  ],
+  "peak_gpu_memory_mb": 282.65
+}

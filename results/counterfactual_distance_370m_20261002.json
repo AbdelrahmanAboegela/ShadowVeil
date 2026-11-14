@@ -1,0 +1,90 @@
+{
+  "status": "counterfactual_distance",
+  "model": "state-spaces/mamba-370m-hf",
+  "configuration": {
+    "model": "state-spaces/mamba-370m-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "output": "results/counterfactual_distance_370m_20261002.json",
+    "seed": 20261002,
+    "classes": 8,
+    "defender_per_class": 12,
+    "test_per_class": 6,
+    "context_characters": 180,
+    "coordinates_per_layer": 1024,
+    "full_layer": false,
+    "samples": 5,
+    "gen_tokens": 16,
+    "temperature": 0.7,
+    "batch_size": 8,
+    "device": "cuda"
+  },
+  "subspace_rank": 7,
+  "edited_coordinates_per_layer": 1024,
+  "documents": 48,
+  "summary": {
+    "untreated": {
+      "state_dist_mean": 0.05379640543833375,
+      "state_dist_max": 0.09565507620573044,
+      "kl_mean": 0.01388570804556366,
+      "kl_max": 0.152200847864151,
+      "top1_agreement": 0.8958333333333334,
+      "first_token_identical": 0.9458333333333333,
+      "generation_identical": 0.5375,
+      "draws": 240
+    },
+    "full_reset": {
+      "state_dist_mean": 0.4771498578290145,
+      "state_dist_max": 0.5079540014266968,
+      "kl_mean": 0.8363257100184759,
+      "kl_max": 2.7765743732452393,
+      "top1_agreement": 0.8333333333333334,
+      "first_token_identical": 0.6041666666666666,
+      "generation_identical": 0.004166666666666667,
+      "draws": 240
+    },
+    "sensitive_subspace": {
+      "state_dist_mean": 0.05306857506123682,
+      "state_dist_max": 0.09423302114009857,
+      "kl_mean": 0.014125221855162332,
+      "kl_max": 0.15791791677474976,
+      "top1_agreement": 0.8958333333333334,
+      "first_token_identical": 0.9416666666666667,
+      "generation_identical": 0.525,
+      "draws": 240
+    },
+    "random_subspace": {
+      "state_dist_mean": 0.05414293558957676,
+      "state_dist_max": 0.0957847312092781,
+      "kl_mean": 0.013843011319598494,
+      "kl_max": 0.15260040760040283,
+      "top1_agreement": 0.8958333333333334,
+      "first_token_identical": 0.9291666666666667,
+      "generation_identical": 0.525,
+      "draws": 240
+    },
+    "shadow": {
+      "state_dist_mean": 0.0,
+      "state_dist_max": 0.0,
+      "kl_mean": -9.647142276184967e-09,
+      "kl_max": 1.8670968415790412e-07,
+      "top1_agreement": 1.0,
+      "first_token_identical": 1.0,
+      "generation_identical": 1.0,
+      "draws": 240
+    }
+  },
+  "host_load": {
+    "before": {
+      "cpu_percent": 20.7,
+      "logical_cores": 8,
+      "time": "2026-11-13 18:35:23",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 17.1,
+      "logical_cores": 8,
+      "time": "2026-11-13 19:25:56",
+      "quiet_threshold": 30.0
+    }
+  }
+}

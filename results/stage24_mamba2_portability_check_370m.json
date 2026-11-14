@@ -1,0 +1,26 @@
+{
+  "status": "stage_24_mamba2_portability_check",
+  "model": "AntonV/mamba2-370m-hf",
+  "architecture": "Mamba-2 (SSD, stacked-tensor Mamba2Cache)",
+  "params": 368346624,
+  "interpretation": "Single-configuration mechanism portability check (boundary + continuation equality), matching the tier used for the original Mamba-370M check. Not a privacy confirmation; no attacker trained.",
+  "boundary_equivalence": {
+    "bitwise_equal_to_independent_reference": true,
+    "max_absolute_difference": 0.0,
+    "pointer_swap_ns": 400
+  },
+  "continuation_equivalence": {
+    "bitwise_equal_to_independent_reference": true,
+    "max_absolute_difference": 0.0
+  },
+  "retirement": {
+    "secure_retire_ms": 0.18110000019078143,
+    "retired_cache_max_absolute_value": 0.0
+  },
+  "timing": {
+    "live_prefill_ms": 5251.755700002832,
+    "shadow_prefill_ms": 6198.061800001597,
+    "single_cache_bytes": 26050560,
+    "dual_cache_bytes": 52101120
+  }
+}

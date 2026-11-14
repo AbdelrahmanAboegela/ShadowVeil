@@ -1,0 +1,534 @@
+{
+  "status": "fused_sweep",
+  "model": "state-spaces/mamba-1.4b-hf",
+  "tag": "1p4b",
+  "window": 256,
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "backend": "Triton selective-scan + CUDA-graph decode step (shadowveil.fused)",
+  "fused_vs_hf_relative_state_difference": 0.0008797653958944282,
+  "cache_bytes": 7864320,
+  "step_ms_by_batch_rows": {
+    "1": {
+      "median": 13.368319988250732,
+      "sd": 1.1044617468887918
+    },
+    "2": {
+      "median": 15.9170560836792,
+      "sd": 1.018730807560018
+    },
+    "4": {
+      "median": 16.138751983642578,
+      "sd": 0.9289061254182366
+    },
+    "8": {
+      "median": 15.208960056304932,
+      "sd": 1.0462824448363834
+    }
+  },
+  "chunk_ms_by_tokens": {
+    "8": {
+      "median": 16.753664016723633,
+      "sd": 0.8174506204709282
+    },
+    "16": {
+      "median": 17.299967765808105,
+      "sd": 1.04157356965532
+    },
+    "32": {
+      "median": 20.134400367736816,
+      "sd": 1.1023651423620415
+    },
+    "64": {
+      "median": 26.46220874786377,
+      "sd": 1.6060602380481965
+    },
+    "128": {
+      "median": 39.39737510681152,
+      "sd": 3.3886270695395138
+    },
+    "256": {
+      "median": 73.71878433227539,
+      "sd": 1.6622688585232646
+    },
+    "512": {
+      "median": 144.95795440673828,
+      "sd": 2.1592305025338194
+    },
+    "1024": {
+      "median": 289.43052673339844,
+      "sd": 3.1748652351270925
+    },
+    "2048": {
+      "median": 576.8555603027344,
+      "sd": 3.638551699315716
+    },
+    "4096": {
+      "median": 1271.9436645507812,
+      "sd": 7.170428321708864
+    },
+    "8192": {
+      "median": 2613.00732421875,
+      "sd": 13.441711536633326
+    }
+  },
+  "retire_ms": {
+    "median": 1.2446720004081726,
+    "sd": 0.26316181407979083
+  },
+  "fit": {
+    "chunk_a_ms": -8.752906530801223,
+    "chunk_b_ms_per_token": 0.31669781401981156,
+    "step_c0_ms": 14.629353751306947,
+    "step_c1_ms_per_extra_row": 0.1410448737766435
+  },
+  "delta_sweep": [
+    {
+      "delta": 0,
+      "burst_tokens": 263,
+      "tail_tokens": 0,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 81.86573028564453,
+        "sd": 0.12339501891060486
+      },
+      "tail_ms": {
+        "median": 0.0,
+        "sd": 0.0
+      },
+      "live_ms": {
+        "median": 3329.630126953125,
+        "sd": 6.895063760309112
+      },
+      "total_extra_ms": {
+        "median": 81.86573028564453,
+        "sd": 0.12339501891060486
+      }
+    },
+    {
+      "delta": 16,
+      "burst_tokens": 247,
+      "tail_tokens": 16,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 68.08882904052734,
+        "sd": 0.09506597405719555
+      },
+      "tail_ms": {
+        "median": 207.4501190185547,
+        "sd": 0.10638766232487568
+      },
+      "live_ms": {
+        "median": 3329.669189453125,
+        "sd": 1.4754577572966616
+      },
+      "total_extra_ms": {
+        "median": 275.56249237060547,
+        "sd": 0.11925571731644263
+      }
+    },
+    {
+      "delta": 32,
+      "burst_tokens": 231,
+      "tail_tokens": 32,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 65.54930877685547,
+        "sd": 0.1575282319723266
+      },
+      "tail_ms": {
+        "median": 415.12652587890625,
+        "sd": 0.06133854528453404
+      },
+      "live_ms": {
+        "median": 3329.91796875,
+        "sd": 1.6836346501385313
+      },
+      "total_extra_ms": {
+        "median": 480.6963119506836,
+        "sd": 0.2143265691666526
+      }
+    },
+    {
+      "delta": 64,
+      "burst_tokens": 199,
+      "tail_tokens": 64,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 61.729793548583984,
+        "sd": 0.11263338160259428
+      },
+      "tail_ms": {
+        "median": 832.2283325195312,
+        "sd": 0.8295751281834173
+      },
+      "live_ms": {
+        "median": 3334.6005859375,
+        "sd": 5.612221498949817
+      },
+      "total_extra_ms": {
+        "median": 893.9581260681152,
+        "sd": 0.9262158879439183
+      }
+    },
+    {
+      "delta": 128,
+      "burst_tokens": 135,
+      "tail_tokens": 128,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 44.53785705566406,
+        "sd": 0.17132445520110795
+      },
+      "tail_ms": {
+        "median": 1666.450439453125,
+        "sd": 7.243160333734041
+      },
+      "live_ms": {
+        "median": 3337.067626953125,
+        "sd": 3.305486611859201
+      },
+      "total_extra_ms": {
+        "median": 1710.866439819336,
+        "sd": 7.1407196885898685
+      }
+    },
+    {
+      "delta": 256,
+      "burst_tokens": 7,
+      "tail_tokens": 256,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 15.339520454406738,
+        "sd": 0.06203990770246719
+      },
+      "tail_ms": {
+        "median": 3335.17626953125,
+        "sd": 1.6066929039586955
+      },
+      "live_ms": {
+        "median": 3336.562744140625,
+        "sd": 1.1454085451580345
+      },
+      "total_extra_ms": {
+        "median": 3350.4922370910645,
+        "sd": 1.580799241153574
+      }
+    }
+  ],
+  "exactness_additional_documents": [
+    {
+      "case": 1,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 1,
+      "delta": 16,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 1,
+      "delta": 32,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 1,
+      "delta": 64,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 1,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 1,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 2,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 2,
+      "delta": 16,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 2,
+      "delta": 32,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 2,
+      "delta": 64,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 2,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 2,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 3,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 3,
+      "delta": 16,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 3,
+      "delta": 32,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 3,
+      "delta": 64,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 3,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 3,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 4,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 4,
+      "delta": 16,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 4,
+      "delta": 32,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 4,
+      "delta": 64,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 4,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 4,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 5,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 5,
+      "delta": 16,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 5,
+      "delta": 32,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 5,
+      "delta": 64,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 5,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 5,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 6,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 6,
+      "delta": 16,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 6,
+      "delta": 32,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 6,
+      "delta": 64,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 6,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 6,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 7,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 7,
+      "delta": 16,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 7,
+      "delta": 32,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 7,
+      "delta": 64,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 7,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    },
+    {
+      "case": 7,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 263,
+      "expected_g_plus_window": 263
+    }
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 6.6,
+      "logical_cores": 12,
+      "time": "2026-11-11 23:41:24",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 2.0,
+      "logical_cores": 12,
+      "time": "2026-11-11 23:54:50",
+      "quiet_threshold": 30.0
+    }
+  }
+}

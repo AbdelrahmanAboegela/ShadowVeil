@@ -1,0 +1,114 @@
+{
+  "status": "cost_profile",
+  "model": "state-spaces/mamba-130m-hf",
+  "configuration": {
+    "model": "state-spaces/mamba-130m-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "output": "results/cost_profile_hf_130m.json",
+    "batches": "1,2,4,8",
+    "lengths": "8,16,32,64,128,256",
+    "repeats": 15,
+    "device": "cuda"
+  },
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "backend": "HF Transformers 4.51.3 unfused (sequential) Mamba path; chunk = shadowveil.chunked.chunk",
+  "cache_bytes": 1474560,
+  "step_ms_by_batch_rows": {
+    "1": {
+      "median": 35.701759338378906,
+      "sd": 0.6332778000648823
+    },
+    "2": {
+      "median": 35.21945571899414,
+      "sd": 5.467351364860088
+    },
+    "4": {
+      "median": 36.950016021728516,
+      "sd": 7.636823952389042
+    },
+    "8": {
+      "median": 36.094974517822266,
+      "sd": 0.402159012264676
+    }
+  },
+  "chunk_ms_by_tokens": {
+    "8": {
+      "median": 63.329280853271484,
+      "sd": 0.7353450672994352
+    },
+    "16": {
+      "median": 93.93254089355469,
+      "sd": 0.9173596202024106
+    },
+    "32": {
+      "median": 153.54368591308594,
+      "sd": 1.3301087078665166
+    },
+    "64": {
+      "median": 277.0903015136719,
+      "sd": 1.6891600902200303
+    },
+    "128": {
+      "median": 517.3360595703125,
+      "sd": 13.973052457494017
+    },
+    "256": {
+      "median": 1048.1490478515625,
+      "sd": 24.590297201093524
+    }
+  },
+  "hf_prefill_ms_by_tokens": {
+    "8": {
+      "median": 65.96915435791016,
+      "sd": 1.0165552995959068
+    },
+    "16": {
+      "median": 96.07373046875,
+      "sd": 1.114382128897635
+    },
+    "32": {
+      "median": 157.82809448242188,
+      "sd": 1.5290536639516141
+    },
+    "64": {
+      "median": 279.30316162109375,
+      "sd": 2.375674833621323
+    },
+    "128": {
+      "median": 521.9491577148438,
+      "sd": 2.6991279442322282
+    },
+    "256": {
+      "median": 1052.042236328125,
+      "sd": 27.68813303399648
+    }
+  },
+  "retire_ms": {
+    "median": 0.6338559985160828,
+    "sd": 0.042197940268964736
+  },
+  "clone_ms": {
+    "median": 1.7976319789886475,
+    "sd": 0.03994948899124888
+  },
+  "fit": {
+    "chunk_a_ms": 26.21415706653521,
+    "chunk_b_ms_per_token": 3.9605078853100175,
+    "step_c0_ms": 35.62277835348376,
+    "step_c1_ms_per_extra_row": 0.09833947886591445
+  },
+  "host_load": {
+    "before": {
+      "cpu_percent": 2.0,
+      "logical_cores": 12,
+      "time": "2026-11-12 00:19:27",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 2.9,
+      "logical_cores": 12,
+      "time": "2026-11-12 00:20:51",
+      "quiet_threshold": 30.0
+    }
+  }
+}

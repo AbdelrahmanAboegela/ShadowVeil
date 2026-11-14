@@ -1,0 +1,287 @@
+{
+  "status": "fused_sweep",
+  "model": "state-spaces/mamba-130m-hf",
+  "tag": "130m_w1024",
+  "window": 1024,
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "backend": "Triton selective-scan + CUDA-graph decode step (shadowveil.fused)",
+  "fused_vs_hf_relative_state_difference": 0.0013338414634146342,
+  "cache_bytes": 1474560,
+  "step_ms_by_batch_rows": {
+    "1": {
+      "median": 2.439679980278015,
+      "sd": 0.029058831259806427
+    },
+    "2": {
+      "median": 2.9818880558013916,
+      "sd": 0.05054817845013577
+    },
+    "4": {
+      "median": 3.1590399742126465,
+      "sd": 0.016079897130272143
+    },
+    "8": {
+      "median": 2.9030399322509766,
+      "sd": 0.05207693240580036
+    }
+  },
+  "chunk_ms_by_tokens": {
+    "8": {
+      "median": 3.1948800086975098,
+      "sd": 0.04266759455310329
+    },
+    "16": {
+      "median": 3.4314239025115967,
+      "sd": 0.023430293759989732
+    },
+    "32": {
+      "median": 3.6730880737304688,
+      "sd": 0.016313765221345165
+    },
+    "64": {
+      "median": 4.838399887084961,
+      "sd": 0.02236051011353994
+    },
+    "128": {
+      "median": 6.896639823913574,
+      "sd": 0.01291982435084975
+    },
+    "256": {
+      "median": 14.193664073944092,
+      "sd": 0.060799554923661715
+    },
+    "512": {
+      "median": 31.689631462097168,
+      "sd": 0.0221145102426522
+    },
+    "1024": {
+      "median": 64.20121383666992,
+      "sd": 0.03386175237312129
+    },
+    "2048": {
+      "median": 128.91903686523438,
+      "sd": 0.07313304211740596
+    },
+    "4096": {
+      "median": 261.8455047607422,
+      "sd": 0.28891704556563785
+    },
+    "8192": {
+      "median": 545.5790100097656,
+      "sd": 1.319526585947713
+    }
+  },
+  "retire_ms": {
+    "median": 0.6609919965267181,
+    "sd": 0.06271682028530882
+  },
+  "fit": {
+    "chunk_a_ms": -1.2541324843254409,
+    "chunk_b_ms_per_token": 0.06608805263995916,
+    "step_c0_ms": 2.7143568992614746,
+    "step_c1_ms_per_extra_row": 0.04174802303314208
+  },
+  "delta_sweep": [
+    {
+      "delta": 0,
+      "burst_tokens": 1031,
+      "tail_tokens": 0,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 65.18374633789062,
+        "sd": 0.0627310576696014
+      },
+      "tail_ms": {
+        "median": 0.0,
+        "sd": 0.0
+      },
+      "live_ms": {
+        "median": 2261.844970703125,
+        "sd": 1.542005186116741
+      },
+      "total_extra_ms": {
+        "median": 65.18374633789062,
+        "sd": 0.0627310576696014
+      }
+    },
+    {
+      "delta": 128,
+      "burst_tokens": 903,
+      "tail_tokens": 128,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 58.78886413574219,
+        "sd": 0.0330646228274136
+      },
+      "tail_ms": {
+        "median": 282.63525390625,
+        "sd": 0.6514205591620781
+      },
+      "live_ms": {
+        "median": 2270.76611328125,
+        "sd": 7.274589489303994
+      },
+      "total_extra_ms": {
+        "median": 341.4947738647461,
+        "sd": 0.6467823367577324
+      }
+    },
+    {
+      "delta": 256,
+      "burst_tokens": 775,
+      "tail_tokens": 256,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 49.08134460449219,
+        "sd": 0.0528936482258184
+      },
+      "tail_ms": {
+        "median": 565.4712524414062,
+        "sd": 2.467505189893554
+      },
+      "live_ms": {
+        "median": 2262.009765625,
+        "sd": 27.49121023181555
+      },
+      "total_extra_ms": {
+        "median": 614.550537109375,
+        "sd": 2.487552878235378
+      }
+    },
+    {
+      "delta": 512,
+      "burst_tokens": 519,
+      "tail_tokens": 512,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 32.24371337890625,
+        "sd": 0.21416222413524127
+      },
+      "tail_ms": {
+        "median": 1132.843017578125,
+        "sd": 2.233614155001333
+      },
+      "live_ms": {
+        "median": 2265.700439453125,
+        "sd": 0.372868820758174
+      },
+      "total_extra_ms": {
+        "median": 1165.1461219787598,
+        "sd": 2.123709903463511
+      }
+    },
+    {
+      "delta": 1024,
+      "burst_tokens": 7,
+      "tail_tokens": 1024,
+      "exact_bitwise": true,
+      "retired_max_abs": 0.0,
+      "burst_ms": {
+        "median": 3.190783977508545,
+        "sd": 0.03845331978149143
+      },
+      "tail_ms": {
+        "median": 2266.97412109375,
+        "sd": 1.6378172006668794
+      },
+      "live_ms": {
+        "median": 2267.98291015625,
+        "sd": 6.083731817449921
+      },
+      "total_extra_ms": {
+        "median": 2270.1649050712585,
+        "sd": 1.663244311968726
+      }
+    }
+  ],
+  "exactness_additional_documents": [
+    {
+      "case": 1,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 1,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 1,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 1,
+      "delta": 512,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 1,
+      "delta": 1024,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 2,
+      "delta": 0,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 2,
+      "delta": 128,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 2,
+      "delta": 256,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 2,
+      "delta": 512,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    },
+    {
+      "case": 2,
+      "delta": 1024,
+      "exact_bitwise": true,
+      "shadow_token_transitions_counted": 1031,
+      "expected_g_plus_window": 1031
+    }
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 1.6,
+      "logical_cores": 12,
+      "time": "2026-11-11 23:55:30",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 2.6,
+      "logical_cores": 12,
+      "time": "2026-11-12 00:00:44",
+      "quiet_threshold": 30.0
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "status": "stage_6_tab_live_defense_transfer",
+  "dataset": "Text Anonymization Benchmark v1.0 (MIT)",
+  "configuration": {
+    "model": "state-spaces/mamba-130m-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "output": "work\\stateveil\\results\\stage6_tab_live_defense_seed_20260929.json",
+    "classes": 8,
+    "defense_per_class": 12,
+    "attacker_per_class": 12,
+    "test_per_class": 6,
+    "context_characters": 180,
+    "batch_size": 16,
+    "coordinates_per_layer": 1024,
+    "layers": "12,15,17,20,23",
+    "methods": "none,sensitive_subspace,random_subspace,gaussian,full_reset",
+    "seed": 20260929,
+    "device": "cuda"
+  },
+  "identity_surfaces": [
+    "mr j. wo\u0142\u0105siewicz",
+    "mr c. whomersley",
+    "mr k. drzewicki",
+    "mr r. ryssdal",
+    "mr ryssdal",
+    "mr l. wildhaber",
+    "mrs e. palm",
+    "h. winkler"
+  ],
+  "chance_accuracy": 0.125,
+  "document_overlap_defense_attacker": 0,
+  "document_overlap_defense_test": 0,
+  "document_overlap_attacker_test": 0,
+  "sensitive_subspace_rank": 7,
+  "largest_singular_values": [
+    0.21871693488337576,
+    0.13917684729919305,
+    0.1249368930104614,
+    0.11519229716424328,
+    0.10709760255675496,
+    0.1011541273576082,
+    0.08731603117601784,
+    6.645073639419738e-08
+  ],
+  "results": [
+    {
+      "method": "none",
+      "adaptive_identity_accuracy": 0.7916666666666666,
+      "adaptive_identity_balanced_accuracy": 0.7916666666666666,
+      "retained_fact_accuracy": 0.9791666666666666,
+      "retained_fact_balanced_accuracy": 0.9791666666666667,
+      "suffix_nll": 5.440625203450521,
+      "mean_boundary_event_ms": 211.07489165539545,
+      "runtime_seconds": 88.90223439992405
+    },
+    {
+      "method": "sensitive_subspace",
+      "adaptive_identity_accuracy": 0.5833333333333334,
+      "adaptive_identity_balanced_accuracy": 0.5833333333333334,
+      "retained_fact_accuracy": 1.0,
+      "retained_fact_balanced_accuracy": 1.0,
+      "suffix_nll": 5.4386572265625,
+      "mean_boundary_event_ms": 395.52845832076855,
+      "runtime_seconds": 117.20520720002241
+    },
+    {
+      "method": "random_subspace",
+      "adaptive_identity_accuracy": 0.8333333333333334,
+      "adaptive_identity_balanced_accuracy": 0.8333333333333333,
+      "retained_fact_accuracy": 0.9583333333333334,
+      "retained_fact_balanced_accuracy": 0.9583333333333334,
+      "suffix_nll": 5.441772054036458,
+      "mean_boundary_event_ms": 11.200483345116178,
+      "runtime_seconds": 67.44453430001158
+    },
+    {
+      "method": "gaussian",
+      "adaptive_identity_accuracy": 0.5833333333333334,
+      "adaptive_identity_balanced_accuracy": 0.5833333333333334,
+      "retained_fact_accuracy": 0.8958333333333334,
+      "retained_fact_balanced_accuracy": 0.8958333333333333,
+      "suffix_nll": 5.4414520263671875,
+      "mean_boundary_event_ms": 347.5551750258698,
+      "runtime_seconds": 54.356500199995935
+    },
+    {
+      "method": "full_reset",
+      "adaptive_identity_accuracy": 0.125,
+      "adaptive_identity_balanced_accuracy": 0.125,
+      "retained_fact_accuracy": 0.125,
+      "retained_fact_balanced_accuracy": 0.125,
+      "suffix_nll": 5.194122314453125,
+      "mean_boundary_event_ms": 31.060258314634364,
+      "runtime_seconds": 59.64060809998773
+    }
+  ],
+  "peak_gpu_memory_mb": 1596.89
+}

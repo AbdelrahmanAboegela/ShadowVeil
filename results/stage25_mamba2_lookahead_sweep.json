@@ -1,0 +1,44 @@
+{
+  "status": "stage_25_mamba2_lookahead_sweep",
+  "model": "AntonV/mamba2-130m-hf",
+  "architecture": "Mamba-2 (SSD, stacked-tensor Mamba2Cache)",
+  "window_tokens": 128,
+  "single_cache_bytes": 9781248,
+  "dual_cache_bytes": 19562496,
+  "all_deltas_exact": true,
+  "all_deltas_retired_zero": true,
+  "rows": [
+    {
+      "delta_tokens": 0,
+      "burst_replay_tokens": 128,
+      "sustained_dual_cache_tokens": 0,
+      "burst_replay_ms": 603.4930999994685,
+      "bitwise_equal_to_independent_reference": true,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "delta_tokens": 32,
+      "burst_replay_tokens": 96,
+      "sustained_dual_cache_tokens": 32,
+      "burst_replay_ms": 542.0860999984143,
+      "bitwise_equal_to_independent_reference": true,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "delta_tokens": 64,
+      "burst_replay_tokens": 64,
+      "sustained_dual_cache_tokens": 64,
+      "burst_replay_ms": 586.8417999990925,
+      "bitwise_equal_to_independent_reference": true,
+      "retired_cache_max_absolute_value": 0.0
+    },
+    {
+      "delta_tokens": 128,
+      "burst_replay_tokens": 0,
+      "sustained_dual_cache_tokens": 128,
+      "burst_replay_ms": 545.3665000022738,
+      "bitwise_equal_to_independent_reference": true,
+      "retired_cache_max_absolute_value": 0.0
+    }
+  ]
+}

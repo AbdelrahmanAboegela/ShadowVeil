@@ -1,0 +1,143 @@
+{
+  "status": "stage_12_deadline_latency_tradeoff",
+  "configuration": {
+    "model": "state-spaces/mamba-130m-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "output": "results/deadline_latency_130m.json",
+    "delay_tokens": "0,16,64,256",
+    "repeats": 5,
+    "device": "cuda"
+  },
+  "scope": "single active revocation domain; deterministic input-side state",
+  "results": [
+    {
+      "delay_tokens": 0,
+      "trajectory_tokens": 23,
+      "live_prefill_ms": {
+        "mean": 171.5546199993696,
+        "sd": 11.335235143304441
+      },
+      "replay_at_deadline_ms": {
+        "mean": 158.77567999996245,
+        "sd": 18.432829882100076
+      },
+      "prospective_dual_compute_ms": {
+        "mean": 330.33029999933206,
+        "sd": 14.489689191328804
+      },
+      "pointer_swap_ns": {
+        "mean": 540.0,
+        "sd": 151.65750888103102
+      },
+      "secure_retire_ms": {
+        "mean": 0.8546999946702272,
+        "sd": 0.23089539098074813
+      },
+      "revocation_event_ms": {
+        "mean": 0.8552399946702272,
+        "sd": 0.23101479298145025
+      },
+      "bitwise_equal_to_redacted_reference": true,
+      "retired_cache_max_absolute_value": 0.0,
+      "single_cache_bytes": 1474560,
+      "dual_cache_bytes": 2949120
+    },
+    {
+      "delay_tokens": 16,
+      "trajectory_tokens": 39,
+      "live_prefill_ms": {
+        "mean": 204.8609400051646,
+        "sd": 18.71706223171317
+      },
+      "replay_at_deadline_ms": {
+        "mean": 236.41720000305213,
+        "sd": 47.81928304118584
+      },
+      "prospective_dual_compute_ms": {
+        "mean": 441.2781400082167,
+        "sd": 53.848335376333814
+      },
+      "pointer_swap_ns": {
+        "mean": 500.0,
+        "sd": 70.71067811865476
+      },
+      "secure_retire_ms": {
+        "mean": 1.00275999866426,
+        "sd": 0.6418547245279136
+      },
+      "revocation_event_ms": {
+        "mean": 1.0032599986642599,
+        "sd": 0.641853232755539
+      },
+      "bitwise_equal_to_redacted_reference": true,
+      "retired_cache_max_absolute_value": 0.0,
+      "single_cache_bytes": 1474560,
+      "dual_cache_bytes": 2949120
+    },
+    {
+      "delay_tokens": 64,
+      "trajectory_tokens": 87,
+      "live_prefill_ms": {
+        "mean": 460.2932000067085,
+        "sd": 48.44572768498568
+      },
+      "replay_at_deadline_ms": {
+        "mean": 467.24137999117374,
+        "sd": 24.121893302823032
+      },
+      "prospective_dual_compute_ms": {
+        "mean": 927.5345799978822,
+        "sd": 69.30413131002122
+      },
+      "pointer_swap_ns": {
+        "mean": 480.0,
+        "sd": 83.66600265340756
+      },
+      "secure_retire_ms": {
+        "mean": 0.7319999975152314,
+        "sd": 0.15875007224864232
+      },
+      "revocation_event_ms": {
+        "mean": 0.7324799975152313,
+        "sd": 0.15878402765590588
+      },
+      "bitwise_equal_to_redacted_reference": true,
+      "retired_cache_max_absolute_value": 0.0,
+      "single_cache_bytes": 1474560,
+      "dual_cache_bytes": 2949120
+    },
+    {
+      "delay_tokens": 256,
+      "trajectory_tokens": 279,
+      "live_prefill_ms": {
+        "mean": 1398.5912200063467,
+        "sd": 137.03327556193074
+      },
+      "replay_at_deadline_ms": {
+        "mean": 1345.7407800015062,
+        "sd": 76.34085159585716
+      },
+      "prospective_dual_compute_ms": {
+        "mean": 2744.332000007853,
+        "sd": 127.37997438638058
+      },
+      "pointer_swap_ns": {
+        "mean": 460.0,
+        "sd": 89.44271909999159
+      },
+      "secure_retire_ms": {
+        "mean": 0.9410199942067266,
+        "sd": 0.6603550411653223
+      },
+      "revocation_event_ms": {
+        "mean": 0.9414799942067266,
+        "sd": 0.6603856641317232
+      },
+      "bitwise_equal_to_redacted_reference": true,
+      "retired_cache_max_absolute_value": 0.0,
+      "single_cache_bytes": 1474560,
+      "dual_cache_bytes": 2949120
+    }
+  ],
+  "peak_gpu_memory_mb": 350.19
+}

@@ -1,0 +1,125 @@
+{
+  "status": "stage_17_fixed_state_vs_transformer_shadow_memory",
+  "configuration": {
+    "mamba": "state-spaces/mamba-130m-hf",
+    "rwkv": "RWKV/rwkv-4-169m-pile",
+    "transformer": "openai-community/gpt2",
+    "lengths": [
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "output": "work/stateveil/results/stage17_fixed_state_memory_scaling.json",
+    "device": "cuda",
+    "dtype": "torch.float16"
+  },
+  "data_protocol": "token lengths drawn from real TAB legal text; no excerpts emitted",
+  "mamba": {
+    "config": {
+      "layers": 24,
+      "state_size": 16,
+      "conv_kernel": 4,
+      "intermediate_size": 1536
+    },
+    "rows": [
+      {
+        "context_tokens": 32,
+        "one_cache_bytes": 1474560,
+        "shadow_increment_bytes": 1474560
+      },
+      {
+        "context_tokens": 64,
+        "one_cache_bytes": 1474560,
+        "shadow_increment_bytes": 1474560
+      },
+      {
+        "context_tokens": 128,
+        "one_cache_bytes": 1474560,
+        "shadow_increment_bytes": 1474560
+      },
+      {
+        "context_tokens": 256,
+        "one_cache_bytes": 1474560,
+        "shadow_increment_bytes": 1474560
+      },
+      {
+        "context_tokens": 512,
+        "one_cache_bytes": 1474560,
+        "shadow_increment_bytes": 1474560
+      }
+    ],
+    "fitted_bytes_per_context_token": 0.0
+  },
+  "rwkv": {
+    "config": {
+      "layers": 12,
+      "hidden_size": 768
+    },
+    "rows": [
+      {
+        "context_tokens": 32,
+        "one_cache_bytes": 147456,
+        "shadow_increment_bytes": 147456
+      },
+      {
+        "context_tokens": 64,
+        "one_cache_bytes": 147456,
+        "shadow_increment_bytes": 147456
+      },
+      {
+        "context_tokens": 128,
+        "one_cache_bytes": 147456,
+        "shadow_increment_bytes": 147456
+      },
+      {
+        "context_tokens": 256,
+        "one_cache_bytes": 147456,
+        "shadow_increment_bytes": 147456
+      },
+      {
+        "context_tokens": 512,
+        "one_cache_bytes": 147456,
+        "shadow_increment_bytes": 147456
+      }
+    ],
+    "fitted_bytes_per_context_token": 0.0
+  },
+  "transformer": {
+    "config": {
+      "layers": 12,
+      "heads": 12,
+      "hidden_size": 768
+    },
+    "rows": [
+      {
+        "context_tokens": 32,
+        "one_cache_bytes": 1179648,
+        "shadow_increment_bytes": 1179648
+      },
+      {
+        "context_tokens": 64,
+        "one_cache_bytes": 2359296,
+        "shadow_increment_bytes": 2359296
+      },
+      {
+        "context_tokens": 128,
+        "one_cache_bytes": 4718592,
+        "shadow_increment_bytes": 4718592
+      },
+      {
+        "context_tokens": 256,
+        "one_cache_bytes": 9437184,
+        "shadow_increment_bytes": 9437184
+      },
+      {
+        "context_tokens": 512,
+        "one_cache_bytes": 18874368,
+        "shadow_increment_bytes": 18874368
+      }
+    ],
+    "fitted_bytes_per_context_token": 36864.0
+  },
+  "claim": "For batch size one, an additional Mamba shadow cache is context-length invariant; an additional Transformer KV cache grows linearly in context length."
+}

@@ -1,0 +1,58 @@
+{
+  "status": "decode_step_by_rows",
+  "model": "state-spaces/mamba-1.4b-hf",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "backend": "shadowveil.fused (Triton selective scan + CUDA graph)",
+  "step_ms_by_rows": {
+    "1": {
+      "median": 15.688704013824463,
+      "sd": 0.06475483365141187
+    },
+    "2": {
+      "median": 19.272704124450684,
+      "sd": 0.8388164305603912
+    },
+    "4": {
+      "median": 19.87379264831543,
+      "sd": 1.4391815134906323
+    },
+    "8": {
+      "median": 19.085311889648438,
+      "sd": 2.099030239516912
+    },
+    "16": {
+      "median": 22.06668758392334,
+      "sd": 2.674854403039232
+    },
+    "32": {
+      "median": 28.084223747253418,
+      "sd": 3.6654910715330313
+    },
+    "48": {
+      "median": 32.23142433166504,
+      "sd": 3.2595350166116845
+    },
+    "64": {
+      "median": 36.63871955871582,
+      "sd": 3.204459336923645
+    },
+    "96": {
+      "median": 53.091840744018555,
+      "sd": 4.344652344607593
+    }
+  },
+  "host_load": {
+    "before": {
+      "cpu_percent": 5.8,
+      "logical_cores": 12,
+      "time": "2026-11-13 12:55:02",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 7.1,
+      "logical_cores": 12,
+      "time": "2026-11-13 12:55:29",
+      "quiet_threshold": 30.0
+    }
+  }
+}

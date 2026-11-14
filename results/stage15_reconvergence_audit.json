@@ -1,0 +1,4350 @@
+{
+  "status": "stage_15_reconvergence_falsification_audit",
+  "configuration": {
+    "model": "state-spaces/mamba-130m-hf",
+    "tokenizer": "EleutherAI/gpt-neox-20b",
+    "examples": 4,
+    "horizons": [
+      0,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "seed": 20261005,
+    "approx_relative_rms": 0.001,
+    "output": "work/stateveil/results/stage15_reconvergence_audit.json",
+    "device": "cuda"
+  },
+  "data_protocol": "real TAB legal contexts; counterfactual identities; no text emitted",
+  "retirement_rule": "exact retirement requires full-cache bitwise equality; approximate threshold is diagnostic only and is not treated as exact revocation",
+  "any_exact_reconvergence": false,
+  "exact_reconvergence_horizons": [],
+  "approximate_threshold": 0.001,
+  "approximate_reconvergence_horizon_by_case": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "median_initial_relative_rms": 0.06344363445879844,
+  "median_final_relative_rms": 0.04558908372426049,
+  "median_relative_rms_ratio_final_to_initial": 0.6655879386019175,
+  "rows": [
+    {
+      "case": 0,
+      "live_tokens_at_divergence_end": 135,
+      "shadow_tokens_at_divergence_end": 136,
+      "measurements": [
+        {
+          "horizon": 0,
+          "bitwise_equal": false,
+          "rms_difference": 0.028969446289486573,
+          "relative_rms_difference": 0.06316048521724991,
+          "max_absolute_difference": 1.375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0004146331652991647,
+              "relative_rms_difference": 0.0016495788888073475,
+              "max_absolute_difference": 0.01806640625
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.001365666216304443,
+              "relative_rms_difference": 0.004976079408209095,
+              "max_absolute_difference": 0.03806304931640625
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.003661939895204987,
+              "relative_rms_difference": 0.012759925326201663,
+              "max_absolute_difference": 0.0631256103515625
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.009815372562655751,
+              "relative_rms_difference": 0.027658203744691304,
+              "max_absolute_difference": 0.1474609375
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.022503886476284048,
+              "relative_rms_difference": 0.062310937408341885,
+              "max_absolute_difference": 0.42498779296875
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.024454339666610522,
+              "relative_rms_difference": 0.06647383178161012,
+              "max_absolute_difference": 0.4091796875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.025680360101164097,
+              "relative_rms_difference": 0.06926870985033423,
+              "max_absolute_difference": 0.3388671875
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.025044288758019506,
+              "relative_rms_difference": 0.06303398430068637,
+              "max_absolute_difference": 0.376953125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.022325301388625752,
+              "relative_rms_difference": 0.06417202070154784,
+              "max_absolute_difference": 0.30328369140625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.025020098764814997,
+              "relative_rms_difference": 0.06427766170454993,
+              "max_absolute_difference": 0.3763427734375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.02350094000578171,
+              "relative_rms_difference": 0.060907589901901246,
+              "max_absolute_difference": 0.2890625
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.02262346635697548,
+              "relative_rms_difference": 0.060090877701954606,
+              "max_absolute_difference": 0.267578125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.022267972623895748,
+              "relative_rms_difference": 0.055333883806235176,
+              "max_absolute_difference": 0.271484375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.030063713340478436,
+              "relative_rms_difference": 0.0793515146900101,
+              "max_absolute_difference": 0.479248046875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.032110915588477916,
+              "relative_rms_difference": 0.07489885762988749,
+              "max_absolute_difference": 0.41015625
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.03433380753665846,
+              "relative_rms_difference": 0.06518517532778152,
+              "max_absolute_difference": 0.4705810546875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.03824886439503632,
+              "relative_rms_difference": 0.06345340408195015,
+              "max_absolute_difference": 0.505859375
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.0381244666275252,
+              "relative_rms_difference": 0.05963445352316083,
+              "max_absolute_difference": 0.4769287109375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.040767770304067405,
+              "relative_rms_difference": 0.08429186644439246,
+              "max_absolute_difference": 0.6767578125
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.04774266386544993,
+              "relative_rms_difference": 0.07540748875914996,
+              "max_absolute_difference": 0.601806640625
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.05067441692005324,
+              "relative_rms_difference": 0.06780013808914363,
+              "max_absolute_difference": 0.751953125
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.031246830983213108,
+              "relative_rms_difference": 0.058760605522852435,
+              "max_absolute_difference": 0.5244140625
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.025939308757172954,
+              "relative_rms_difference": 0.0705189212807329,
+              "max_absolute_difference": 0.47370147705078125
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.027667372769346773,
+              "relative_rms_difference": 0.04230772068250819,
+              "max_absolute_difference": 1.375
+            }
+          ]
+        },
+        {
+          "horizon": 8,
+          "bitwise_equal": false,
+          "rms_difference": 0.028862920314782985,
+          "relative_rms_difference": 0.06520076740587255,
+          "max_absolute_difference": 4.609375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00036499372491794146,
+              "relative_rms_difference": 0.0014934185950539955,
+              "max_absolute_difference": 0.0169677734375
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.001235870565955464,
+              "relative_rms_difference": 0.004321865649627556,
+              "max_absolute_difference": 0.03629302978515625
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.003474193553197962,
+              "relative_rms_difference": 0.010689396006627947,
+              "max_absolute_difference": 0.1142578125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.008490833247587523,
+              "relative_rms_difference": 0.022065631913853703,
+              "max_absolute_difference": 0.2427978515625
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.012863952573409842,
+              "relative_rms_difference": 0.03244881028184971,
+              "max_absolute_difference": 0.2353515625
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.013669690980555838,
+              "relative_rms_difference": 0.03452912080734538,
+              "max_absolute_difference": 0.20166015625
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.013712974577835657,
+              "relative_rms_difference": 0.03509322171174951,
+              "max_absolute_difference": 0.197265625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.013932605742815825,
+              "relative_rms_difference": 0.03512620720531397,
+              "max_absolute_difference": 0.22607421875
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.01323631004494725,
+              "relative_rms_difference": 0.036639298026920036,
+              "max_absolute_difference": 0.1495513916015625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.01346534531168511,
+              "relative_rms_difference": 0.036015895042967996,
+              "max_absolute_difference": 0.18359375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.014040106000889617,
+              "relative_rms_difference": 0.03622794878214249,
+              "max_absolute_difference": 0.2286376953125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.012848615466006942,
+              "relative_rms_difference": 0.035614533089838696,
+              "max_absolute_difference": 0.12109375
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.014350829850180487,
+              "relative_rms_difference": 0.036893906761526055,
+              "max_absolute_difference": 0.17529296875
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.0237379586341827,
+              "relative_rms_difference": 0.067395202548293,
+              "max_absolute_difference": 0.6357421875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.031072283096682925,
+              "relative_rms_difference": 0.07617675709641508,
+              "max_absolute_difference": 0.93408203125
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.03069315935686281,
+              "relative_rms_difference": 0.06146493596877586,
+              "max_absolute_difference": 0.675537109375
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.042103637373195266,
+              "relative_rms_difference": 0.07099793788822298,
+              "max_absolute_difference": 0.90625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.04111644212845195,
+              "relative_rms_difference": 0.06646005127454596,
+              "max_absolute_difference": 0.658203125
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.048621329339798985,
+              "relative_rms_difference": 0.10191263718997019,
+              "max_absolute_difference": 1.5869140625
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.05118134092697976,
+              "relative_rms_difference": 0.08239852750851007,
+              "max_absolute_difference": 0.72412109375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.0590076584162496,
+              "relative_rms_difference": 0.08042408295419023,
+              "max_absolute_difference": 0.785675048828125
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.029709706084670075,
+              "relative_rms_difference": 0.07047231699800877,
+              "max_absolute_difference": 0.7734375
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.02567544192531918,
+              "relative_rms_difference": 0.08005400239677661,
+              "max_absolute_difference": 1.4765625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.048030671822313714,
+              "relative_rms_difference": 0.0915098114131874,
+              "max_absolute_difference": 4.609375
+            }
+          ]
+        },
+        {
+          "horizon": 16,
+          "bitwise_equal": false,
+          "rms_difference": 0.02183598797861465,
+          "relative_rms_difference": 0.046897747578481426,
+          "max_absolute_difference": 1.48828125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0003335685930146315,
+              "relative_rms_difference": 0.0012970495932229332,
+              "max_absolute_difference": 0.0166015625
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0011800309877288413,
+              "relative_rms_difference": 0.004767388976505772,
+              "max_absolute_difference": 0.03512001037597656
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.003843434050111562,
+              "relative_rms_difference": 0.015468181998255807,
+              "max_absolute_difference": 0.18798828125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.006222393640930144,
+              "relative_rms_difference": 0.020925032518936612,
+              "max_absolute_difference": 0.1719970703125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.008334989874160474,
+              "relative_rms_difference": 0.026215594727564594,
+              "max_absolute_difference": 0.1708984375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.009306612048187793,
+              "relative_rms_difference": 0.028548597267430493,
+              "max_absolute_difference": 0.1981201171875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.010603770527855497,
+              "relative_rms_difference": 0.030922996737006277,
+              "max_absolute_difference": 0.25146484375
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.010601462562625678,
+              "relative_rms_difference": 0.029604304413987745,
+              "max_absolute_difference": 0.2958984375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.011083333036171988,
+              "relative_rms_difference": 0.03275495298769214,
+              "max_absolute_difference": 0.1357421875
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.013197490110990235,
+              "relative_rms_difference": 0.03429544161670298,
+              "max_absolute_difference": 0.166015625
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.01302524599602455,
+              "relative_rms_difference": 0.03221534695379229,
+              "max_absolute_difference": 0.16015625
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.012597357813170444,
+              "relative_rms_difference": 0.03122223285420588,
+              "max_absolute_difference": 0.22216796875
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.012736506923109483,
+              "relative_rms_difference": 0.02981260285323186,
+              "max_absolute_difference": 0.146240234375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.017321688521820353,
+              "relative_rms_difference": 0.0427927926070388,
+              "max_absolute_difference": 0.605712890625
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.024633884393318838,
+              "relative_rms_difference": 0.051961508588736,
+              "max_absolute_difference": 0.9345703125
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.02836180639747035,
+              "relative_rms_difference": 0.051005109362910424,
+              "max_absolute_difference": 0.77294921875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.032807258542881045,
+              "relative_rms_difference": 0.04934449871677207,
+              "max_absolute_difference": 0.8330078125
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.04818446509840453,
+              "relative_rms_difference": 0.06856038019685948,
+              "max_absolute_difference": 1.0496826171875
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.0280963796001207,
+              "relative_rms_difference": 0.05014729777356601,
+              "max_absolute_difference": 0.8056640625
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.03402385912206534,
+              "relative_rms_difference": 0.047759142205810685,
+              "max_absolute_difference": 0.6650390625
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.040675633082462956,
+              "relative_rms_difference": 0.050948736566038245,
+              "max_absolute_difference": 0.748046875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02491953375691476,
+              "relative_rms_difference": 0.05501277019638663,
+              "max_absolute_difference": 0.38916015625
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.018910498170539823,
+              "relative_rms_difference": 0.05572674691169576,
+              "max_absolute_difference": 0.27099609375
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.023032780960653504,
+              "relative_rms_difference": 0.04292320769837292,
+              "max_absolute_difference": 1.48828125
+            }
+          ]
+        },
+        {
+          "horizon": 32,
+          "bitwise_equal": false,
+          "rms_difference": 0.025009489400102815,
+          "relative_rms_difference": 0.05292332531213474,
+          "max_absolute_difference": 1.93310546875,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.000276242058751681,
+              "relative_rms_difference": 0.0011236411052884198,
+              "max_absolute_difference": 0.014892578125
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0010498575159852887,
+              "relative_rms_difference": 0.003926917350479066,
+              "max_absolute_difference": 0.032867431640625
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.004091941255576708,
+              "relative_rms_difference": 0.013771379670964007,
+              "max_absolute_difference": 0.20330810546875
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.007237880472873979,
+              "relative_rms_difference": 0.02056662493983972,
+              "max_absolute_difference": 0.20703125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.009581070010028852,
+              "relative_rms_difference": 0.02631302002336822,
+              "max_absolute_difference": 0.197265625
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.010372847127216752,
+              "relative_rms_difference": 0.02868094119148647,
+              "max_absolute_difference": 0.208770751953125
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.01100733730630018,
+              "relative_rms_difference": 0.02969002912203585,
+              "max_absolute_difference": 0.193359375
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.011061714727089453,
+              "relative_rms_difference": 0.02915502051238529,
+              "max_absolute_difference": 0.1396484375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.010480013505729182,
+              "relative_rms_difference": 0.030178378861295336,
+              "max_absolute_difference": 0.1171875
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.011231888584338913,
+              "relative_rms_difference": 0.029980411671240586,
+              "max_absolute_difference": 0.1328125
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.011149334825048632,
+              "relative_rms_difference": 0.028934289493649047,
+              "max_absolute_difference": 0.1547393798828125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.010496548641151977,
+              "relative_rms_difference": 0.02827186880763602,
+              "max_absolute_difference": 0.1298828125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.010830215319440128,
+              "relative_rms_difference": 0.02713994960707721,
+              "max_absolute_difference": 0.14013671875
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.016992682509650112,
+              "relative_rms_difference": 0.04462726212030498,
+              "max_absolute_difference": 0.33544921875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.017581526054183984,
+              "relative_rms_difference": 0.036847844734883076,
+              "max_absolute_difference": 0.359375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.019535270316882934,
+              "relative_rms_difference": 0.034805601269624245,
+              "max_absolute_difference": 0.24169921875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.0324853575862149,
+              "relative_rms_difference": 0.04797582599761053,
+              "max_absolute_difference": 0.716796875
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.035280082421035544,
+              "relative_rms_difference": 0.049147129244509806,
+              "max_absolute_difference": 1.3203125
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.05161754960839808,
+              "relative_rms_difference": 0.08994782471554275,
+              "max_absolute_difference": 1.314453125
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.05037005844805036,
+              "relative_rms_difference": 0.07105792501984952,
+              "max_absolute_difference": 0.6552734375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.05861380852979361,
+              "relative_rms_difference": 0.07279451007018181,
+              "max_absolute_difference": 0.70703125
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02857100025906405,
+              "relative_rms_difference": 0.06557284888618643,
+              "max_absolute_difference": 0.48358154296875
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.02185287317100796,
+              "relative_rms_difference": 0.06630830308675181,
+              "max_absolute_difference": 0.416015625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.026457243499015255,
+              "relative_rms_difference": 0.04647243624349665,
+              "max_absolute_difference": 1.93310546875
+            }
+          ]
+        },
+        {
+          "horizon": 64,
+          "bitwise_equal": false,
+          "rms_difference": 0.023048754744281554,
+          "relative_rms_difference": 0.04441936261347277,
+          "max_absolute_difference": 1.1181640625,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00020665138079183456,
+              "relative_rms_difference": 0.0008872606537965083,
+              "max_absolute_difference": 0.012451171875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0008802269286582064,
+              "relative_rms_difference": 0.003014526543074636,
+              "max_absolute_difference": 0.02962493896484375
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0022310757365755075,
+              "relative_rms_difference": 0.006770643192603461,
+              "max_absolute_difference": 0.0458984375
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.005822699974418086,
+              "relative_rms_difference": 0.01443341981848073,
+              "max_absolute_difference": 0.1337890625
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.008852432767788698,
+              "relative_rms_difference": 0.021447715990455047,
+              "max_absolute_difference": 0.16796875
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.008470908457899063,
+              "relative_rms_difference": 0.020010677582116547,
+              "max_absolute_difference": 0.138671875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.008426033964506344,
+              "relative_rms_difference": 0.020484968499663577,
+              "max_absolute_difference": 0.119140625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.008522790677684886,
+              "relative_rms_difference": 0.020586263633372664,
+              "max_absolute_difference": 0.1396484375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.007618298711251225,
+              "relative_rms_difference": 0.01956826642530027,
+              "max_absolute_difference": 0.0888671875
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.008147893379153738,
+              "relative_rms_difference": 0.01948451733090119,
+              "max_absolute_difference": 0.1337890625
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.008127424158947058,
+              "relative_rms_difference": 0.019653400122418622,
+              "max_absolute_difference": 0.130859375
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.008088359571089424,
+              "relative_rms_difference": 0.019304067050792333,
+              "max_absolute_difference": 0.083251953125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.00936551628477422,
+              "relative_rms_difference": 0.021323991294204106,
+              "max_absolute_difference": 0.1552734375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.017281807490170182,
+              "relative_rms_difference": 0.03940257074744669,
+              "max_absolute_difference": 0.3310546875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.017187474419654247,
+              "relative_rms_difference": 0.031263859985929926,
+              "max_absolute_difference": 0.234375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.023476660422160848,
+              "relative_rms_difference": 0.03761536728745315,
+              "max_absolute_difference": 0.3642578125
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.028001699119885533,
+              "relative_rms_difference": 0.03702715923883586,
+              "max_absolute_difference": 0.390625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.03484588880649653,
+              "relative_rms_difference": 0.044488508854375386,
+              "max_absolute_difference": 0.84375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.046554388221283424,
+              "relative_rms_difference": 0.07697076809870697,
+              "max_absolute_difference": 1.1181640625
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.04781859570544241,
+              "relative_rms_difference": 0.05918932840821404,
+              "max_absolute_difference": 0.75
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.05488711914135303,
+              "relative_rms_difference": 0.062050943186643,
+              "max_absolute_difference": 0.57177734375
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02391267982606379,
+              "relative_rms_difference": 0.05285335259329656,
+              "max_absolute_difference": 0.4998779296875
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.019448739648117525,
+              "relative_rms_difference": 0.055651784674497606,
+              "max_absolute_difference": 0.42578125
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.022641989176957884,
+              "relative_rms_difference": 0.041495688778714,
+              "max_absolute_difference": 1.0546875
+            }
+          ]
+        },
+        {
+          "horizon": 128,
+          "bitwise_equal": false,
+          "rms_difference": 0.02168858997059685,
+          "relative_rms_difference": 0.044192367652033715,
+          "max_absolute_difference": 1.32861328125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00012944561978825065,
+              "relative_rms_difference": 0.0005177634896322371,
+              "max_absolute_difference": 0.0079345703125
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0007027063633258733,
+              "relative_rms_difference": 0.0025408907943402057,
+              "max_absolute_difference": 0.02568817138671875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0018700042934658657,
+              "relative_rms_difference": 0.00605562865834423,
+              "max_absolute_difference": 0.033203125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.003735946996609515,
+              "relative_rms_difference": 0.010107066222374677,
+              "max_absolute_difference": 0.10546875
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.0058173132168644745,
+              "relative_rms_difference": 0.015189340406663926,
+              "max_absolute_difference": 0.14453125
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.005794138201714052,
+              "relative_rms_difference": 0.01500452861341188,
+              "max_absolute_difference": 0.113037109375
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.005969013585895391,
+              "relative_rms_difference": 0.015431072900006271,
+              "max_absolute_difference": 0.06610107421875
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.0060298342716190775,
+              "relative_rms_difference": 0.015301136769633876,
+              "max_absolute_difference": 0.08728504180908203
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.005776632504034558,
+              "relative_rms_difference": 0.016127799410540888,
+              "max_absolute_difference": 0.06640625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.005894545173546943,
+              "relative_rms_difference": 0.015070143846300958,
+              "max_absolute_difference": 0.07421875
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.005914468870371374,
+              "relative_rms_difference": 0.014879267246862903,
+              "max_absolute_difference": 0.05859375
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.006334835132903815,
+              "relative_rms_difference": 0.0162196999247731,
+              "max_absolute_difference": 0.064453125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.007352755637324675,
+              "relative_rms_difference": 0.017521240536822285,
+              "max_absolute_difference": 0.114990234375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.015422672005561569,
+              "relative_rms_difference": 0.038491695229358795,
+              "max_absolute_difference": 0.513671875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.014865200168355432,
+              "relative_rms_difference": 0.028684667699466187,
+              "max_absolute_difference": 0.39336585998535156
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.019655364830578656,
+              "relative_rms_difference": 0.03202288501778093,
+              "max_absolute_difference": 0.28662109375
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.024425020709038993,
+              "relative_rms_difference": 0.033875392588094945,
+              "max_absolute_difference": 0.306640625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.032795351875075616,
+              "relative_rms_difference": 0.043676474231490264,
+              "max_absolute_difference": 0.84375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.045293629858356096,
+              "relative_rms_difference": 0.07997947545860544,
+              "max_absolute_difference": 1.32861328125
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.045054000107663125,
+              "relative_rms_difference": 0.05927385669170119,
+              "max_absolute_difference": 0.734375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.05642564114129257,
+              "relative_rms_difference": 0.068121418471209,
+              "max_absolute_difference": 0.61328125
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02320796690592875,
+              "relative_rms_difference": 0.054708010707793,
+              "max_absolute_difference": 0.43804931640625
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.017888353619089175,
+              "relative_rms_difference": 0.05514700877822602,
+              "max_absolute_difference": 0.248046875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.017137923047696287,
+              "relative_rms_difference": 0.032284823118341514,
+              "max_absolute_difference": 0.609375
+            }
+          ]
+        },
+        {
+          "horizon": 256,
+          "bitwise_equal": false,
+          "rms_difference": 0.019648893644632782,
+          "relative_rms_difference": 0.04138442015915838,
+          "max_absolute_difference": 1.18359375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 6.329951911624049e-05,
+              "relative_rms_difference": 0.00025673650961863384,
+              "max_absolute_difference": 0.005157470703125
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0005191308132733839,
+              "relative_rms_difference": 0.001956712378052731,
+              "max_absolute_difference": 0.02175140380859375
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.002248932279678614,
+              "relative_rms_difference": 0.007619905705782249,
+              "max_absolute_difference": 0.052734375
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.004750475424771918,
+              "relative_rms_difference": 0.013581355425338563,
+              "max_absolute_difference": 0.24609375
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.006804814074723492,
+              "relative_rms_difference": 0.01991232956365078,
+              "max_absolute_difference": 0.146484375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.007467124212036666,
+              "relative_rms_difference": 0.021425142756263376,
+              "max_absolute_difference": 0.103515625
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.007708964229906227,
+              "relative_rms_difference": 0.021508031436322878,
+              "max_absolute_difference": 0.10982513427734375
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.007321320745213991,
+              "relative_rms_difference": 0.020024124631971632,
+              "max_absolute_difference": 0.1474609375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.0071391645123381475,
+              "relative_rms_difference": 0.020626017763243697,
+              "max_absolute_difference": 0.087890625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.007657311420201655,
+              "relative_rms_difference": 0.01945037802275355,
+              "max_absolute_difference": 0.0927734375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.008363511669307386,
+              "relative_rms_difference": 0.021055724329417862,
+              "max_absolute_difference": 0.123046875
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.00830248106470646,
+              "relative_rms_difference": 0.020789268692477676,
+              "max_absolute_difference": 0.1484375
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.008754391577105584,
+              "relative_rms_difference": 0.020195141481558727,
+              "max_absolute_difference": 0.119140625
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.01310751631093133,
+              "relative_rms_difference": 0.030135381150061574,
+              "max_absolute_difference": 0.376953125
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.011436434234243445,
+              "relative_rms_difference": 0.02329648419844764,
+              "max_absolute_difference": 0.26953125
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.012815517827243262,
+              "relative_rms_difference": 0.021584104163261213,
+              "max_absolute_difference": 0.226318359375
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.021297571399553527,
+              "relative_rms_difference": 0.029814170668767105,
+              "max_absolute_difference": 0.38818359375
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.02615545882460682,
+              "relative_rms_difference": 0.037814190213652,
+              "max_absolute_difference": 0.525390625
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.0375354641029202,
+              "relative_rms_difference": 0.0722553918890324,
+              "max_absolute_difference": 0.9912109375
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.04796159431211357,
+              "relative_rms_difference": 0.06285232133088947,
+              "max_absolute_difference": 1.18359375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.04709789879469009,
+              "relative_rms_difference": 0.05788380873378885,
+              "max_absolute_difference": 0.78125
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.023367671914753987,
+              "relative_rms_difference": 0.05491126146444053,
+              "max_absolute_difference": 0.44140625
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.0183531474090347,
+              "relative_rms_difference": 0.05611509409793227,
+              "max_absolute_difference": 0.1953125
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.016820498052489908,
+              "relative_rms_difference": 0.03623340786563363,
+              "max_absolute_difference": 0.453125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": 1,
+      "live_tokens_at_divergence_end": 112,
+      "shadow_tokens_at_divergence_end": 113,
+      "measurements": [
+        {
+          "horizon": 0,
+          "bitwise_equal": false,
+          "rms_difference": 0.021319663610613673,
+          "relative_rms_difference": 0.046208086831814696,
+          "max_absolute_difference": 1.24462890625,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0004402184128216583,
+              "relative_rms_difference": 0.0017516464596155283,
+              "max_absolute_difference": 0.0149993896484375
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0017324582480558477,
+              "relative_rms_difference": 0.006307339746885779,
+              "max_absolute_difference": 0.051513671875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.004016217077743988,
+              "relative_rms_difference": 0.014012699052210814,
+              "max_absolute_difference": 0.0810546875
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.005517876588504975,
+              "relative_rms_difference": 0.015558881075563904,
+              "max_absolute_difference": 0.0810546875
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.015082891522984539,
+              "relative_rms_difference": 0.042160689895072344,
+              "max_absolute_difference": 0.384765625
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.015421132252476722,
+              "relative_rms_difference": 0.04211484876661522,
+              "max_absolute_difference": 0.30419921875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.01505669130160547,
+              "relative_rms_difference": 0.04078500821952586,
+              "max_absolute_difference": 0.3095703125
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.014860192935638967,
+              "relative_rms_difference": 0.03750838346392534,
+              "max_absolute_difference": 0.28515625
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.012526941878962413,
+              "relative_rms_difference": 0.036074752891374934,
+              "max_absolute_difference": 0.2091064453125
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.013594249327376058,
+              "relative_rms_difference": 0.035110656648823665,
+              "max_absolute_difference": 0.20819091796875
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.012547421022084004,
+              "relative_rms_difference": 0.03255071564117882,
+              "max_absolute_difference": 0.16015625
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.012030627993648882,
+              "relative_rms_difference": 0.03192770682409641,
+              "max_absolute_difference": 0.14453125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.014069142076164812,
+              "relative_rms_difference": 0.03429979497326958,
+              "max_absolute_difference": 0.19189453125
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.018639983402378206,
+              "relative_rms_difference": 0.04788223103539422,
+              "max_absolute_difference": 0.3385009765625
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.019709257320687595,
+              "relative_rms_difference": 0.04481062792519858,
+              "max_absolute_difference": 0.287109375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.02141349182124651,
+              "relative_rms_difference": 0.03988932952463875,
+              "max_absolute_difference": 0.28857421875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.03167238499835163,
+              "relative_rms_difference": 0.050907741737747446,
+              "max_absolute_difference": 1.24462890625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.03289593028076176,
+              "relative_rms_difference": 0.05010407925636087,
+              "max_absolute_difference": 0.822265625
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.02943112939187369,
+              "relative_rms_difference": 0.06031446159525581,
+              "max_absolute_difference": 0.533203125
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.034382421901776934,
+              "relative_rms_difference": 0.05422096316996045,
+              "max_absolute_difference": 0.43359375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.043142467859826325,
+              "relative_rms_difference": 0.05664744962849485,
+              "max_absolute_difference": 0.70947265625
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02921798853914719,
+              "relative_rms_difference": 0.05432917732872935,
+              "max_absolute_difference": 0.90234375
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.021667540285986057,
+              "relative_rms_difference": 0.060648322871536584,
+              "max_absolute_difference": 0.39453125
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.024325149437566054,
+              "relative_rms_difference": 0.038979722376891866,
+              "max_absolute_difference": 1.1875
+            }
+          ]
+        },
+        {
+          "horizon": 8,
+          "bitwise_equal": false,
+          "rms_difference": 0.019721559807673282,
+          "relative_rms_difference": 0.04461261186481496,
+          "max_absolute_difference": 2.953125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00037948986699507095,
+              "relative_rms_difference": 0.0015529266200815296,
+              "max_absolute_difference": 0.013401031494140625
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0012838183565963789,
+              "relative_rms_difference": 0.004480273026053399,
+              "max_absolute_difference": 0.0361328125
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0024160863281804373,
+              "relative_rms_difference": 0.007480017625516734,
+              "max_absolute_difference": 0.093017578125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.004434694015380177,
+              "relative_rms_difference": 0.011624874484345885,
+              "max_absolute_difference": 0.17578125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.00624046387186519,
+              "relative_rms_difference": 0.016118666801844646,
+              "max_absolute_difference": 0.1923828125
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.00632638561158906,
+              "relative_rms_difference": 0.016194260459700585,
+              "max_absolute_difference": 0.10546875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.006399384421986561,
+              "relative_rms_difference": 0.01656592960678634,
+              "max_absolute_difference": 0.22265625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.006356694800656957,
+              "relative_rms_difference": 0.01616736930772989,
+              "max_absolute_difference": 0.18609619140625
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.006483741407204029,
+              "relative_rms_difference": 0.018122630629230342,
+              "max_absolute_difference": 0.18408203125
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.006188531513637968,
+              "relative_rms_difference": 0.01680280428401588,
+              "max_absolute_difference": 0.12451171875
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.0063400477899817065,
+              "relative_rms_difference": 0.01659209724395063,
+              "max_absolute_difference": 0.122314453125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.006120676185476191,
+              "relative_rms_difference": 0.017167922710255353,
+              "max_absolute_difference": 0.086669921875
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.007386917213974451,
+              "relative_rms_difference": 0.01892662896788347,
+              "max_absolute_difference": 0.13629150390625
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.013548683393609597,
+              "relative_rms_difference": 0.03801312164662197,
+              "max_absolute_difference": 0.3388671875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.013996393658268783,
+              "relative_rms_difference": 0.03419483186628722,
+              "max_absolute_difference": 0.31689453125
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.016298086009921338,
+              "relative_rms_difference": 0.03215048412615575,
+              "max_absolute_difference": 0.26953125
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.026101542091151727,
+              "relative_rms_difference": 0.04307002448203993,
+              "max_absolute_difference": 0.583984375
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.02610000651936949,
+              "relative_rms_difference": 0.04124285458913361,
+              "max_absolute_difference": 0.4580078125
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.03792276671826944,
+              "relative_rms_difference": 0.08000021091810738,
+              "max_absolute_difference": 1.19921875
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.03865124414931287,
+              "relative_rms_difference": 0.06348392175537378,
+              "max_absolute_difference": 0.4599609375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.04385040725435671,
+              "relative_rms_difference": 0.059547798374029036,
+              "max_absolute_difference": 0.685546875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02378081369751705,
+              "relative_rms_difference": 0.057360996861831215,
+              "max_absolute_difference": 0.67578125
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.019261444495992475,
+              "relative_rms_difference": 0.061981760395733256,
+              "max_absolute_difference": 0.7890625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.03369474233244718,
+              "relative_rms_difference": 0.06395745547825862,
+              "max_absolute_difference": 2.953125
+            }
+          ]
+        },
+        {
+          "horizon": 16,
+          "bitwise_equal": false,
+          "rms_difference": 0.017393414564077697,
+          "relative_rms_difference": 0.03767216139815526,
+          "max_absolute_difference": 1.283447265625,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00033630152091941926,
+              "relative_rms_difference": 0.0013077878454647394,
+              "max_absolute_difference": 0.012788772583007812
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0014620479420721165,
+              "relative_rms_difference": 0.005899504268710358,
+              "max_absolute_difference": 0.0464324951171875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0028573104719577624,
+              "relative_rms_difference": 0.011553839783844217,
+              "max_absolute_difference": 0.1064453125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.005020055255611115,
+              "relative_rms_difference": 0.017053688635030307,
+              "max_absolute_difference": 0.400787353515625
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.00475074026126843,
+              "relative_rms_difference": 0.015389656232150354,
+              "max_absolute_difference": 0.1904296875
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.005342659245985033,
+              "relative_rms_difference": 0.016698093574386143,
+              "max_absolute_difference": 0.30615234375
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.005271841322797745,
+              "relative_rms_difference": 0.015509398481434978,
+              "max_absolute_difference": 0.255859375
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.0060393159329169945,
+              "relative_rms_difference": 0.017050594967913366,
+              "max_absolute_difference": 0.2880859375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.004881314169454313,
+              "relative_rms_difference": 0.014527376761960769,
+              "max_absolute_difference": 0.125
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.005692508165091956,
+              "relative_rms_difference": 0.015028128294158895,
+              "max_absolute_difference": 0.3646240234375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.005996790017073895,
+              "relative_rms_difference": 0.014721688764786148,
+              "max_absolute_difference": 0.2969970703125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.005757186412422429,
+              "relative_rms_difference": 0.01421322132028765,
+              "max_absolute_difference": 0.198486328125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.007475183563784086,
+              "relative_rms_difference": 0.01725641856857759,
+              "max_absolute_difference": 0.21533203125
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.013861815846751425,
+              "relative_rms_difference": 0.03402558728616541,
+              "max_absolute_difference": 0.431854248046875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.018616052758828588,
+              "relative_rms_difference": 0.039486282897378926,
+              "max_absolute_difference": 0.59765625
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.01854189979243787,
+              "relative_rms_difference": 0.03306922326551982,
+              "max_absolute_difference": 0.353515625
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.022828856126382444,
+              "relative_rms_difference": 0.034333478171609796,
+              "max_absolute_difference": 0.4482421875
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.024728786053148138,
+              "relative_rms_difference": 0.034534511725695244,
+              "max_absolute_difference": 0.43121337890625
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.021965751153483683,
+              "relative_rms_difference": 0.04040692609977547,
+              "max_absolute_difference": 0.5263671875
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.027708323726342507,
+              "relative_rms_difference": 0.040299947328191796,
+              "max_absolute_difference": 0.66845703125
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.041190665126697355,
+              "relative_rms_difference": 0.05282240773198093,
+              "max_absolute_difference": 0.848876953125
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02971448605077527,
+              "relative_rms_difference": 0.06736486510288127,
+              "max_absolute_difference": 1.283447265625
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.021980518528292584,
+              "relative_rms_difference": 0.06780154538134173,
+              "max_absolute_difference": 0.58740234375
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.024501831915443976,
+              "relative_rms_difference": 0.045143100167348404,
+              "max_absolute_difference": 0.75
+            }
+          ]
+        },
+        {
+          "horizon": 32,
+          "bitwise_equal": false,
+          "rms_difference": 0.021854675622013795,
+          "relative_rms_difference": 0.046388972651124016,
+          "max_absolute_difference": 1.67333984375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00026840155134096256,
+              "relative_rms_difference": 0.0010918099763364982,
+              "max_absolute_difference": 0.01043701171875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0013046299969660664,
+              "relative_rms_difference": 0.004872211942680541,
+              "max_absolute_difference": 0.045654296875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0025061412341745868,
+              "relative_rms_difference": 0.008523457549106482,
+              "max_absolute_difference": 0.08203125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.003827058671692543,
+              "relative_rms_difference": 0.010944673520189768,
+              "max_absolute_difference": 0.151611328125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.0047733228059665634,
+              "relative_rms_difference": 0.013283156680631637,
+              "max_absolute_difference": 0.1630859375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.005010353509721538,
+              "relative_rms_difference": 0.014008899547354344,
+              "max_absolute_difference": 0.123046875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.005169352199726719,
+              "relative_rms_difference": 0.014078958411692424,
+              "max_absolute_difference": 0.09765625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.005194259801977918,
+              "relative_rms_difference": 0.013786112016702238,
+              "max_absolute_difference": 0.1923828125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.005159110174258479,
+              "relative_rms_difference": 0.014942036878831172,
+              "max_absolute_difference": 0.1728515625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.00507915220998027,
+              "relative_rms_difference": 0.013660813443544294,
+              "max_absolute_difference": 0.052734375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.005309254620949842,
+              "relative_rms_difference": 0.013917625835251572,
+              "max_absolute_difference": 0.0712890625
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.005465349469007526,
+              "relative_rms_difference": 0.014777600370857558,
+              "max_absolute_difference": 0.06982421875
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.006455754917544992,
+              "relative_rms_difference": 0.015971448593973932,
+              "max_absolute_difference": 0.08349609375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.01513252615627096,
+              "relative_rms_difference": 0.03952074374899516,
+              "max_absolute_difference": 0.486328125
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.01581680947005393,
+              "relative_rms_difference": 0.03312427266497369,
+              "max_absolute_difference": 0.396484375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.017512871708450697,
+              "relative_rms_difference": 0.031424090757126655,
+              "max_absolute_difference": 0.310546875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.0244882767726186,
+              "relative_rms_difference": 0.0361857345806374,
+              "max_absolute_difference": 0.373046875
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.028435488098495675,
+              "relative_rms_difference": 0.04066992775434576,
+              "max_absolute_difference": 0.4814453125
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.04559770310437547,
+              "relative_rms_difference": 0.08083416921157217,
+              "max_absolute_difference": 1.09375
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.044420793918566195,
+              "relative_rms_difference": 0.062418196913952416,
+              "max_absolute_difference": 1.67333984375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.05417795651127808,
+              "relative_rms_difference": 0.06721660707588295,
+              "max_absolute_difference": 0.9547119140625
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.029657231447784132,
+              "relative_rms_difference": 0.06830912039949312,
+              "max_absolute_difference": 1.15625
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.022975639258345924,
+              "relative_rms_difference": 0.07018542065283137,
+              "max_absolute_difference": 0.716796875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.0244426905949101,
+              "relative_rms_difference": 0.041493725166116706,
+              "max_absolute_difference": 0.695556640625
+            }
+          ]
+        },
+        {
+          "horizon": 64,
+          "bitwise_equal": false,
+          "rms_difference": 0.018115851982151432,
+          "relative_rms_difference": 0.03487057357633667,
+          "max_absolute_difference": 1.126220703125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0001885820026566732,
+              "relative_rms_difference": 0.000809696971470374,
+              "max_absolute_difference": 0.0076541900634765625
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0009836687131644496,
+              "relative_rms_difference": 0.003366966099600287,
+              "max_absolute_difference": 0.02587890625
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.002348844458107401,
+              "relative_rms_difference": 0.00717521416173803,
+              "max_absolute_difference": 0.1083984375
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.003590933076471026,
+              "relative_rms_difference": 0.008977308212618797,
+              "max_absolute_difference": 0.15869140625
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.005034343215356359,
+              "relative_rms_difference": 0.01225541454998359,
+              "max_absolute_difference": 0.1328125
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.004855541078661251,
+              "relative_rms_difference": 0.011514895782024671,
+              "max_absolute_difference": 0.08251953125
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.0043936845979461936,
+              "relative_rms_difference": 0.010721908904165071,
+              "max_absolute_difference": 0.069580078125
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.004705159986012787,
+              "relative_rms_difference": 0.011338340269112778,
+              "max_absolute_difference": 0.0908203125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.00444472657749388,
+              "relative_rms_difference": 0.011394578737754785,
+              "max_absolute_difference": 0.119140625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.0049270220955226485,
+              "relative_rms_difference": 0.011738003512936964,
+              "max_absolute_difference": 0.08203125
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.004936372456772117,
+              "relative_rms_difference": 0.011883104883930656,
+              "max_absolute_difference": 0.064453125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.0051506389306347775,
+              "relative_rms_difference": 0.01217989030889587,
+              "max_absolute_difference": 0.0556640625
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.005795035173422637,
+              "relative_rms_difference": 0.01310989653183798,
+              "max_absolute_difference": 0.06640625
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.013406741148191788,
+              "relative_rms_difference": 0.030916152527984127,
+              "max_absolute_difference": 0.338134765625
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.014210001578392324,
+              "relative_rms_difference": 0.02573305626197169,
+              "max_absolute_difference": 0.416015625
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.01709404127479315,
+              "relative_rms_difference": 0.027146466442973544,
+              "max_absolute_difference": 0.283203125
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.02070852400824382,
+              "relative_rms_difference": 0.027144090849970458,
+              "max_absolute_difference": 0.396484375
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.02829599994863931,
+              "relative_rms_difference": 0.03570109583566692,
+              "max_absolute_difference": 1.126220703125
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.036584545222562485,
+              "relative_rms_difference": 0.0607370846132875,
+              "max_absolute_difference": 0.966705322265625
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.039340883559016396,
+              "relative_rms_difference": 0.04836183160966762,
+              "max_absolute_difference": 0.71630859375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.04249169504607717,
+              "relative_rms_difference": 0.04839870554405872,
+              "max_absolute_difference": 0.6484375
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02134510569541088,
+              "relative_rms_difference": 0.048180121372290885,
+              "max_absolute_difference": 0.79833984375
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.016814364778457398,
+              "relative_rms_difference": 0.049264618798575334,
+              "max_absolute_difference": 0.3671875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.017456706019345524,
+              "relative_rms_difference": 0.03181137555611539,
+              "max_absolute_difference": 0.69970703125
+            }
+          ]
+        },
+        {
+          "horizon": 128,
+          "bitwise_equal": false,
+          "rms_difference": 0.020655162381741626,
+          "relative_rms_difference": 0.04224596972621182,
+          "max_absolute_difference": 1.52392578125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00011431819077012553,
+              "relative_rms_difference": 0.0004572535827182403,
+              "max_absolute_difference": 0.005706787109375
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.000771408068635825,
+              "relative_rms_difference": 0.002789302496151561,
+              "max_absolute_difference": 0.018096923828125
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.001644255478046593,
+              "relative_rms_difference": 0.0053556662429007675,
+              "max_absolute_difference": 0.04296875
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.004622906818725754,
+              "relative_rms_difference": 0.01258674956104156,
+              "max_absolute_difference": 0.3732757568359375
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.004025588869083205,
+              "relative_rms_difference": 0.010598936350822505,
+              "max_absolute_difference": 0.26171875
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.004186807471559918,
+              "relative_rms_difference": 0.010900682841339276,
+              "max_absolute_difference": 0.212890625
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.0053489573681986145,
+              "relative_rms_difference": 0.013880657095661476,
+              "max_absolute_difference": 0.1640625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.006877131859195579,
+              "relative_rms_difference": 0.01749179302385925,
+              "max_absolute_difference": 0.3642578125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.005932819473446674,
+              "relative_rms_difference": 0.016631699168486974,
+              "max_absolute_difference": 0.212890625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.005984092058218457,
+              "relative_rms_difference": 0.015371284470709162,
+              "max_absolute_difference": 0.1064453125
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.0069553937046078155,
+              "relative_rms_difference": 0.017517467833515397,
+              "max_absolute_difference": 0.251953125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.006640234537922633,
+              "relative_rms_difference": 0.01696213368491553,
+              "max_absolute_difference": 0.13916015625
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.00788438898137034,
+              "relative_rms_difference": 0.01872185043470443,
+              "max_absolute_difference": 0.216796875
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.011713725133312036,
+              "relative_rms_difference": 0.02865199237254572,
+              "max_absolute_difference": 0.34326171875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.011540289247364855,
+              "relative_rms_difference": 0.02195750097190094,
+              "max_absolute_difference": 0.28125
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.014045651442786349,
+              "relative_rms_difference": 0.023005305967138946,
+              "max_absolute_difference": 0.228515625
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.019541451601254704,
+              "relative_rms_difference": 0.027069873772907364,
+              "max_absolute_difference": 0.3203125
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.03143030191159237,
+              "relative_rms_difference": 0.04238644196324984,
+              "max_absolute_difference": 1.52392578125
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.04565828334593201,
+              "relative_rms_difference": 0.08217628047957304,
+              "max_absolute_difference": 0.87890625
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.045574543249281674,
+              "relative_rms_difference": 0.059982715425157096,
+              "max_absolute_difference": 0.62109375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.051482932903007476,
+              "relative_rms_difference": 0.06278959537380271,
+              "max_absolute_difference": 1.08154296875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.023234976857434097,
+              "relative_rms_difference": 0.055120997619060245,
+              "max_absolute_difference": 0.68505859375
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.017385505282857785,
+              "relative_rms_difference": 0.05477397396667751,
+              "max_absolute_difference": 0.46044921875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.019686537761989892,
+              "relative_rms_difference": 0.03698628353534843,
+              "max_absolute_difference": 0.875
+            }
+          ]
+        },
+        {
+          "horizon": 256,
+          "bitwise_equal": false,
+          "rms_difference": 0.02352247841751739,
+          "relative_rms_difference": 0.0497937472893626,
+          "max_absolute_difference": 2.015625,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 6.631383948212772e-05,
+              "relative_rms_difference": 0.00026896070275607366,
+              "max_absolute_difference": 0.004974365234375
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0006133351566863899,
+              "relative_rms_difference": 0.0023111815237068047,
+              "max_absolute_difference": 0.016815185546875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0016124947646177197,
+              "relative_rms_difference": 0.005506724144620738,
+              "max_absolute_difference": 0.03572845458984375
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.0027346481011416156,
+              "relative_rms_difference": 0.007869808390462031,
+              "max_absolute_difference": 0.126953125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.0029314448313694395,
+              "relative_rms_difference": 0.008641377111904783,
+              "max_absolute_difference": 0.08984375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.0028780246994031854,
+              "relative_rms_difference": 0.008299774177636972,
+              "max_absolute_difference": 0.055908203125
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.00276535138836693,
+              "relative_rms_difference": 0.007744396142624345,
+              "max_absolute_difference": 0.0419921875
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.002863618134626254,
+              "relative_rms_difference": 0.007869165866914442,
+              "max_absolute_difference": 0.08203125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.002976993989853854,
+              "relative_rms_difference": 0.008620152763762852,
+              "max_absolute_difference": 0.0703125
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.0032224942289598908,
+              "relative_rms_difference": 0.008174205002956202,
+              "max_absolute_difference": 0.052734375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.003509338925285055,
+              "relative_rms_difference": 0.008826401526238465,
+              "max_absolute_difference": 0.0546875
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.003689607835572162,
+              "relative_rms_difference": 0.009202510343364955,
+              "max_absolute_difference": 0.0546875
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.00483564162183724,
+              "relative_rms_difference": 0.011090776804029354,
+              "max_absolute_difference": 0.0634765625
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.01684785249837759,
+              "relative_rms_difference": 0.03836511840881891,
+              "max_absolute_difference": 0.6376953125
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.012926208665831083,
+              "relative_rms_difference": 0.02657299664976227,
+              "max_absolute_difference": 0.4453125
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.01344061172614253,
+              "relative_rms_difference": 0.022938001605327638,
+              "max_absolute_difference": 0.3154296875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.032247616645265015,
+              "relative_rms_difference": 0.04512134998245703,
+              "max_absolute_difference": 1.170166015625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.027198161099597586,
+              "relative_rms_difference": 0.03927096188453074,
+              "max_absolute_difference": 0.84765625
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.04652606686671086,
+              "relative_rms_difference": 0.09054597103509657,
+              "max_absolute_difference": 1.7314453125
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.04794950434057636,
+              "relative_rms_difference": 0.0642503795006007,
+              "max_absolute_difference": 1.01171875
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.058252866261334045,
+              "relative_rms_difference": 0.07166470681370903,
+              "max_absolute_difference": 0.8447265625
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.03175855496480205,
+              "relative_rms_difference": 0.07433621431174176,
+              "max_absolute_difference": 1.1207275390625
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.026463204124259163,
+              "relative_rms_difference": 0.08273436622311445,
+              "max_absolute_difference": 0.58935546875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.0345000979999749,
+              "relative_rms_difference": 0.07538085769932099,
+              "max_absolute_difference": 2.015625
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "live_tokens_at_divergence_end": 112,
+      "shadow_tokens_at_divergence_end": 109,
+      "measurements": [
+        {
+          "horizon": 0,
+          "bitwise_equal": false,
+          "rms_difference": 0.03450061043247784,
+          "relative_rms_difference": 0.07519060946250088,
+          "max_absolute_difference": 1.1396484375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0005469353383914105,
+              "relative_rms_difference": 0.002175957977474051,
+              "max_absolute_difference": 0.0107421875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.002739614196051725,
+              "relative_rms_difference": 0.00995713785018222,
+              "max_absolute_difference": 0.0846405029296875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.008881751391453375,
+              "relative_rms_difference": 0.030798593164990246,
+              "max_absolute_difference": 0.283203125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.01217251710467954,
+              "relative_rms_difference": 0.03417851877358671,
+              "max_absolute_difference": 0.185546875
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.02132326719930221,
+              "relative_rms_difference": 0.059224969907105504,
+              "max_absolute_difference": 0.537109375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.023660529005731415,
+              "relative_rms_difference": 0.06441722158573487,
+              "max_absolute_difference": 0.45068359375
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.023129877059147423,
+              "relative_rms_difference": 0.06245489343095689,
+              "max_absolute_difference": 0.462890625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.028798932879635808,
+              "relative_rms_difference": 0.07243042020096985,
+              "max_absolute_difference": 0.8095703125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.026832801363111326,
+              "relative_rms_difference": 0.07679896415822002,
+              "max_absolute_difference": 0.62158203125
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.029066177536320948,
+              "relative_rms_difference": 0.07488955212372554,
+              "max_absolute_difference": 0.4765625
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.026724069453995483,
+              "relative_rms_difference": 0.06869420686930908,
+              "max_absolute_difference": 0.4189453125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.023743040592582892,
+              "relative_rms_difference": 0.06234586769476946,
+              "max_absolute_difference": 0.392578125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.02552695075718004,
+              "relative_rms_difference": 0.062294293347157574,
+              "max_absolute_difference": 0.3505859375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.033975778021491765,
+              "relative_rms_difference": 0.08789732648497736,
+              "max_absolute_difference": 0.65234375
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.0365228395840208,
+              "relative_rms_difference": 0.08493028799130634,
+              "max_absolute_difference": 0.677734375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.041870782668939226,
+              "relative_rms_difference": 0.07968811222303625,
+              "max_absolute_difference": 0.556640625
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.05762119452705261,
+              "relative_rms_difference": 0.09436109565964292,
+              "max_absolute_difference": 0.875
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.06662149390944168,
+              "relative_rms_difference": 0.10300248726220201,
+              "max_absolute_difference": 1.1396484375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.04584717806892031,
+              "relative_rms_difference": 0.09577533398250943,
+              "max_absolute_difference": 0.957122802734375
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.053798385167077044,
+              "relative_rms_difference": 0.08523358395190281,
+              "max_absolute_difference": 0.7705078125
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.059635907418232145,
+              "relative_rms_difference": 0.08026587821829648,
+              "max_absolute_difference": 0.67529296875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.031233778607783,
+              "relative_rms_difference": 0.058709575093703135,
+              "max_absolute_difference": 1.02191162109375
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.022330034486606816,
+              "relative_rms_difference": 0.06331375904589358,
+              "max_absolute_difference": 0.4404296875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.020784451711890018,
+              "relative_rms_difference": 0.03212653732066928,
+              "max_absolute_difference": 0.46875
+            }
+          ]
+        },
+        {
+          "horizon": 8,
+          "bitwise_equal": false,
+          "rms_difference": 0.02560052433327494,
+          "relative_rms_difference": 0.0578918183596642,
+          "max_absolute_difference": 1.8125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.000466417172085894,
+              "relative_rms_difference": 0.0019084403367357766,
+              "max_absolute_difference": 0.00984954833984375
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0020686340095201305,
+              "relative_rms_difference": 0.007223001603909151,
+              "max_absolute_difference": 0.08343505859375
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.005305056892835349,
+              "relative_rms_difference": 0.016400926414144413,
+              "max_absolute_difference": 0.109619140625
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.00874052782999029,
+              "relative_rms_difference": 0.02278656119434348,
+              "max_absolute_difference": 0.4833984375
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.008563983558980828,
+              "relative_rms_difference": 0.0217631752769116,
+              "max_absolute_difference": 0.330078125
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.008966984300234026,
+              "relative_rms_difference": 0.02281195219731377,
+              "max_absolute_difference": 0.19482421875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.009095141930109407,
+              "relative_rms_difference": 0.023384409153131953,
+              "max_absolute_difference": 0.228515625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.00956086656658483,
+              "relative_rms_difference": 0.024177417294493263,
+              "max_absolute_difference": 0.24609375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.010228708185672307,
+              "relative_rms_difference": 0.028275683989837513,
+              "max_absolute_difference": 0.228515625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.010616383224986299,
+              "relative_rms_difference": 0.028498611582118576,
+              "max_absolute_difference": 0.283203125
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.011019273331517572,
+              "relative_rms_difference": 0.028570641013792537,
+              "max_absolute_difference": 0.17413330078125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.01130281004755536,
+              "relative_rms_difference": 0.031436453681003174,
+              "max_absolute_difference": 0.18359375
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.013041919743219945,
+              "relative_rms_difference": 0.033676925434884514,
+              "max_absolute_difference": 0.27001953125
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.017191273843800828,
+              "relative_rms_difference": 0.04892301199167304,
+              "max_absolute_difference": 0.3447265625
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.01917733579517918,
+              "relative_rms_difference": 0.04712461633235906,
+              "max_absolute_difference": 0.533203125
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.020142787936942172,
+              "relative_rms_difference": 0.040592645879766444,
+              "max_absolute_difference": 0.345703125
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.030904294326012015,
+              "relative_rms_difference": 0.05202558413497972,
+              "max_absolute_difference": 0.83984375
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.03289436964897485,
+              "relative_rms_difference": 0.05326704131364998,
+              "max_absolute_difference": 0.732177734375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.053306861962865895,
+              "relative_rms_difference": 0.1123578496495551,
+              "max_absolute_difference": 1.5
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.052470208139388984,
+              "relative_rms_difference": 0.08615323369060726,
+              "max_absolute_difference": 0.8232421875
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.0594734609692464,
+              "relative_rms_difference": 0.08124301620418571,
+              "max_absolute_difference": 0.98046875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.030323765820480984,
+              "relative_rms_difference": 0.07195726569665807,
+              "max_absolute_difference": 0.68408203125
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.024087211103893516,
+              "relative_rms_difference": 0.0761828471030548,
+              "max_absolute_difference": 0.90625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.030299252609085683,
+              "relative_rms_difference": 0.05476424196160781,
+              "max_absolute_difference": 1.8125
+            }
+          ]
+        },
+        {
+          "horizon": 16,
+          "bitwise_equal": false,
+          "rms_difference": 0.01618346650102034,
+          "relative_rms_difference": 0.034964575700999825,
+          "max_absolute_difference": 1.2626953125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00040393836070386885,
+              "relative_rms_difference": 0.0015707004132987695,
+              "max_absolute_difference": 0.009357452392578125
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.002295003692541512,
+              "relative_rms_difference": 0.009268043434097456,
+              "max_absolute_difference": 0.0829315185546875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0052104617000776265,
+              "relative_rms_difference": 0.021018835095245502,
+              "max_absolute_difference": 0.1241455078125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.005940129073111116,
+              "relative_rms_difference": 0.020065276743545604,
+              "max_absolute_difference": 0.11467742919921875
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.006390128575506351,
+              "relative_rms_difference": 0.020352500802053804,
+              "max_absolute_difference": 0.0830078125
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.0065404505571539625,
+              "relative_rms_difference": 0.020255492072835612,
+              "max_absolute_difference": 0.0927734375
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.006254431658165262,
+              "relative_rms_difference": 0.018212596986350617,
+              "max_absolute_difference": 0.080078125
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.006387579103933568,
+              "relative_rms_difference": 0.017835225389390384,
+              "max_absolute_difference": 0.104248046875
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.0069279772160894485,
+              "relative_rms_difference": 0.02037210537504207,
+              "max_absolute_difference": 0.13916015625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.008413372084282125,
+              "relative_rms_difference": 0.022011928280931747,
+              "max_absolute_difference": 0.238037109375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.008410384670304685,
+              "relative_rms_difference": 0.02063103261681357,
+              "max_absolute_difference": 0.1185302734375
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.00880314786364889,
+              "relative_rms_difference": 0.021657912893892385,
+              "max_absolute_difference": 0.109619140625
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.011263396014780117,
+              "relative_rms_difference": 0.02600645470233954,
+              "max_absolute_difference": 0.18115234375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.014406490697663513,
+              "relative_rms_difference": 0.03538630232716447,
+              "max_absolute_difference": 0.3681640625
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.017258103880355112,
+              "relative_rms_difference": 0.03647654688301521,
+              "max_absolute_difference": 0.392578125
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.019434826054431927,
+              "relative_rms_difference": 0.03478675763155184,
+              "max_absolute_difference": 0.3272705078125
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.02479384699254229,
+              "relative_rms_difference": 0.037246459748411884,
+              "max_absolute_difference": 0.3515625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.025258543270322932,
+              "relative_rms_difference": 0.036193146492642624,
+              "max_absolute_difference": 0.4871673583984375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.020887590552992986,
+              "relative_rms_difference": 0.03784456978830122,
+              "max_absolute_difference": 0.3095703125
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.025172444306734654,
+              "relative_rms_difference": 0.036197209814883766,
+              "max_absolute_difference": 0.4462890625
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.034146382888843765,
+              "relative_rms_difference": 0.04332100781044158,
+              "max_absolute_difference": 0.5232696533203125
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02490124657183559,
+              "relative_rms_difference": 0.055723089986161885,
+              "max_absolute_difference": 1.2626953125
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.017884901748663196,
+              "relative_rms_difference": 0.05427320172038384,
+              "max_absolute_difference": 0.54248046875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.018674814002582918,
+              "relative_rms_difference": 0.034944898226520894,
+              "max_absolute_difference": 0.703125
+            }
+          ]
+        },
+        {
+          "horizon": 32,
+          "bitwise_equal": false,
+          "rms_difference": 0.0257515298809905,
+          "relative_rms_difference": 0.0544226439748237,
+          "max_absolute_difference": 2.09375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0003145794033021172,
+              "relative_rms_difference": 0.0012795952153501606,
+              "max_absolute_difference": 0.008014678955078125
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.002062686421009358,
+              "relative_rms_difference": 0.007707335831785038,
+              "max_absolute_difference": 0.0807342529296875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.004645272262621301,
+              "relative_rms_difference": 0.015738088991203953,
+              "max_absolute_difference": 0.094146728515625
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.005530307377269615,
+              "relative_rms_difference": 0.015693819453642864,
+              "max_absolute_difference": 0.163818359375
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.005907297014117206,
+              "relative_rms_difference": 0.01617206577085655,
+              "max_absolute_difference": 0.19140625
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.006295402510535405,
+              "relative_rms_difference": 0.017431406237887935,
+              "max_absolute_difference": 0.103515625
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.0064175068731995785,
+              "relative_rms_difference": 0.01732247401121416,
+              "max_absolute_difference": 0.10546875
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.007338464359523887,
+              "relative_rms_difference": 0.019323782068934373,
+              "max_absolute_difference": 0.12109375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.007624844505614283,
+              "relative_rms_difference": 0.0218936663926477,
+              "max_absolute_difference": 0.134765625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.00785291508542456,
+              "relative_rms_difference": 0.02091543121275881,
+              "max_absolute_difference": 0.09130859375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.007919877127200988,
+              "relative_rms_difference": 0.02069314311543607,
+              "max_absolute_difference": 0.1083984375
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.008892710638829309,
+              "relative_rms_difference": 0.023970971456650884,
+              "max_absolute_difference": 0.1044921875
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.010493235030525228,
+              "relative_rms_difference": 0.026125211523868003,
+              "max_absolute_difference": 0.16015625
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.01853856051993232,
+              "relative_rms_difference": 0.04847358407091649,
+              "max_absolute_difference": 0.470703125
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.022584987759785558,
+              "relative_rms_difference": 0.047035885653779544,
+              "max_absolute_difference": 0.52978515625
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.025052264346884262,
+              "relative_rms_difference": 0.044723393931478,
+              "max_absolute_difference": 0.5025634765625
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.03091600296698768,
+              "relative_rms_difference": 0.045285124240215004,
+              "max_absolute_difference": 0.40625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.03374840687557679,
+              "relative_rms_difference": 0.04776341244242041,
+              "max_absolute_difference": 0.4839019775390625
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.051935027526158806,
+              "relative_rms_difference": 0.09173845115351165,
+              "max_absolute_difference": 1.0234375
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.04923128809085714,
+              "relative_rms_difference": 0.06979357153663474,
+              "max_absolute_difference": 0.516357421875
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.06198960973005411,
+              "relative_rms_difference": 0.07717331543325001,
+              "max_absolute_difference": 0.78857421875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.03352771826420868,
+              "relative_rms_difference": 0.07716478604077813,
+              "max_absolute_difference": 1.489013671875
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.02408718162211189,
+              "relative_rms_difference": 0.073716147265943,
+              "max_absolute_difference": 0.69775390625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.032764015916059326,
+              "relative_rms_difference": 0.05442745055720203,
+              "max_absolute_difference": 2.09375
+            }
+          ]
+        },
+        {
+          "horizon": 64,
+          "bitwise_equal": false,
+          "rms_difference": 0.032370226551672106,
+          "relative_rms_difference": 0.06189720045058435,
+          "max_absolute_difference": 1.87255859375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00021345936409453538,
+              "relative_rms_difference": 0.0009164932777067262,
+              "max_absolute_difference": 0.0068817138671875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0015659984694289786,
+              "relative_rms_difference": 0.005361413601024875,
+              "max_absolute_difference": 0.077911376953125
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.005287956433495096,
+              "relative_rms_difference": 0.016116539803095013,
+              "max_absolute_difference": 0.11279296875
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.007222517290826094,
+              "relative_rms_difference": 0.017988201588784152,
+              "max_absolute_difference": 0.25927734375
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.007393853827055925,
+              "relative_rms_difference": 0.017912610662306434,
+              "max_absolute_difference": 0.1552734375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.007307524911859378,
+              "relative_rms_difference": 0.017276196728265726,
+              "max_absolute_difference": 0.10107421875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.00659468411532119,
+              "relative_rms_difference": 0.016037380732705973,
+              "max_absolute_difference": 0.09423828125
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.006773439643592712,
+              "relative_rms_difference": 0.01628907612411954,
+              "max_absolute_difference": 0.1689453125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.0062208736194340804,
+              "relative_rms_difference": 0.015897178521624793,
+              "max_absolute_difference": 0.11194229125976562
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.0065199552306153,
+              "relative_rms_difference": 0.01552310020366186,
+              "max_absolute_difference": 0.09423828125
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.006890895098161336,
+              "relative_rms_difference": 0.01655478478989713,
+              "max_absolute_difference": 0.103515625
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.0077870484922227395,
+              "relative_rms_difference": 0.018342688596410382,
+              "max_absolute_difference": 0.09765625
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.009651560166662018,
+              "relative_rms_difference": 0.021794081554640923,
+              "max_absolute_difference": 0.131988525390625
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.012872133281803562,
+              "relative_rms_difference": 0.029641129872580028,
+              "max_absolute_difference": 0.25390625
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.014605590256812327,
+              "relative_rms_difference": 0.026403659041914225,
+              "max_absolute_difference": 0.1982421875
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.02104178463902584,
+              "relative_rms_difference": 0.03289831735370976,
+              "max_absolute_difference": 0.337890625
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.03597178156536974,
+              "relative_rms_difference": 0.046645796408094194,
+              "max_absolute_difference": 0.73974609375
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.045056106076784785,
+              "relative_rms_difference": 0.055712646149838986,
+              "max_absolute_difference": 1.87255859375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.07144418559097386,
+              "relative_rms_difference": 0.11826086735766035,
+              "max_absolute_difference": 1.457733154296875
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.08534665869557291,
+              "relative_rms_difference": 0.10410622022067413,
+              "max_absolute_difference": 1.59765625
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.07697705571072978,
+              "relative_rms_difference": 0.08737937194724002,
+              "max_absolute_difference": 0.8729248046875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.030997446219115477,
+              "relative_rms_difference": 0.06984496098373626,
+              "max_absolute_difference": 0.9169921875
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.024122845154021987,
+              "relative_rms_difference": 0.07123083764311942,
+              "max_absolute_difference": 0.49365234375
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.024146885281348292,
+              "relative_rms_difference": 0.04352187401600833,
+              "max_absolute_difference": 0.828125
+            }
+          ]
+        },
+        {
+          "horizon": 128,
+          "bitwise_equal": false,
+          "rms_difference": 0.029382105276780073,
+          "relative_rms_difference": 0.06008131751358971,
+          "max_absolute_difference": 2.46826171875,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0001243561422112254,
+              "relative_rms_difference": 0.000497401839644912,
+              "max_absolute_difference": 0.0050506591796875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0013014712018608139,
+              "relative_rms_difference": 0.004707192557578697,
+              "max_absolute_difference": 0.0739593505859375
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0037476130497369176,
+              "relative_rms_difference": 0.01217970896637842,
+              "max_absolute_difference": 0.07421875
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.004801716840692025,
+              "relative_rms_difference": 0.013027243352239424,
+              "max_absolute_difference": 0.14453125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.00484594508260677,
+              "relative_rms_difference": 0.012678860787118986,
+              "max_absolute_difference": 0.1484375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.004868055692250262,
+              "relative_rms_difference": 0.012604692030172,
+              "max_absolute_difference": 0.107421875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.0047616630602475354,
+              "relative_rms_difference": 0.012294423569193497,
+              "max_absolute_difference": 0.086181640625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.0051735996643922115,
+              "relative_rms_difference": 0.013104739175834285,
+              "max_absolute_difference": 0.1162109375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.004783571672358288,
+              "relative_rms_difference": 0.01333006274288449,
+              "max_absolute_difference": 0.1083984375
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.005061474249934735,
+              "relative_rms_difference": 0.01296780432171588,
+              "max_absolute_difference": 0.09765625
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.005547232289874038,
+              "relative_rms_difference": 0.013998230606663793,
+              "max_absolute_difference": 0.1171875
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.005779040440255331,
+              "relative_rms_difference": 0.01477362395501692,
+              "max_absolute_difference": 0.08203125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.007221763108265803,
+              "relative_rms_difference": 0.017253543589495865,
+              "max_absolute_difference": 0.11669921875
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.011201397078562535,
+              "relative_rms_difference": 0.0275124574727808,
+              "max_absolute_difference": 0.28125
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.01241895532626064,
+              "relative_rms_difference": 0.023943198531412253,
+              "max_absolute_difference": 0.2421875
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.017058161549061736,
+              "relative_rms_difference": 0.027764111122976862,
+              "max_absolute_difference": 0.20361328125
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.03151862321199079,
+              "relative_rms_difference": 0.043771042085142535,
+              "max_absolute_difference": 0.6241455078125
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.04680561387413434,
+              "relative_rms_difference": 0.06269124965628606,
+              "max_absolute_difference": 2.46826171875
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.06583593919473195,
+              "relative_rms_difference": 0.11763651929510945,
+              "max_absolute_difference": 1.5908203125
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.06585178074094679,
+              "relative_rms_difference": 0.08665498195165659,
+              "max_absolute_difference": 1.26513671875
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.07304646757030504,
+              "relative_rms_difference": 0.08910196160019042,
+              "max_absolute_difference": 1.2401123046875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.03332380261614314,
+              "relative_rms_difference": 0.07898407980147115,
+              "max_absolute_difference": 0.59716796875
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.02613836534518918,
+              "relative_rms_difference": 0.08210320287869337,
+              "max_absolute_difference": 0.76171875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.029393255854551957,
+              "relative_rms_difference": 0.05630747977831537,
+              "max_absolute_difference": 1.625
+            }
+          ]
+        },
+        {
+          "horizon": 256,
+          "bitwise_equal": false,
+          "rms_difference": 0.0240864494981122,
+          "relative_rms_difference": 0.05082504981397006,
+          "max_absolute_difference": 1.25,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 6.60343358007591e-05,
+              "relative_rms_difference": 0.0002678266049369993,
+              "max_absolute_difference": 0.0037689208984375
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0010843867451100168,
+              "relative_rms_difference": 0.0040857833167506005,
+              "max_absolute_difference": 0.068634033203125
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0030791301227910198,
+              "relative_rms_difference": 0.010489582124776155,
+              "max_absolute_difference": 0.044189453125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.0045008875460422,
+              "relative_rms_difference": 0.01283096479336956,
+              "max_absolute_difference": 0.203125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.004038965611826514,
+              "relative_rms_difference": 0.01182802693023972,
+              "max_absolute_difference": 0.1044921875
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.0039794262317933305,
+              "relative_rms_difference": 0.01144370936477826,
+              "max_absolute_difference": 0.091796875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.00392658497898839,
+              "relative_rms_difference": 0.01096734345636713,
+              "max_absolute_difference": 0.07421875
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.004287937953199014,
+              "relative_rms_difference": 0.011746755088768504,
+              "max_absolute_difference": 0.08203125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.004435426594685625,
+              "relative_rms_difference": 0.012831143618003926,
+              "max_absolute_difference": 0.09765625
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.004515416842836857,
+              "relative_rms_difference": 0.011466743787362186,
+              "max_absolute_difference": 0.0625
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.004855075035127889,
+              "relative_rms_difference": 0.012286916187288058,
+              "max_absolute_difference": 0.07421875
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.0052318137474532695,
+              "relative_rms_difference": 0.013113430006871003,
+              "max_absolute_difference": 0.064453125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.006715914999162753,
+              "relative_rms_difference": 0.01552672437207562,
+              "max_absolute_difference": 0.09785079956054688
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.02149618854786268,
+              "relative_rms_difference": 0.04988530135354237,
+              "max_absolute_difference": 0.609375
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.018728690442321835,
+              "relative_rms_difference": 0.03839176042177145,
+              "max_absolute_difference": 0.37890625
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.019727155768762973,
+              "relative_rms_difference": 0.03333850070997984,
+              "max_absolute_difference": 0.302734375
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.032111554251447884,
+              "relative_rms_difference": 0.044935693300399114,
+              "max_absolute_difference": 0.52783203125
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.030313767979342734,
+              "relative_rms_difference": 0.04360530420005206,
+              "max_absolute_difference": 0.481201171875
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.04476019236141219,
+              "relative_rms_difference": 0.08749583241144628,
+              "max_absolute_difference": 0.990234375
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.052938698117699974,
+              "relative_rms_difference": 0.06992865716532333,
+              "max_absolute_difference": 1.05078125
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.05989417015708769,
+              "relative_rms_difference": 0.07306041029763397,
+              "max_absolute_difference": 0.822265625
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.03069617337516244,
+              "relative_rms_difference": 0.07220334635609092,
+              "max_absolute_difference": 1.136474609375
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.023990434918860347,
+              "relative_rms_difference": 0.07514589966771179,
+              "max_absolute_difference": 0.63525390625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.025052183297103906,
+              "relative_rms_difference": 0.053839845019792235,
+              "max_absolute_difference": 1.25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "live_tokens_at_divergence_end": 106,
+      "shadow_tokens_at_divergence_end": 108,
+      "measurements": [
+        {
+          "horizon": 0,
+          "bitwise_equal": false,
+          "rms_difference": 0.02974886267678802,
+          "relative_rms_difference": 0.06372678370034697,
+          "max_absolute_difference": 1.28125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0004561243240419679,
+              "relative_rms_difference": 0.0018152666561947171,
+              "max_absolute_difference": 0.013397216796875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0012528635255807787,
+              "relative_rms_difference": 0.004549046709668802,
+              "max_absolute_difference": 0.025390625
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.004175157664529847,
+              "relative_rms_difference": 0.014494128790577123,
+              "max_absolute_difference": 0.1008453369140625
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.008280291363709318,
+              "relative_rms_difference": 0.0232846419728387,
+              "max_absolute_difference": 0.1689453125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.01993072011787643,
+              "relative_rms_difference": 0.05433247068976003,
+              "max_absolute_difference": 0.5115814208984375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.01917911095058752,
+              "relative_rms_difference": 0.051951211214644265,
+              "max_absolute_difference": 0.3348388671875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.01838968614568576,
+              "relative_rms_difference": 0.049310403134042,
+              "max_absolute_difference": 0.311279296875
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.019003239624116135,
+              "relative_rms_difference": 0.04755710902914195,
+              "max_absolute_difference": 0.3564338684082031
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.016925128770812092,
+              "relative_rms_difference": 0.04782593647378038,
+              "max_absolute_difference": 0.2685546875
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.018726569440766262,
+              "relative_rms_difference": 0.04760276092186109,
+              "max_absolute_difference": 0.2900390625
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.01908987259952831,
+              "relative_rms_difference": 0.04893572716377166,
+              "max_absolute_difference": 0.3349609375
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.02155370489573262,
+              "relative_rms_difference": 0.055857896749606284,
+              "max_absolute_difference": 0.392578125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.02491181991336518,
+              "relative_rms_difference": 0.061391835334651645,
+              "max_absolute_difference": 0.4554443359375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.030419276567350478,
+              "relative_rms_difference": 0.07861469965989182,
+              "max_absolute_difference": 0.466796875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.03198978647767954,
+              "relative_rms_difference": 0.07162599060140805,
+              "max_absolute_difference": 0.40625
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.03340724516734473,
+              "relative_rms_difference": 0.06197459240936621,
+              "max_absolute_difference": 0.369140625
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.03871183203569212,
+              "relative_rms_difference": 0.06197818911024888,
+              "max_absolute_difference": 0.494140625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.041553757498428046,
+              "relative_rms_difference": 0.06329485101381281,
+              "max_absolute_difference": 0.51171875
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.043946050341359184,
+              "relative_rms_difference": 0.08724806199530176,
+              "max_absolute_difference": 0.59814453125
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.05448064920035786,
+              "relative_rms_difference": 0.08223591631341975,
+              "max_absolute_difference": 0.736328125
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.0599274520085386,
+              "relative_rms_difference": 0.07746358871603289,
+              "max_absolute_difference": 0.73828125
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.03537367196097972,
+              "relative_rms_difference": 0.0657167897979743,
+              "max_absolute_difference": 0.805908203125
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.02609913316704412,
+              "relative_rms_difference": 0.07266447238898587,
+              "max_absolute_difference": 0.5859375
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.029795938114192646,
+              "relative_rms_difference": 0.047374258267464456,
+              "max_absolute_difference": 1.28125
+            }
+          ]
+        },
+        {
+          "horizon": 8,
+          "bitwise_equal": false,
+          "rms_difference": 0.02158285425796769,
+          "relative_rms_difference": 0.048522641221263416,
+          "max_absolute_difference": 3.171875,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00039189656059798186,
+              "relative_rms_difference": 0.0016039647391865714,
+              "max_absolute_difference": 0.0126953125
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0012052102706709815,
+              "relative_rms_difference": 0.0042106951164317475,
+              "max_absolute_difference": 0.0210113525390625
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0027121567564882113,
+              "relative_rms_difference": 0.008436371828634437,
+              "max_absolute_difference": 0.1160888671875
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.006061324794831589,
+              "relative_rms_difference": 0.015867778931876582,
+              "max_absolute_difference": 0.272705078125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.008542117292944492,
+              "relative_rms_difference": 0.021672208749588244,
+              "max_absolute_difference": 0.23046875
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.008619981750565792,
+              "relative_rms_difference": 0.021945924272942067,
+              "max_absolute_difference": 0.1678466796875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.0088172294117572,
+              "relative_rms_difference": 0.02282822347619027,
+              "max_absolute_difference": 0.294921875
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.008888482007416402,
+              "relative_rms_difference": 0.022584494676274307,
+              "max_absolute_difference": 0.23486328125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.0081479135922469,
+              "relative_rms_difference": 0.02264255411224529,
+              "max_absolute_difference": 0.179443359375
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.008716364693631863,
+              "relative_rms_difference": 0.023409865208881626,
+              "max_absolute_difference": 0.2470703125
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.009244099204803556,
+              "relative_rms_difference": 0.02406677967637204,
+              "max_absolute_difference": 0.20172119140625
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.008711135241287615,
+              "relative_rms_difference": 0.02425553241513135,
+              "max_absolute_difference": 0.160400390625
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.010801058532709294,
+              "relative_rms_difference": 0.02785769847511713,
+              "max_absolute_difference": 0.2392578125
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.016544112009741013,
+              "relative_rms_difference": 0.046699553644938566,
+              "max_absolute_difference": 0.427978515625
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.017406690597308358,
+              "relative_rms_difference": 0.04253774745370996,
+              "max_absolute_difference": 0.5556640625
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.019337345066640248,
+              "relative_rms_difference": 0.03840603973259246,
+              "max_absolute_difference": 0.3525390625
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.028090157290912153,
+              "relative_rms_difference": 0.046800004049539434,
+              "max_absolute_difference": 0.4913330078125
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.02809475656823578,
+              "relative_rms_difference": 0.044508885063478665,
+              "max_absolute_difference": 0.4482421875
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.03866181767994929,
+              "relative_rms_difference": 0.07994866436616074,
+              "max_absolute_difference": 1.26171875
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.040648694158504674,
+              "relative_rms_difference": 0.06511381276394564,
+              "max_absolute_difference": 0.486328125
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.048469996058671,
+              "relative_rms_difference": 0.06490147228408193,
+              "max_absolute_difference": 0.7568359375
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.025600810875475284,
+              "relative_rms_difference": 0.06071537345488439,
+              "max_absolute_difference": 0.8125
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.020919234965884204,
+              "relative_rms_difference": 0.06595411884272855,
+              "max_absolute_difference": 1.0546875
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.035932854511099135,
+              "relative_rms_difference": 0.06744069615378807,
+              "max_absolute_difference": 3.171875
+            }
+          ]
+        },
+        {
+          "horizon": 16,
+          "bitwise_equal": false,
+          "rms_difference": 0.019022181384392284,
+          "relative_rms_difference": 0.04071499373044139,
+          "max_absolute_difference": 1.33740234375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0003437896265004688,
+              "relative_rms_difference": 0.001337064109545187,
+              "max_absolute_difference": 0.0123748779296875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0010321415384001022,
+              "relative_rms_difference": 0.004164490631570513,
+              "max_absolute_difference": 0.0208282470703125
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0025472019839714245,
+              "relative_rms_difference": 0.010250245507369091,
+              "max_absolute_difference": 0.05355072021484375
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.004160187241035119,
+              "relative_rms_difference": 0.014093260951814344,
+              "max_absolute_difference": 0.209716796875
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.0049709858743961595,
+              "relative_rms_difference": 0.015784903288422893,
+              "max_absolute_difference": 0.138671875
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.005093110108060547,
+              "relative_rms_difference": 0.015762596208357422,
+              "max_absolute_difference": 0.1650390625
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.004812335872576438,
+              "relative_rms_difference": 0.013966175672427092,
+              "max_absolute_difference": 0.1591796875
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.005199221354620072,
+              "relative_rms_difference": 0.014415993647191042,
+              "max_absolute_difference": 0.1748046875
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.005307380516598368,
+              "relative_rms_difference": 0.015474081091941524,
+              "max_absolute_difference": 0.0792236328125
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.006807962097454799,
+              "relative_rms_difference": 0.01766554264187143,
+              "max_absolute_difference": 0.19775390625
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.007204311597088376,
+              "relative_rms_difference": 0.017596562440876616,
+              "max_absolute_difference": 0.155792236328125
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.007048913793909985,
+              "relative_rms_difference": 0.017272592003234628,
+              "max_absolute_difference": 0.11865234375
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.009058982132770533,
+              "relative_rms_difference": 0.02080697261238055,
+              "max_absolute_difference": 0.140625
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.015809236213570114,
+              "relative_rms_difference": 0.03860483879482168,
+              "max_absolute_difference": 0.584808349609375
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.020368062826826135,
+              "relative_rms_difference": 0.042571402394175756,
+              "max_absolute_difference": 0.679443359375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.0198576662833609,
+              "relative_rms_difference": 0.03523458795323948,
+              "max_absolute_difference": 0.24560546875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.024429550126143874,
+              "relative_rms_difference": 0.0365558509946031,
+              "max_absolute_difference": 0.443359375
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.030730448135600035,
+              "relative_rms_difference": 0.04334739135555131,
+              "max_absolute_difference": 0.53759765625
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.02618359490810675,
+              "relative_rms_difference": 0.046657634247011706,
+              "max_absolute_difference": 0.531829833984375
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.03208095177173795,
+              "relative_rms_difference": 0.04515769211945589,
+              "max_absolute_difference": 0.515625
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.04321949168881699,
+              "relative_rms_difference": 0.05404004952393968,
+              "max_absolute_difference": 0.6826171875
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.032727052832544935,
+              "relative_rms_difference": 0.07321558640855733,
+              "max_absolute_difference": 1.33740234375
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.02292564873466958,
+              "relative_rms_difference": 0.06967704103766607,
+              "max_absolute_difference": 0.633056640625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.022817365314518567,
+              "relative_rms_difference": 0.04242473231490761,
+              "max_absolute_difference": 0.8359375
+            }
+          ]
+        },
+        {
+          "horizon": 32,
+          "bitwise_equal": false,
+          "rms_difference": 0.023233223589573002,
+          "relative_rms_difference": 0.048637980670269254,
+          "max_absolute_difference": 1.392578125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0002698969222261751,
+              "relative_rms_difference": 0.0010979918606790603,
+              "max_absolute_difference": 0.0113372802734375
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0009937258614802127,
+              "relative_rms_difference": 0.0037121139685094835,
+              "max_absolute_difference": 0.0203094482421875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0026544649795992854,
+              "relative_rms_difference": 0.009045728549352303,
+              "max_absolute_difference": 0.0986328125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.004652103680402258,
+              "relative_rms_difference": 0.013261774326185034,
+              "max_absolute_difference": 0.173828125
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.00597060736218691,
+              "relative_rms_difference": 0.016330894786660822,
+              "max_absolute_difference": 0.2060546875
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.0059370259118625545,
+              "relative_rms_difference": 0.016426567330056787,
+              "max_absolute_difference": 0.0799102783203125
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.006139934426970159,
+              "relative_rms_difference": 0.016556166078222207,
+              "max_absolute_difference": 0.126953125
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.0061482025801306555,
+              "relative_rms_difference": 0.01618132317655551,
+              "max_absolute_difference": 0.1328125
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.0061113174985031535,
+              "relative_rms_difference": 0.01750194299016676,
+              "max_absolute_difference": 0.12109375
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.006558342630396568,
+              "relative_rms_difference": 0.01740151523604395,
+              "max_absolute_difference": 0.09759521484375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.0067187000620813776,
+              "relative_rms_difference": 0.01749380863680399,
+              "max_absolute_difference": 0.0732421875
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.00712298771918463,
+              "relative_rms_difference": 0.019216801859460866,
+              "max_absolute_difference": 0.08251953125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.00815272020946127,
+              "relative_rms_difference": 0.020337733894222745,
+              "max_absolute_difference": 0.101318359375
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.01980915628278251,
+              "relative_rms_difference": 0.051818002431689374,
+              "max_absolute_difference": 0.912109375
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.017001542022184374,
+              "relative_rms_difference": 0.035034733898891786,
+              "max_absolute_difference": 0.568359375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.019034933826150482,
+              "relative_rms_difference": 0.033221370710113024,
+              "max_absolute_difference": 0.216796875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.02797550587238121,
+              "relative_rms_difference": 0.04033215481106235,
+              "max_absolute_difference": 0.498046875
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.04024388788585605,
+              "relative_rms_difference": 0.05539415990962385,
+              "max_absolute_difference": 1.392578125
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.0454601209613997,
+              "relative_rms_difference": 0.07878853873750181,
+              "max_absolute_difference": 0.81982421875
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.04480575155871603,
+              "relative_rms_difference": 0.06211674071822629,
+              "max_absolute_difference": 0.5234375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.055449557940331476,
+              "relative_rms_difference": 0.06759287691669066,
+              "max_absolute_difference": 0.7021484375
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.029573276535312526,
+              "relative_rms_difference": 0.06859759204531622,
+              "max_absolute_difference": 1.143798828125
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.021937995965237107,
+              "relative_rms_difference": 0.06745863997199694,
+              "max_absolute_difference": 0.58740234375
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.024192276323907656,
+              "relative_rms_difference": 0.041335152078327476,
+              "max_absolute_difference": 0.855712890625
+            }
+          ]
+        },
+        {
+          "horizon": 64,
+          "bitwise_equal": false,
+          "rms_difference": 0.021866451062733334,
+          "relative_rms_difference": 0.04200156987131635,
+          "max_absolute_difference": 1.73876953125,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.00018648360972552266,
+              "relative_rms_difference": 0.0008007229886890985,
+              "max_absolute_difference": 0.009765625
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0008324863407644888,
+              "relative_rms_difference": 0.0028500028219422993,
+              "max_absolute_difference": 0.0194854736328125
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0021593625612734203,
+              "relative_rms_difference": 0.006617303825615125,
+              "max_absolute_difference": 0.0634765625
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.003855137834760517,
+              "relative_rms_difference": 0.009658056175771054,
+              "max_absolute_difference": 0.1904296875
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.006396390329212864,
+              "relative_rms_difference": 0.015443041519384528,
+              "max_absolute_difference": 0.208984375
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.005884471171533791,
+              "relative_rms_difference": 0.013942157182657532,
+              "max_absolute_difference": 0.11419677734375
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.005618525302555729,
+              "relative_rms_difference": 0.013674410446889563,
+              "max_absolute_difference": 0.103515625
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.006650176333002942,
+              "relative_rms_difference": 0.015960234551484577,
+              "max_absolute_difference": 0.162109375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.005827627038626362,
+              "relative_rms_difference": 0.01486662751731219,
+              "max_absolute_difference": 0.109375
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.006589593572452929,
+              "relative_rms_difference": 0.015587344527780243,
+              "max_absolute_difference": 0.130859375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.006573693397966916,
+              "relative_rms_difference": 0.015742670839153556,
+              "max_absolute_difference": 0.134765625
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.006628172738118151,
+              "relative_rms_difference": 0.01561669550373575,
+              "max_absolute_difference": 0.0947265625
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.007720864336978216,
+              "relative_rms_difference": 0.01745304879038513,
+              "max_absolute_difference": 0.0889892578125
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.013793036628221959,
+              "relative_rms_difference": 0.03169403851612065,
+              "max_absolute_difference": 0.2578125
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.01427843827831106,
+              "relative_rms_difference": 0.025888449130346804,
+              "max_absolute_difference": 0.2734375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.017659261029030517,
+              "relative_rms_difference": 0.028093253064008044,
+              "max_absolute_difference": 0.21875
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.023710339237916128,
+              "relative_rms_difference": 0.03132516855196269,
+              "max_absolute_difference": 0.35009765625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.03680244671480189,
+              "relative_rms_difference": 0.0470113031498771,
+              "max_absolute_difference": 1.73876953125
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.044549399124889956,
+              "relative_rms_difference": 0.07344347778183384,
+              "max_absolute_difference": 0.97900390625
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.04998276396384168,
+              "relative_rms_difference": 0.06161526027848936,
+              "max_absolute_difference": 0.845703125
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.05319626730681152,
+              "relative_rms_difference": 0.06005427763006732,
+              "max_absolute_difference": 0.78515625
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.02368995415707615,
+              "relative_rms_difference": 0.05291168548636768,
+              "max_absolute_difference": 0.70361328125
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.017623142925197857,
+              "relative_rms_difference": 0.05079142231256577,
+              "max_absolute_difference": 0.38818359375
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.016508884356318743,
+              "relative_rms_difference": 0.02923939742487073,
+              "max_absolute_difference": 0.306640625
+            }
+          ]
+        },
+        {
+          "horizon": 128,
+          "bitwise_equal": false,
+          "rms_difference": 0.025456296718068976,
+          "relative_rms_difference": 0.05181398069836469,
+          "max_absolute_difference": 1.927490234375,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 0.0001089802823130564,
+              "relative_rms_difference": 0.0004359030298085242,
+              "max_absolute_difference": 0.0070037841796875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0006709698196384437,
+              "relative_rms_difference": 0.002426327603854995,
+              "max_absolute_difference": 0.018402099609375
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0019022748219155595,
+              "relative_rms_difference": 0.006209312991781896,
+              "max_absolute_difference": 0.06640625
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.0035518946820664514,
+              "relative_rms_difference": 0.009682552157023714,
+              "max_absolute_difference": 0.190185546875
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.00391553747961921,
+              "relative_rms_difference": 0.010229373012261957,
+              "max_absolute_difference": 0.1328125
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.0041425377326349,
+              "relative_rms_difference": 0.010750588813087358,
+              "max_absolute_difference": 0.0751953125
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.004523776772974039,
+              "relative_rms_difference": 0.011689426050698651,
+              "max_absolute_difference": 0.0859375
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.005132138076374611,
+              "relative_rms_difference": 0.013003781672034325,
+              "max_absolute_difference": 0.15234375
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.004775659881721977,
+              "relative_rms_difference": 0.013335170492988616,
+              "max_absolute_difference": 0.1162109375
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.005023041736111798,
+              "relative_rms_difference": 0.012854218673632099,
+              "max_absolute_difference": 0.08278274536132812
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.0055909866323083195,
+              "relative_rms_difference": 0.014036786326795966,
+              "max_absolute_difference": 0.140625
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.005499269097458873,
+              "relative_rms_difference": 0.013997189726589193,
+              "max_absolute_difference": 0.07080078125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.006897637453363079,
+              "relative_rms_difference": 0.01648073223089756,
+              "max_absolute_difference": 0.087890625
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.01068587902480275,
+              "relative_rms_difference": 0.026275473435809375,
+              "max_absolute_difference": 0.294921875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.012368563498392802,
+              "relative_rms_difference": 0.02395860716730516,
+              "max_absolute_difference": 0.24609375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.01475038479495375,
+              "relative_rms_difference": 0.023856835443519835,
+              "max_absolute_difference": 0.193359375
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.03514913132571606,
+              "relative_rms_difference": 0.04846167715662382,
+              "max_absolute_difference": 0.9769287109375
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.04268394015044704,
+              "relative_rms_difference": 0.05733243651217277,
+              "max_absolute_difference": 1.927490234375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.051930325570559016,
+              "relative_rms_difference": 0.0915544086260079,
+              "max_absolute_difference": 1.10260009765625
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.05738429651445303,
+              "relative_rms_difference": 0.07539156500948764,
+              "max_absolute_difference": 0.878662109375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.06460886496937802,
+              "relative_rms_difference": 0.07855050146069874,
+              "max_absolute_difference": 1.05859375
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.025636931131116664,
+              "relative_rms_difference": 0.06021290433335776,
+              "max_absolute_difference": 0.3828125
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.018781851868934944,
+              "relative_rms_difference": 0.05757653559595457,
+              "max_absolute_difference": 0.4765625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.02415138265729482,
+              "relative_rms_difference": 0.04437689284915058,
+              "max_absolute_difference": 1.640625
+            }
+          ]
+        },
+        {
+          "horizon": 256,
+          "bitwise_equal": false,
+          "rms_difference": 0.019013277280542033,
+          "relative_rms_difference": 0.039843539963061586,
+          "max_absolute_difference": 1.390625,
+          "layers": [
+            {
+              "layer": 0,
+              "rms_difference": 5.506531377865162e-05,
+              "relative_rms_difference": 0.0002233349831883159,
+              "max_absolute_difference": 0.0043182373046875
+            },
+            {
+              "layer": 1,
+              "rms_difference": 0.0005328325464795471,
+              "relative_rms_difference": 0.002007165220843094,
+              "max_absolute_difference": 0.017303466796875
+            },
+            {
+              "layer": 2,
+              "rms_difference": 0.0017395391446314917,
+              "relative_rms_difference": 0.0059355892404711905,
+              "max_absolute_difference": 0.033203125
+            },
+            {
+              "layer": 3,
+              "rms_difference": 0.00397650716681211,
+              "relative_rms_difference": 0.011418367050748956,
+              "max_absolute_difference": 0.21875
+            },
+            {
+              "layer": 4,
+              "rms_difference": 0.004058389255915879,
+              "relative_rms_difference": 0.011830383285468685,
+              "max_absolute_difference": 0.08203125
+            },
+            {
+              "layer": 5,
+              "rms_difference": 0.0039239079248781185,
+              "relative_rms_difference": 0.01121432902967057,
+              "max_absolute_difference": 0.05029296875
+            },
+            {
+              "layer": 6,
+              "rms_difference": 0.00370682727139559,
+              "relative_rms_difference": 0.01030113071077345,
+              "max_absolute_difference": 0.0517578125
+            },
+            {
+              "layer": 7,
+              "rms_difference": 0.0036740770198782145,
+              "relative_rms_difference": 0.010018453992367506,
+              "max_absolute_difference": 0.09765625
+            },
+            {
+              "layer": 8,
+              "rms_difference": 0.0037526507516585698,
+              "relative_rms_difference": 0.010786541934037951,
+              "max_absolute_difference": 0.083984375
+            },
+            {
+              "layer": 9,
+              "rms_difference": 0.0037449448449513303,
+              "relative_rms_difference": 0.009430506393882335,
+              "max_absolute_difference": 0.04534912109375
+            },
+            {
+              "layer": 10,
+              "rms_difference": 0.004069888066223823,
+              "relative_rms_difference": 0.010173089858812772,
+              "max_absolute_difference": 0.068359375
+            },
+            {
+              "layer": 11,
+              "rms_difference": 0.004350362670120203,
+              "relative_rms_difference": 0.01082736958309081,
+              "max_absolute_difference": 0.05517578125
+            },
+            {
+              "layer": 12,
+              "rms_difference": 0.005855491380979683,
+              "relative_rms_difference": 0.013405489545923627,
+              "max_absolute_difference": 0.0810546875
+            },
+            {
+              "layer": 13,
+              "rms_difference": 0.016306080305947296,
+              "relative_rms_difference": 0.03775263213671957,
+              "max_absolute_difference": 0.421875
+            },
+            {
+              "layer": 14,
+              "rms_difference": 0.012832081329295399,
+              "relative_rms_difference": 0.026303403855589377,
+              "max_absolute_difference": 0.21484375
+            },
+            {
+              "layer": 15,
+              "rms_difference": 0.01433821951390381,
+              "relative_rms_difference": 0.024075294689267786,
+              "max_absolute_difference": 0.2412109375
+            },
+            {
+              "layer": 16,
+              "rms_difference": 0.028951172510991968,
+              "relative_rms_difference": 0.04019277316309235,
+              "max_absolute_difference": 0.7265625
+            },
+            {
+              "layer": 17,
+              "rms_difference": 0.027366022564433507,
+              "relative_rms_difference": 0.039377352996245875,
+              "max_absolute_difference": 0.47021484375
+            },
+            {
+              "layer": 18,
+              "rms_difference": 0.03230740383105759,
+              "relative_rms_difference": 0.061954745543494116,
+              "max_absolute_difference": 0.89208984375
+            },
+            {
+              "layer": 19,
+              "rms_difference": 0.035101486423135195,
+              "relative_rms_difference": 0.04564922090792192,
+              "max_absolute_difference": 0.6484375
+            },
+            {
+              "layer": 20,
+              "rms_difference": 0.04682978335249386,
+              "relative_rms_difference": 0.05667079635978068,
+              "max_absolute_difference": 0.66162109375
+            },
+            {
+              "layer": 21,
+              "rms_difference": 0.026210680332973618,
+              "relative_rms_difference": 0.06186069230864102,
+              "max_absolute_difference": 0.98291015625
+            },
+            {
+              "layer": 22,
+              "rms_difference": 0.021489411724567684,
+              "relative_rms_difference": 0.06659219063954139,
+              "max_absolute_difference": 0.46728515625
+            },
+            {
+              "layer": 23,
+              "rms_difference": 0.025672681712018794,
+              "relative_rms_difference": 0.054619378347896055,
+              "max_absolute_difference": 1.390625
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "peak_gpu_memory_mb": 274.6
+}

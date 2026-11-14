@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\Python311\\python.exe",
+    "experiments\\mechanism\\stage14_online_runtime_validation.py",
+    "--output",
+    "results/online_runtime_validation.json"
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 8.2,
+      "logical_cores": 12,
+      "time": "2026-11-12 00:33:38",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 10.0,
+      "logical_cores": 12,
+      "time": "2026-11-12 00:35:26",
+      "quiet_threshold": 30.0
+    }
+  },
+  "quiet": true
+}

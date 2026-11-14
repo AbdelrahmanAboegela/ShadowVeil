@@ -1,0 +1,31 @@
+{
+  "command": [
+    "C:\\Program Files\\Python311\\python.exe",
+    "experiments\\audit\\stage11_shadow_revocation_enron.py",
+    "--model",
+    "state-spaces/mamba-790m-hf",
+    "--batch-size",
+    "4",
+    "--surrogate-count",
+    "1",
+    "--seed",
+    "20261002",
+    "--output",
+    "results/protocol_enron_790m_20261002.json"
+  ],
+  "host_load": {
+    "before": {
+      "cpu_percent": 1.8,
+      "logical_cores": 12,
+      "time": "2026-11-12 06:13:31",
+      "quiet_threshold": 30.0
+    },
+    "after": {
+      "cpu_percent": 1.6,
+      "logical_cores": 12,
+      "time": "2026-11-12 06:20:41",
+      "quiet_threshold": 30.0
+    }
+  },
+  "quiet": true
+}

@@ -1,0 +1,68 @@
+{
+  "tag": "1p4b",
+  "history": 1024,
+  "window": 256,
+  "fused_fit": {
+    "chunk_a_ms": -8.752906530801223,
+    "chunk_b_ms_per_token": 0.31669781401981156,
+    "step_c0_ms": 14.629353751306947,
+    "step_c1_ms_per_extra_row": 0.1410448737766435
+  },
+  "retire_ms": 1.4971839785575867,
+  "rows": [
+    {
+      "method": "Full reset",
+      "exact": "n/a",
+      "identity": 12.5,
+      "retained": 12.5,
+      "latency_ms": 1.4971839785575867,
+      "work_at_T_tokens": "0",
+      "extra_cache": "0"
+    },
+    {
+      "method": "Subspace editing",
+      "exact": "no",
+      "identity": 60.416666666666664,
+      "retained": 93.75,
+      "latency_ms": 13.109358308914427,
+      "work_at_T_tokens": "0",
+      "extra_cache": "0"
+    },
+    {
+      "method": "Restart replay ($H{=}1024$)",
+      "exact": "yes",
+      "identity": 17.36111111111111,
+      "retained": 95.13888888888887,
+      "latency_ms": 397.88708667063685,
+      "work_at_T_tokens": "1280",
+      "extra_cache": "$M$ (transient)"
+    },
+    {
+      "method": "Retrospective replay (Yao-style)",
+      "exact": "yes",
+      "identity": 17.36111111111111,
+      "retained": 95.13888888888887,
+      "latency_ms": 73.58852511434978,
+      "work_at_T_tokens": "256",
+      "extra_cache": "$M$ (transient)"
+    },
+    {
+      "method": "ShadowVeil $\\delta{=}L/4$",
+      "exact": "yes",
+      "identity": 17.36111111111111,
+      "retained": 95.13888888888887,
+      "latency_ms": 1.4971839785575867,
+      "work_at_T_tokens": "0",
+      "extra_cache": "$2M$ / $0.25M$"
+    },
+    {
+      "method": "ShadowVeil $\\delta{=}L$",
+      "exact": "yes",
+      "identity": 17.36111111111111,
+      "retained": 95.13888888888887,
+      "latency_ms": 1.4971839785575867,
+      "work_at_T_tokens": "0",
+      "extra_cache": "$2M$ / $M$"
+    }
+  ]
+}
