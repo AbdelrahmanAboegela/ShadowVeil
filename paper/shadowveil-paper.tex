@@ -278,8 +278,8 @@ and the lookahead is a tunable that is set from the measured costs at each scale
 
 \subsection{Comparison with baselines}
 Table~\ref{tab:compare} summarizes the alternatives: only replay and ShadowVeil reach the sanitized state, and ShadowVeil is the one whose deadline work is a selection and a zeroing call.
-Yao et al.\ show that exact revocation of a recurrent state needs at least $T-\tau+1$ transitions for a prefix of length $T$ expiring at
-$\tau$. ShadowVeil attains this bound in transitions at every $\delta$ (counted in our sweep) and changes only \emph{when} they run.
+Yao et al.\ show that exact revocation needs at least $T-\tau+1$ recomputed transitions for a session of length $T$ whose target entered at
+step $\tau$. ShadowVeil attains this bound in transitions at every $\delta$ (counted in our sweep) and changes only \emph{when} they run.
 We implement replay at the deadline following their method as the baseline; approximate unlearning and state-editing baselines do not give state equality (Sec.~\ref{sec:audit}). Against a
 Transformer, the cache that must be duplicated is proportional to context: for a 512-token context, one Mamba-130M cache is
 1.47~MB regardless of length, RWKV-169M 0.15~MB, and GPT-2 18.9~MB (1.18~MB at 32 tokens), so a full shadow costs a constant for
