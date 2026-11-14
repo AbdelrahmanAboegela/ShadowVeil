@@ -70,7 +70,7 @@ A known deadline does not reduce the exact work; it lets the system do that work
 of after it. Prospective counterfactual execution is the setting of \cite{executionunlearning,attriguard}; the contribution here is to characterize \emph{when} the unavoidable work
 can happen and what each choice costs. Contributions: (i) a lookahead-scheduled family of exact revocation
 with retrospective replay ($\delta{=}0$) and full-window duplication ($\delta{=}L$) as endpoints, including a
-chunked burst from a \emph{non-zero} snapshot (a burst that ignores the cached convolution window deviates by 3.5--8.1\% there);
+chunked burst from a \emph{non-zero} snapshot (a burst that ignores the cached convolution window deviates by \nKOneNaiveLoB{}--\nKOneNaiveHiA\% there);
 (ii) measured costs on a fused Triton path and a scheduler-level simulation driven by them; (iii) an audit
 that separates equality from sanitizer quality, with a leaky-sanitizer control, four attackers and
 seed-level equivalence tests; (iv) a comparison with reset, restart replay, retrospective replay and
@@ -143,8 +143,8 @@ $T{-}\delta$ at the price of one host-to-device copy.
 continuing a populated cache with several tokens ignores the previous $K{-}1$ inputs. We implement the burst
 as a chunk that prepends the cached convolution window and initializes the scan from the cached SSM state.
 On real TAB prefixes ($s_0\neq0$) a burst through the prefill branch deviates from the recurrence by
-3.5--8.1\% of the state magnitude, as large as the contamination being removed (4.9\% minimum), whereas the
-chunk deviates by $\le$0.2\% (Sec.~\ref{sec:mech}).
+\nKOneNaiveLoB{}--\nKOneNaiveHiA\% of the state magnitude, as large as the contamination being removed (\nKOneSignalB\% minimum), whereas the
+chunk deviates from the token-by-token recurrence by $\le\nKOneChunkRecB\%$ (Sec.~\ref{sec:mech}).
 
 \textbf{Exactness is path-relative.} Chunking moves where the fp32 scan state is rounded to fp16, and
 batched kernels may pick different reduction orders. Different schedules therefore agree to $\sim$$10^{-3}$
@@ -274,7 +274,7 @@ Figure~\ref{fig:sched} shows the miss rate against load. At a typical load a 16-
 The burst-time rule \emph{star} gives the smallest useful lookahead when expiries align. The mechanism keeps exactness off the critical path,
 and the lookahead is a tunable that is set from the measured costs at each scale and load.
 
-\emph{Serving harness.} The same workloads and policies run on the GPU, with the decode batch sized to the load and every burst, decode step and retirement executed for real. At 130M, 370M and 1.4B the harness and the simulation agree on whether a policy meets its deadline in $\nSvhSloA\%$, $\nSvhSloB\%$ and $\nSvhSloC\%$ of \nSvhConfigsA, \nSvhConfigsB{} and \nSvhConfigsC{} configurations, predict the mean cache memory within about 2\%, and rank the policies by p99 latency with Spearman correlation $\nSvhSpearmanA$, $\nSvhSpearmanB$ and $\nSvhSpearmanC$. The simulation understates the latency of replay at the deadline, by a median factor of \nSvhMedRatioA, \nSvhMedRatioB{} and \nSvhMedRatioC, so the measured benefit of lookahead is larger than the simulated one. In the harness a 16-token lookahead removes every miss at 16 sessions with half the expiries aligned at 130M, 370M and 1.4B, where replay at the deadline misses most or all deadlines.
+\emph{Serving harness.} The same workloads and policies run on the GPU, with the decode batch sized to the load and every burst, decode step and retirement executed for real. At 130M, 370M and 1.4B the harness and the simulation agree on whether a policy meets its deadline in $\nSvhSloA\%$, $\nSvhSloB\%$ and $\nSvhSloC\%$ of \nSvhConfigsA, \nSvhConfigsB{} and \nSvhConfigsC{} configurations, predict the mean cache memory with a median error of about 2\%, and rank the policies by p99 latency with Spearman correlation $\nSvhSpearmanA$, $\nSvhSpearmanB$ and $\nSvhSpearmanC$. The simulation understates the latency of replay at the deadline, by a median factor of \nSvhMedRatioA, \nSvhMedRatioB{} and \nSvhMedRatioC, so the measured benefit of lookahead is larger than the simulated one. In the harness a 16-token lookahead removes every miss at 16 sessions with half the expiries aligned at 130M, 370M and 1.4B, where replay at the deadline misses most or all deadlines.
 
 \subsection{Comparison with baselines}
 Table~\ref{tab:compare} summarizes the alternatives: only replay and ShadowVeil reach the sanitized state, and ShadowVeil is the one whose deadline work is a selection and a zeroing call.
