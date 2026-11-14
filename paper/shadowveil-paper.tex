@@ -91,7 +91,7 @@ crop and a snapshot of the pre-span state is required, and changes \emph{when} t
 Ramesh gives a transport criterion for subtracting a saved state difference in delta attention, audits checkpoint replay against the
 never-stored state on Kimi Linear (exact on every audited array), and checks the criterion's classification on Mamba-2, Falcon-H1 and RWKV-7
 \cite{deltaomission}; replay there runs after the request. AttriGuard runs parallel counterfactual branches to attribute tool calls
-\cite{attriguard}; ERASER schedules parameter-level unlearning against inference requests \cite{eraser}.
+\cite{attriguard}; ERASER postpones parameter-level unlearning in step with inference requests \cite{eraser}.
 To our knowledge, ShadowVeil is the first to schedule an exact \emph{execution-state} reconstruction ahead of a known expiry. Ramesh's deletion from addressable Transformer memory also measures the edited memory against a rebuild of the history without the record, and finds a measurable gap between them \cite{ramesh}, which is the reference ShadowVeil produces exactly. The residency-versus-lead trade-off is the one continuous-batching
 schedulers face under cache pressure \cite{congestion}.
 
@@ -408,7 +408,7 @@ J. Morris, V. Kuleshov, V. Shmatikov, and A. Rush, ``Text embeddings reveal (alm
 C. Yao et al., ``Forgetting without restarting: Execution-state unlearning for stateful LLM agents,'' arXiv:2609.04875, 2026.
 
 \bibitem{attriguard}
-Y. He et al., ``AttriGuard: Defeating indirect prompt injection in LLM agents via causal attribution of tool invocations,'' in \emph{Proc. 35th USENIX Security Symp.}, 2026.
+Y. He et al., ``AttriGuard: Defeating indirect prompt injection in LLM agents via causal attribution of tool invocations,'' in \emph{Proc. USENIX Security Symp.}, 2026.
 
 \bibitem{cacheprune}
 G. Wu et al., ``CachePrune: Privacy-aware and fine-grained KV cache sharing for efficient LLM inference,'' arXiv:2605.23640, 2026.
@@ -420,7 +420,7 @@ Z. Luo et al., ``Shadow in the cache: Unveiling and mitigating privacy risks of 
 H. Duan, Y. Yang, A. Abbasi, and K. Y. Tam, ``Ready2Unlearn: A learning-time approach for preparing models with future unlearning readiness,'' arXiv:2505.10845, 2025.
 
 \bibitem{replayssm}
-Z.-W. Liou and T. Dao, ``ReplaySSM: Cache SSM inputs, not state,'' Dao AI Lab, Jun. 2026. [Online]. Available: \url{https://dao-lab.ai/blog/2026/replayssm/}
+Z.-W. Liou et al., ``ReplaySSM: Cache SSM inputs, not state,'' arXiv:2610.13778, 2026.
 
 \bibitem{marconi}
 R. Pan et al., ``Marconi: Prefix caching for the era of hybrid LLMs,'' in \emph{Proc. MLSys}, 2025.
