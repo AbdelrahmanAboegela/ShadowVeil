@@ -69,7 +69,7 @@ success means the cache equals the execution on $g(X)$ followed by the recorded 
 private as $g$ and $A$ (Sec.~\ref{sec:limits}).
 
 A known deadline does not reduce the exact work; it lets the system do that work before the deadline instead
-of after it. Prospective counterfactual execution is the setting of \cite{executionunlearning,attriguard}; the contribution here is to characterize \emph{when} the unavoidable work
+of after it. Counterfactual execution is the setting of \cite{executionunlearning,attriguard}; the contribution here is to characterize \emph{when} the unavoidable work
 can happen and what each choice costs. Contributions: (i) a lookahead-scheduled family of exact revocation
 with retrospective replay ($\delta{=}0$) and full-window duplication ($\delta{=}L$) as endpoints, including a
 chunked burst from a \emph{non-zero} snapshot (a burst that ignores the cached convolution window deviates by \nKOneNaiveLoB{}--\nKOneNaiveHiA\% there);
@@ -134,8 +134,8 @@ the live branch for $\delta$ tokens, and at $T$ the runtime selects it and zeroi
 \end{algorithm}
 
 \textbf{Cost.} Let $M$ be the fixed cache size, $L=|A|$ the authorized window (the tokens between $\tau$ and
-$T$), so that the shadow performs $|g(X)|{+}L$ token transitions, and let $c_b$ and $c_s$ be the per-token cost of
-a fused burst and of a decode step. Replay-based exact reconstruction performs these $|g(X)|{+}L$ extra
+$T$), so that the shadow performs $|g(X)|{+}L$ token transitions, and let $c_b$ be the per-token cost of
+a fused burst. Replay-based exact reconstruction performs these $|g(X)|{+}L$ extra
 transitions, the replay bound of \cite{executionunlearning}; state-transport shortcuts need a transport
 criterion \cite{deltaomission}, and we claim no bound beyond replay. $\delta$ chooses \emph{when} and
 \emph{where}. Only the $\Theta(M)$ retirement is independent of $L$ at the deadline; total work is always
@@ -289,7 +289,7 @@ Retrospective replay (\emph{retro}) does all work at the deadline; \emph{star} u
 
 Figure~\ref{fig:sched} shows the miss rate against load. At a typical load a 16-token lookahead removes the deadline misses at every scale (p99 \nTypLaSixteenPNinetyNineA, \nTypLaSixteenPNinetyNineB{} and \nTypLaSixteenPNinetyNineC~ms at 130M, 370M and 1.4B) for \nTypLaSixteenMemA, \nTypLaSixteenMemB{} and \nTypLaSixteenMemC~MB of mean cache against \nTypRetroMemA, \nTypRetroMemB{} and \nTypRetroMemC~MB for replay at the deadline, which misses \nTypRetroMissA\%, \nTypRetroMissB\% and \nTypRetroMissC\% of deadlines; full duplication uses \nTypFullMemA, \nTypFullMemB{} and \nTypFullMemC~MB. Under extreme load the benefit depends on scale. At 130M a
 16-token lookahead still removes every miss (p99 \nSimLaSixteenPNinetyNineA~ms). At 370M and 1.4B the batched decode step for 64 sessions occupies most of a tick, so the schedule matches the lookahead to the idle time: a half-window lookahead cuts the misses from \nSimRetroMissB\% and \nSimRetroMissC\% to \nSimLaHalfMissB\% and \nSimLaHalfMissC\%, and full duplication meets every deadline, at about twice the memory of replay.
-The burst-time rule \emph{star} gives the smallest useful lookahead when expiries align. The lookahead is set from the measured costs at each scale and load.
+The burst-time rule \emph{star}, the smallest lookahead that hides one burst, suffices at 130M typical load; elsewhere the longer fixed lookaheads are needed (Table~\ref{tab:sched}), so the lookahead is set from the measured costs at each scale and load.
 
 \emph{Serving harness.} The same workloads and policies run on the GPU, with the decode batch sized to the load and every burst, decode step and retirement executed for real. At 130M, 370M and 1.4B the harness and the simulation agree on whether a policy meets its deadline in $\nSvhSloA\%$, $\nSvhSloB\%$ and $\nSvhSloC\%$ of \nSvhConfigsA, \nSvhConfigsB{} and \nSvhConfigsC{} configurations, predict the mean cache memory with a median error of about 2\%, and rank the policies by p99 latency with Spearman correlation $\nSvhSpearmanA$, $\nSvhSpearmanB$ and $\nSvhSpearmanC$. The simulation understates the latency of replay at the deadline, by a median factor of \nSvhMedRatioA, \nSvhMedRatioB{} and \nSvhMedRatioC, so the measured benefit of lookahead is larger than the simulated one. In the harness a 16-token lookahead removes every miss at 16 sessions with half the expiries aligned at 130M, 370M and 1.4B, where replay at the deadline misses most or all deadlines.
 \emph{Cost to co-resident sessions.} In the same harness runs (typical load, no arrivals dropped) replay at the deadline stalls the whole batch, so a 16-token lookahead
