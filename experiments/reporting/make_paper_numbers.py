@@ -248,6 +248,55 @@ def harness():
         put(f"nSvhMemRatio{L}", 2 ** d["median_abs_log2_memory_ratio"], 2)
 
 
+def harness_ticks():
+    """Co-tenant cost in the serving harness at the typical load (16 sessions, half of the expiries aligned):
+    p99 tick duration and mean tick duration relative to nominal, averaged over the harness seeds."""
+    for tag, L in SC:
+        d = load(f"serving_harness_{tag}.json")
+        if not d:
+            continue
+        for pol, nm in (("retro", "Retro"), ("la16", "LaSixteen"), ("full", "Full")):
+            rr = [r for r in d["rows"] if r["concurrency"] == 16 and r["aligned_fraction"] == 0.5 and r["policy"] == pol]
+            if not rr:
+                continue
+            put(f"nHarTick{nm}{L}", statistics.mean(r["tick_p99_ms"] for r in rr), 0, timing_of=d)
+            put(f"nHarSlow{nm}{L}", statistics.mean(r["slowdown_mean"] for r in rr), 2, timing_of=d)
+            put(f"nHarDropped{nm}{L}", sum(r["dropped_arrivals"] for r in rr))
+
+
+T95_DF7 = 1.8946      # one-sided 95% quantile of Student t, 7 degrees of freedom (eight seeds)
+
+
+def retained_ni():
+    """Paired seed-level retained-label difference (ShadowVeil minus untreated) per (scale, corpus) cell, with the
+    one-sided 95% lower bound, against the 6.25-point margin used for the identity equivalence test."""
+    groups = {}
+    for p in sorted(glob.glob(str(R / "confirm_*.json"))) + sorted(glob.glob(str(R / "protocol_*.json"))):
+        name = Path(p).name
+        if name.endswith(".host.json"):
+            continue
+        m = re.match(r"(?:confirm|protocol)_(tab|enron)(?:_(370m|790m|1p4b))?_(\d+)\.json", name)
+        if not m:
+            continue
+        d = json.loads(Path(p).read_text(encoding="utf-8"))
+        rows = {r["condition"]: r for r in d["results"]}
+        groups.setdefault((m.group(2) or "130m", m.group(1)), []).append(
+            100 * (rows["shadow_swap"]["retained_fact"]["accuracy"] - rows["untreated"]["retained_fact"]["accuracy"]))
+    cells = []
+    for v in groups.values():
+        if len(v) != 8:
+            continue
+        mu, se = statistics.mean(v), statistics.stdev(v) / len(v) ** 0.5
+        cells.append((mu, mu - T95_DF7 * se))
+    if not cells:
+        return
+    put("nRetCells", len(cells))
+    put("nRetDiffLo", min(c[0] for c in cells), 1)
+    put("nRetDiffHi", max(c[0] for c in cells), 1)
+    put("nRetNIOk", sum(c[1] >= -6.25 for c in cells))
+    put("nRetNIWorstBound", min(c[1] for c in cells), 1)
+
+
 def scan():
     d = load("scan_bench.json")
     if not d:
@@ -311,7 +360,7 @@ def mamba2():
 
 
 def main():
-    for fn in (fused, kill_tests, sim, audit, table_main, strong, cfd, harness, scan, multi, mamba2):
+    for fn in (fused, kill_tests, sim, audit, table_main, strong, cfd, harness, harness_ticks, retained_ni, scan, multi, mamba2):
         try:
             fn()
         except Exception as e:  # keep going; report
