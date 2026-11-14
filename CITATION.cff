@@ -1,7 +1,8 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite the paper below."
+message: "If you use this work, please cite the ShadowVeil paper and this repository."
 title: "ShadowVeil: Prospective Counterfactual Revocation for Mamba Inference State"
 type: software
+repository-code: "https://github.com/AbdelrahmanAboegela/ShadowVeil"
 authors:
   - given-names: "Abdelrahman A."
     family-names: "Alshames"

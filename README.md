@@ -27,10 +27,10 @@ experiments/
   scheduling/   scheduler simulation, real serving harness, simulation-vs-harness validation
   audit/        protocol runs (TAB, Enron), attackers and controls, equivalence statistics, distance to the counterfactual
   reporting/    aggregation, verification, tables, figures, paper numbers
-tools/          pipeline.py (ordered, resumable runner), review_status.py
+tools/          pipeline.py (ordered, resumable runner), run_all.py (unattended restarts)
 results/        result JSON files; prespecified confirmation runs are confirm_*.json
 artifacts/      aggregate summary, CSV and verification manifest
-docs/           prespecified protocol, literature note
+docs/           prespecified protocol
 data/           TAB and CMU Enron subsets (not tracked; see licences)
 ```
 

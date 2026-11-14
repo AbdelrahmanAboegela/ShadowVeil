@@ -10,7 +10,7 @@ probe:
   (untreated-condition) cache states, then a linear probe on the resulting
   sparse code. This mirrors the SAE-for-SSM-state literature (WriteSAE,
   activation-subspace-bottleneck steering) applied here as an attacker rather
-  than a steering mechanism; see sae_literature_review.md.
+  than a steering mechanism.
 
 Both functions share the ``fit_predict`` signature used by stage10/stage11 so
 they can be dropped into the same evaluation loop.
