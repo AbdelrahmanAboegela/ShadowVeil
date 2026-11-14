@@ -19,7 +19,9 @@
 
 \title{ShadowVeil: Prospective Counterfactual Revocation for Mamba Inference State}
 \author{\IEEEauthorblockN{Abdelrahman A. Alshames, Aly H. Gouda, Omnia S. Eshra, Zeina Eltannikhy, and Salma A. Alashry}
-\IEEEauthorblockA{Egypt Japan University of Science and Technology (EJUST), Egypt\\
+\IEEEauthorblockA{Faculty of Computer Science and Information Technology,\\
+Egypt-Japan University of Science and Technology (E-JUST),\\
+New Borg El-Arab City, Alexandria 21934, Egypt\\
 abdelrahman.aboegela@ejust.edu.eg}}
 
 \begin{document}
@@ -95,7 +97,7 @@ Ramesh gives a transport criterion for subtracting a saved state difference in d
 never-stored state on Kimi Linear (exact on every audited array), and checks the criterion's classification on Mamba-2, Falcon-H1 and RWKV-7
 \cite{deltaomission}; replay there runs after the request. AttriGuard runs parallel counterfactual branches to attribute tool calls
 \cite{attriguard}; ERASER postpones parameter-level unlearning in step with inference requests \cite{eraser}.
-To our knowledge, ShadowVeil is the first to schedule an exact \emph{execution-state} reconstruction ahead of a known expiry. Ramesh's deletion from addressable Transformer memory also measures the edited memory against a rebuild of the history without the record, and finds a measurable gap between them \cite{ramesh}, which is the reference ShadowVeil produces exactly. The residency-versus-lead trade-off is the one continuous-batching
+To our knowledge, ShadowVeil is the first to schedule an exact \emph{execution-state} reconstruction ahead of a known expiry. The residency-versus-lead trade-off is the one continuous-batching
 schedulers face under cache pressure \cite{congestion}.
 
 \section{Problem Formulation and Method}
@@ -409,7 +411,7 @@ ShadowVeil keeps the exact transition count of replay and moves it ahead of the 
 reference run under the same recorded schedule at every lookahead, from non-zero snapshots and on Mamba-1 and Mamba-2. A 16-token lookahead
 removes the deadline misses at 16 sessions with half the expiries aligned at 130M, 370M and 1.4B; under extreme load at 370M and 1.4B full duplication meets every deadline. Identity
 recovery falls from \nTUTabA\% to \nTSTabA\% (TAB, eight seeds), with a leaky-sanitizer control
-delimiting the guarantee. Future work is a production-kernel path, datacenter-class hardware and larger models, where the schedule can be tuned to the measured costs. Code, measurements and the verification script are available at \texttt{github.com/\allowbreak{}AbdelrahmanAboegela/\allowbreak{}ShadowVeil}.
+delimiting the guarantee. Future work is a production-kernel path, datacenter-class hardware and larger models. Code, measurements and the verification script are available at \texttt{github.com/\allowbreak{}AbdelrahmanAboegela/\allowbreak{}ShadowVeil}.
 
 \section*{Acknowledgment}
 The authors used Anthropic Claude to assist with figure and table preparation, \LaTeX{} formatting, language proofreading, and improving the structure and organization of existing code. All AI-assisted outputs were reviewed and verified by the authors, who take full responsibility for the manuscript's content.
@@ -454,9 +456,6 @@ Z.-W. Liou et al., ``ReplaySSM: Cache SSM inputs, not state,'' arXiv:2610.13778,
 
 \bibitem{marconi}
 R. Pan et al., ``Marconi: Prefix caching for the era of hybrid LLMs,'' in \emph{Proc. MLSys}, 2025.
-
-\bibitem{ramesh}
-V. Ramesh, ``Can an AI assistant really forget? Auditable deletion from addressable memory,'' arXiv:2607.27539, 2026.
 
 \bibitem{tab}
 I. Pil\'{a}n et al., ``The Text Anonymization Benchmark (TAB): A dedicated corpus and evaluation framework for text anonymization,'' \emph{Computational Linguistics}, vol. 48, no. 4, 2022.

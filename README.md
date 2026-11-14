@@ -5,7 +5,7 @@ Exact counterfactual revocation of Mamba recurrent state under a known expiry, w
 (`delta` interpolates between replay at the deadline and a sanitized shadow kept through the whole window).
 
 ## Authors
-Egypt Japan University of Science and Technology (EJUST), Egypt
+Faculty of Computer Science and Information Technology, Egypt-Japan University of Science and Technology (E-JUST), New Borg El-Arab City, Alexandria 21934, Egypt
 
 | Author | Email |
 |---|---|
