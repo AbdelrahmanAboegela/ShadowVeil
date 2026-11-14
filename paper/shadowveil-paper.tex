@@ -277,12 +277,31 @@ and the lookahead is a tunable that is set from the measured costs at each scale
 \emph{Serving harness.} The same workloads and policies run on the GPU, with the decode batch sized to the load and every burst, decode step and retirement executed for real. At 130M, 370M and 1.4B the harness and the simulation agree on whether a policy meets its deadline in $\nSvhSloA\%$, $\nSvhSloB\%$ and $\nSvhSloC\%$ of \nSvhConfigsA, \nSvhConfigsB{} and \nSvhConfigsC{} configurations, predict the mean cache memory within about 2\%, and rank the policies by p99 latency with Spearman correlation $\nSvhSpearmanA$, $\nSvhSpearmanB$ and $\nSvhSpearmanC$. The simulation understates the latency of replay at the deadline, by a median factor of \nSvhMedRatioA, \nSvhMedRatioB{} and \nSvhMedRatioC, so the measured benefit of lookahead is larger than the simulated one. In the harness a 16-token lookahead removes every miss at 16 sessions with half the expiries aligned at 130M, 370M and 1.4B, where replay at the deadline misses most or all deadlines.
 
 \subsection{Comparison with baselines}
+Table~\ref{tab:compare} summarizes the alternatives: only replay and ShadowVeil reach the sanitized state, and ShadowVeil is the one whose deadline work is a selection and a zeroing call.
 Yao et al.\ show that exact revocation of a recurrent state needs at least $T-\tau+1$ transitions for a prefix of length $T$ expiring at
 $\tau$. ShadowVeil attains this bound in transitions at every $\delta$ (counted in our sweep) and changes only \emph{when} they run.
 We implement replay at the deadline following their method as the baseline; approximate unlearning and state-editing baselines do not give state equality (Sec.~\ref{sec:audit}). Against a
 Transformer, the cache that must be duplicated is proportional to context: for a 512-token context, one Mamba-130M cache is
 1.47~MB regardless of length, RWKV-169M 0.15~MB, and GPT-2 18.9~MB (1.18~MB at 32 tokens), so a full shadow costs a constant for
 fixed-state models. \emph{Distance to the counterfactual.} Following Yao et al., we measure how far each treated state is from the state of the sanitized-stream execution, by relative state distance, next-token KL, and the fraction of matched-seed generations identical to the counterfactual's. At 130M (\nCfdSeedsA{} seeds) the untreated state is at distance $\nCfdUntreatedDistA$ with KL $\nCfdUntreatedKlA$ and reproduces the counterfactual generation in $\nCfdUntreatedGenIdA\%$ of draws. A full reset moves it to $\nCfdResetDistA$ (KL $\nCfdResetKlA$, $\nCfdResetGenIdA\%$ identical), and a sensitive-subspace edit leaves it at $\nCfdSubspaceDistA$ (KL $\nCfdSubspaceKlA$, $\nCfdSubspaceGenIdA\%$), no closer than doing nothing and no closer than a random subspace of the same rank ($\nCfdRandomDistA$, $\nCfdRandomGenIdA\%$). The ShadowVeil state is at distance $\nCfdShadowDistA$ (KL below $10^{-6}$) and every generation is identical. Replay at the deadline reaches the same state, so on this measure it is equivalent to ShadowVeil; the difference between them is when the work runs (Sec.~\ref{sec:sim}).
+
+\begin{table}[t]
+\caption{Revocation methods side by side (130M, TAB). Identity recovery is the strongest attacker's accuracy (chance 12.5\%); work at the deadline is the cost of producing the revoked state at $T$ for a 256-token window.}
+\label{tab:compare}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Method & Equals sanitized state & Identity recovery (\%) & Work at deadline (ms) \\
+\midrule
+Untreated & no & \nAudUntreatedLogitA & 0 \\
+Full reset & no (context lost) & 12.5 & $<$1 \\
+Subspace edit & no & 62.5 & $<$1 \\
+Replay at the deadline & yes & \nAudPrimaryLogitA & \nBurstZeroA \\
+ShadowVeil & yes & \nAudPrimaryLogitA & \nRetireGroupedA \\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 \subsection{Sanitizer audit and attackers}\label{sec:audit}
 In these corpora the sanitized stream carries no class signal by construction (one class-independent placeholder or pseudonym), so
