@@ -128,7 +128,7 @@ def sim():
             if pol in typ:
                 put(f"nTyp{nm}Miss{L}", 100 * typ[pol]["slo_miss_rate"], 0)
                 put(f"nTyp{nm}Mem{L}", typ[pol]["mean_cache_mb"], 0)
-                put(f"nTyp{nm}PNinetyNine{L}", typ[pol]["latency_p99_ms"], 0)
+                put(f"nTyp{nm}PNinetyNine{L}", typ[pol]["latency_p99_ms"], 1)
 
 
 def audit():
@@ -144,7 +144,10 @@ def audit():
                 put(f"nEq{ds}{sc}Sd", 100 * t["sd"], 1)
                 put(f"nEq{ds}{sc}Lo", 100 * t["ci95"][0], 1)
                 put(f"nEq{ds}{sc}Hi", 100 * t["ci95"][1], 1)
-                put(f"nEq{ds}{sc}P", t["tost_p"], 3)
+                if t["tost_p"] < 0.0005:
+                    put(f"nEq{ds}{sc}P", "$<$0.001")
+                else:
+                    put(f"nEq{ds}{sc}P", t["tost_p"], 3)
                 put(f"nEq{ds}{sc}N", t["n_seeds"])
     cname = {"untreated": "Untreated", "shadow_primary_sanitizer": "Primary", "shadow_leaky_sanitizer": "Leaky"}
     kname = {"ridge": "Ridge", "full": "Full", "logit": "Logit", "logitbest": "LogitBest", "gen": "Gen", "permp": "PermP"}

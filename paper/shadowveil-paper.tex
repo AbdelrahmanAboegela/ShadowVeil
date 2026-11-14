@@ -243,9 +243,9 @@ at 130M ($\delta{=}L$) against $\nBurstZeroA$ ms for one burst ($\delta{=}0$), s
 
 \subsection{Scheduler simulation and serving harness}\label{sec:sim}
 We drive a tick-based scheduler ($\tau=\nSimTauA$~ms at 130M and 370M) with the measured per-scale costs: the decode step at every measured batch size
-(up to 512, 192 and 96 rows at 130M, 370M and 1.4B, the largest that fit the 6~GB device; beyond that the last measured slope is extended),
+(up to 512, 192 and 96 rows at 130M, 370M and 1.4B, within a 1.5~GB budget for stacked live and shadow cache; beyond that the last measured slope is extended),
 interpolated chunk cost, and grouped retirement. Sessions arrive as a Poisson process whose rate sets the concurrency, with windows
-uniform in 128--256 tokens, a fraction of the expiries aligned to a common boundary, and one token per session per tick. Replay chunks hold at most 32 tokens
+uniform in 128--256 tokens, a fraction of the expiries aligned to a common boundary, and one token per session per tick. Replay chunks hold at most 32 tokens in the simulation and 64 in the harness
 (64 for the final catch-up), do not preempt, and run in the idle part of a tick; expiries in one tick serialize. An earliest-deadline release rule spends only the idle part of each tick on shadow bursts.
 Cache memory counts the per-session recurrent caches; weights, allocator slack and burst workspace (largest for replay at the deadline, which bursts the whole window) are excluded.
 Retrospective replay (\emph{retro}) does all work at the deadline; \emph{star} uses $\delta^\star=\lceil\text{burst}/\tau\rceil+1$;
